@@ -28,11 +28,13 @@ class NewLicensePlateViewController: UIViewController {
         
         self.navigationItem.title = "添加车辆"
         
-        boundsView.layer.borderWidth = 2
+        boundsView.layer.borderWidth = 1.0
         boundsView.layer.cornerRadius = 6.0
         boundsView.layer.borderColor = XuColorGray.CGColor
         
         determineButton.layer.cornerRadius = 6.0
+        
+        
     }
     
     func skipThisTap(sender:UIBarButtonItem) {

@@ -26,6 +26,12 @@
 		C5843DF31BDE71D80074C785 /* SwiftColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5843DEE1BDE71D80074C785 /* SwiftColors.swift */; settings = {ASSET_TAGS = (); }; };
 		C5843DF41BDE71D80074C785 /* SwiftColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5843DEE1BDE71D80074C785 /* SwiftColors.swift */; settings = {ASSET_TAGS = (); }; };
 		C5843E431BDF4D5F0074C785 /* NewLicensePlateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5843E421BDF4D5F0074C785 /* NewLicensePlateViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		C5843E461BDF5E380074C785 /* FootMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5843E451BDF5E380074C785 /* FootMenuView.swift */; settings = {ASSET_TAGS = (); }; };
+		C5843E481BDF62A40074C785 /* CarMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5843E471BDF62A40074C785 /* CarMaster.swift */; settings = {ASSET_TAGS = (); }; };
+		C5843E4A1BDF66190074C785 /* FooterMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5843E491BDF66190074C785 /* FooterMenuView.xib */; settings = {ASSET_TAGS = (); }; };
+		C5843E4D1BDF6B710074C785 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5843E4B1BDF6B710074C785 /* HomeViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		C5843E4E1BDF6B710074C785 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5843E4C1BDF6B710074C785 /* HomeViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		C5843E531BDF6BB00074C785 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5843E521BDF6BB00074C785 /* HomeViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +69,14 @@
 		C5843DED1BDE71D80074C785 /* KeyChain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyChain.swift; path = Classes/Model/KeyChain.swift; sourceTree = "<group>"; };
 		C5843DEE1BDE71D80074C785 /* SwiftColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftColors.swift; path = Classes/Model/SwiftColors.swift; sourceTree = "<group>"; };
 		C5843E421BDF4D5F0074C785 /* NewLicensePlateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewLicensePlateViewController.swift; path = Classes/VC/NewLicensePlateViewController.swift; sourceTree = "<group>"; };
+		C5843E451BDF5E380074C785 /* FootMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FootMenuView.swift; path = Classes/VC/FootMenuView.swift; sourceTree = "<group>"; };
+		C5843E471BDF62A40074C785 /* CarMaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarMaster.swift; path = Classes/Model/CarMaster.swift; sourceTree = "<group>"; };
+		C5843E491BDF66190074C785 /* FooterMenuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FooterMenuView.xib; path = Classes/VC/FooterMenuView.xib; sourceTree = "<group>"; };
+		C5843E4B1BDF6B710074C785 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = Classes/VC/HomeViewController.swift; sourceTree = "<group>"; };
+		C5843E4C1BDF6B710074C785 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeViewController.xib; path = Classes/VC/HomeViewController.xib; sourceTree = "<group>"; };
+		C5843E501BDF6BAF0074C785 /* ShareAndNav-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ShareAndNav-Bridging-Header.h"; sourceTree = "<group>"; };
+		C5843E511BDF6BB00074C785 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = Classes/VC/HomeViewController.h; sourceTree = "<group>"; };
+		C5843E521BDF6BB00074C785 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = Classes/VC/HomeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,8 +130,16 @@
 				C50E7FF11BDB7D28002BA56D /* AppDelegate.swift */,
 				C50E801F1BDB7D78002BA56D /* LoginViewController.swift */,
 				C5843E421BDF4D5F0074C785 /* NewLicensePlateViewController.swift */,
+				C5843E511BDF6BB00074C785 /* HomeViewController.h */,
+				C5843E521BDF6BB00074C785 /* HomeViewController.m */,
+				C5843E4B1BDF6B710074C785 /* HomeViewController.swift */,
+				C5843E4C1BDF6B710074C785 /* HomeViewController.xib */,
+				C5843E491BDF66190074C785 /* FooterMenuView.xib */,
+				C5843E451BDF5E380074C785 /* FootMenuView.swift */,
+				C5843E4F1BDF6B8E0074C785 /* Framework */,
 				C5843DF51BDE72240074C785 /* MainFile */,
 				C5843DEC1BDE719A0074C785 /* Assistant */,
+				C5843E501BDF6BAF0074C785 /* ShareAndNav-Bridging-Header.h */,
 			);
 			path = ShareAndNav;
 			sourceTree = "<group>";
@@ -146,6 +168,7 @@
 				C5843DED1BDE71D80074C785 /* KeyChain.swift */,
 				C5843DEE1BDE71D80074C785 /* SwiftColors.swift */,
 				C5843DBA1BDDB89C0074C785 /* TypeDefine.swift */,
+				C5843E471BDF62A40074C785 /* CarMaster.swift */,
 			);
 			name = Assistant;
 			sourceTree = "<group>";
@@ -159,6 +182,13 @@
 				C50E7FFD1BDB7D28002BA56D /* Info.plist */,
 			);
 			name = MainFile;
+			sourceTree = "<group>";
+		};
+		C5843E4F1BDF6B8E0074C785 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Framework;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,11 +253,13 @@
 		C50E7FE61BDB7D28002BA56D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "徐成";
 				TargetAttributes = {
 					C50E7FED1BDB7D28002BA56D = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = RQUL2FUN9H;
 					};
 					C50E80011BDB7D28002BA56D = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -266,6 +298,8 @@
 			files = (
 				C50E7FFC1BDB7D28002BA56D /* LaunchScreen.storyboard in Resources */,
 				C50E7FF91BDB7D28002BA56D /* Assets.xcassets in Resources */,
+				C5843E4E1BDF6B710074C785 /* HomeViewController.xib in Resources */,
+				C5843E4A1BDF66190074C785 /* FooterMenuView.xib in Resources */,
 				C50E7FF71BDB7D28002BA56D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,9 +325,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5843E461BDF5E380074C785 /* FootMenuView.swift in Sources */,
 				C50E80201BDB7D78002BA56D /* LoginViewController.swift in Sources */,
 				C50E7FF21BDB7D28002BA56D /* AppDelegate.swift in Sources */,
+				C5843E531BDF6BB00074C785 /* HomeViewController.m in Sources */,
 				C5843E431BDF4D5F0074C785 /* NewLicensePlateViewController.swift in Sources */,
+				C5843E481BDF62A40074C785 /* CarMaster.swift in Sources */,
+				C5843E4D1BDF6B710074C785 /* HomeViewController.swift in Sources */,
 				C5843DEF1BDE71D80074C785 /* KeyChain.swift in Sources */,
 				C5843DBB1BDDB89C0074C785 /* TypeDefine.swift in Sources */,
 				C5843DF21BDE71D80074C785 /* SwiftColors.swift in Sources */,
@@ -395,7 +433,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -433,7 +471,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -444,10 +482,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ShareAndNav/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Pursue.ShareAndNav;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "ShareAndNav/ShareAndNav-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -455,10 +499,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ShareAndNav/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Pursue.ShareAndNav;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "ShareAndNav/ShareAndNav-Bridging-Header.h";
 			};
 			name = Release;
 		};

@@ -18,7 +18,7 @@ let XutextSizeBig:CGFloat = 20
 
 let XuColorBlueThin = UIColor(red: 127/255, green: 193/255, blue: 1, alpha: 1)
 let XuColorBlue = UIColor(red: 0, green: 132/255, blue: 1, alpha: 1)
-let XuColorGray = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
+let XuColorGray = UIColor(red: 249/255, green: 249/255, blue: 249/255, alpha: 1)
 
 //MARK: -- enum and struct
 enum XuLoginType {
