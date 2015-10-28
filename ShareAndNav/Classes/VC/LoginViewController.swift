@@ -10,7 +10,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    var loginType:XuLoginType = XuLoginType.DynamicCode
+    var loginType:XuLoginType = XuLoginType.Default
     lazy var time = 60
     var timer:NSTimer!
     
@@ -21,8 +21,8 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.whiteColor()
         // Do any additional setup after loading the view.
+        self.view.backgroundColor = XuColorGray
         switch loginType {
         case .Default:
             self.initDefaultView()
@@ -71,33 +71,36 @@ class LoginViewController: UIViewController {
             let actionSheet = UIAlertController(title: nil, message: "其他登录方式", preferredStyle: UIAlertControllerStyle.ActionSheet)
             let dynamicAlert = UIAlertAction(title: "动态密码登录", style: UIAlertActionStyle.Default, handler: { (_) -> Void in
                 let loginVC = LoginViewController()
-                loginVC.loginType = XuLoginType.Password
+                loginVC.loginType = XuLoginType.DynamicCode
                 self.presentViewController(loginVC, animated: true, completion: nil)
             })
             
             let passwordAlert = UIAlertAction(title: "使用密码登录", style: UIAlertActionStyle.Default, handler: { (_) -> Void in
                 let loginVC = LoginViewController()
-                loginVC.loginType = XuLoginType.DynamicCode
+                loginVC.loginType = XuLoginType.Password
                 self.presentViewController(loginVC, animated: true, completion: nil)
+            })
+            
+            let cancelAlert = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: { (_) -> Void in
+                
             })
             actionSheet.addAction(dynamicAlert)
             actionSheet.addAction(passwordAlert)
+            actionSheet.addAction(cancelAlert)
             self.presentViewController(actionSheet, animated: true, completion: nil)
         }
     }
     
     func loginAction(sender:UIButton) {
+        UITextField.appearance().resignFirstResponder()
         if timer != nil {timer.invalidate()}
         let carAdditionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("NewLicensePlateViewController") //as! CarBrandAdditionTBVC
         let nav = UINavigationController(rootViewController: carAdditionVC)
-        //UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("CarAdditionViewController") as! CarAdditionViewController
         self.presentViewController(nav, animated: true, completion: nil)
     }
     
     func getDynamicCode(sender:UIButton) {
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "OnTimer:", userInfo: nil, repeats: true)
-        //NSTimer(timeInterval: 1, target: self, selector: "OnTimer:", userInfo: nil, repeats: true)
-        //timer.invalidate()
     }
     
     func showAgreement(sender:UIButton) {
@@ -110,7 +113,9 @@ class LoginViewController: UIViewController {
             self.timer = nil;time = 60
             dynamicCodeBtn.setTitle("重新获取动态密码", forState: UIControlState.Normal)
         }else {
-            dynamicCodeBtn.setTitle("动态密码（\(--time)）", forState: UIControlState.Normal)
+            dynamicCodeBtn.enabled = false
+            dynamicCodeBtn.setTitle("已发送（\(--time)）", forState: UIControlState.Normal)
+            dynamicCodeBtn.setTitleColor(UIColor.grayColor(), forState: UIControlState.Normal)
         }
     }
     
@@ -138,7 +143,7 @@ class LoginViewController: UIViewController {
         self.view.addSubview(label)
         
         self.userTextField = UITextField(frame: CGRectMake(20, originHeight + ctrlHeight + gap * 3, CGRectGetWidth(self.view.frame) - 40, ctrlHeight))
-        self.userTextField.keyboardType = UIKeyboardType.NamePhonePad
+        self.userTextField.keyboardType = UIKeyboardType.DecimalPad
         self.userTextField.placeholder = "手机"
         self.view.addSubview(self.userTextField)
         
@@ -147,7 +152,6 @@ class LoginViewController: UIViewController {
         self.view.addSubview(line1)
         
         self.pwTextField = UITextField(frame: CGRectMake(20, originHeight + ctrlHeight + gap * 5, CGRectGetWidth(self.view.frame) - 40, ctrlHeight))
-        self.pwTextField.keyboardType = UIKeyboardType.NamePhonePad
         self.view.addSubview(self.pwTextField)
         
         let line2 = UIView(frame: CGRectMake(20, originHeight + ctrlHeight + gap * 6, CGRectGetWidth(self.view.frame) - 40, 1))
@@ -157,7 +161,7 @@ class LoginViewController: UIViewController {
         let textBtn = UIButton(type: UIButtonType.Custom)
         let attributedText = NSMutableAttributedString(string: "登录即代表您已阅读并同意《账户协议》",attributes: [NSForegroundColorAttributeName:UIColor.lightGrayColor(),
             NSFontAttributeName:UIFont.systemFontOfSize(XuTextSizeSmall, weight: 1.3)])
-        attributedText.addAttributes([NSForegroundColorAttributeName:XuColorBlue], range: NSMakeRange(attributedText.length - 6, 6))
+        attributedText.addAttributes([NSForegroundColorAttributeName:XuColorBlueThin], range: NSMakeRange(attributedText.length - 6, 6))
         textBtn.frame = CGRectMake(20, originHeight + ctrlHeight + gap * 6 + 10, CGFloat(attributedText.length) * 12, 15)
         textBtn.setAttributedTitle(attributedText, forState: UIControlState.Normal)
         textBtn.addTarget(self, action: "showAgreement:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -168,7 +172,7 @@ class LoginViewController: UIViewController {
             NSForegroundColorAttributeName:UIColor.whiteColor(),
             NSFontAttributeName:UIFont.systemFontOfSize(XutextSizeBig, weight: 2)])
         loginBtn.setAttributedTitle(attributedTitle, forState: UIControlState.Normal)
-        loginBtn.frame = CGRectMake(20, originHeight + ctrlHeight + gap * 8, CGRectGetWidth(self.view.frame) - 40, 40)
+        loginBtn.frame = CGRectMake(20, originHeight + ctrlHeight + gap * 9, CGRectGetWidth(self.view.frame) - 40, 40)
         loginBtn.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         loginBtn.backgroundColor = XuColorBlue
         loginBtn.addTarget(self, action: "loginAction:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -188,6 +192,7 @@ class LoginViewController: UIViewController {
             dynamicCodeBtn.addTarget(self, action: "getDynamicCode:", forControlEvents: UIControlEvents.TouchUpInside)
             self.view.addSubview(dynamicCodeBtn)
             
+            self.pwTextField.keyboardType = UIKeyboardType.NumberPad
             self.pwTextField.placeholder = "动态密码"
             
         default:
@@ -204,13 +209,13 @@ class LoginViewController: UIViewController {
         changeBtn.titleLabel?.font = UIFont.systemFontOfSize(XuTextSizeSmall)
         changeBtn.setTitle("使用其他方式登录", forState: UIControlState.Normal)
         changeBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Right
-        changeBtn.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
+        changeBtn.setTitleColor(XuColorBlueThin, forState: UIControlState.Normal)
         changeBtn.addTarget(self, action: "changeWayOfLogin:", forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(changeBtn)
         
         let imageView:UIImageView = UIImageView(frame: CGRectMake(0, 0, 60, 60))
         imageView.center = CGPointMake(self.view.center.x, originHeight + gap + 5)
-        imageView.backgroundColor = UIColor(hue: 0.4, saturation: 0.8, brightness: 1.0, alpha: 1.0)
+        imageView.image = UIImage(named: "logo")
         self.view.addSubview(imageView)
         
         self.userTextField = UITextField(frame: CGRectMake(20, originHeight + ctrlHeight + gap * 3, CGRectGetWidth(self.view.frame) - 40, ctrlHeight))
@@ -219,11 +224,11 @@ class LoginViewController: UIViewController {
         self.userTextField.enabled = false
         self.view.addSubview(self.userTextField)
         
-        let line1 = UIView(frame: CGRectMake(20, originHeight + ctrlHeight + gap * 6, CGRectGetWidth(self.view.frame) - 40, 1))
+        let line1 = UIView(frame: CGRectMake(20, originHeight + ctrlHeight + gap * 7, CGRectGetWidth(self.view.frame) - 40, 1))
         line1.backgroundColor = UIColor.lightGrayColor()
         self.view.addSubview(line1)
         
-        self.pwTextField = UITextField(frame: CGRectMake(20, originHeight + ctrlHeight + gap * 5, CGRectGetWidth(self.view.frame) - 40, ctrlHeight))
+        self.pwTextField = UITextField(frame: CGRectMake(20, originHeight + ctrlHeight + gap * 6, CGRectGetWidth(self.view.frame) - 40, ctrlHeight))
         self.pwTextField.keyboardType = UIKeyboardType.NamePhonePad
         self.pwTextField.placeholder = "密码"
         self.view.addSubview(self.pwTextField)
@@ -234,9 +239,9 @@ class LoginViewController: UIViewController {
             NSForegroundColorAttributeName:UIColor.whiteColor(),
             NSFontAttributeName:UIFont.systemFontOfSize(XutextSizeBig, weight: 2)])
         loginBtn.setAttributedTitle(attributedTitle, forState: UIControlState.Normal)
-        loginBtn.frame = CGRectMake(20, originHeight + ctrlHeight + gap * 9, CGRectGetWidth(self.view.frame) - 40, 40)
+        loginBtn.frame = CGRectMake(20, originHeight + ctrlHeight + gap * 10, CGRectGetWidth(self.view.frame) - 40, 40)
         loginBtn.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        loginBtn.backgroundColor = UIColor.blueColor()
+        loginBtn.backgroundColor = XuColorBlue
         loginBtn.addTarget(self, action: "loginAction:", forControlEvents: UIControlEvents.TouchUpInside)
         loginBtn.layer.cornerRadius = 6
         self.view.addSubview(loginBtn)
