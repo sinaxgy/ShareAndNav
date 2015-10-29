@@ -8,11 +8,26 @@
 
 import UIKit
 
-class FootMenuView: UIView {
+enum XuSegmentedViewType:Int {
+    case brand = 1,broken,parkTime,revenue
+}
 
+class FootMenuView: UIView {
+    
+    lazy var carmaster = CarMaster()
+    
     init(title:String) {
-        super.init(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width - 20, 40))
-        self.initView()
+        let width = UIScreen.mainScreen().bounds.width - 20
+        super.init(frame: CGRectMake(0, 0, width, 40))
+        self.layer.cornerRadius = XuCornerRadius
+        for var i:CGFloat = 1;i < 3;i++ {
+            let line = UIView(frame: CGRectMake(0, 0, 0.5, 20))
+            line.backgroundColor = XuColorGray
+            line.center = CGPointMake(i * width / 4, 20)
+            self.addSubview(line)
+        }
+        
+        self.initView(width / 4)
     }
     
     init() {
@@ -23,40 +38,62 @@ class FootMenuView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func initView() {
+    func singleTap(recoginzer:UITapGestureRecognizer) {
+        
+    }
+    
+    func initView(subWidth:CGFloat) {
+        //车牌
+        let brandView = UIView(frame: CGRectMake(0, 5, subWidth, 30))
+        let singleTap = UITapGestureRecognizer(target: self, action: "singleTap:")
+        brandView.tag = XuSegmentedViewType.brand.rawValue
+        brandView.addGestureRecognizer(singleTap)
+        self.addSubview(brandView)
+        
         let imageView = UIImageView(frame: CGRectMake(5, 10, 20, 20))
-        self.addSubview(imageView)
-        
-        let brandLabel = UILabel(frame: CGRectMake(28, 10, 62, 20))
-        brandLabel.text = "京A B1212"
+        imageView.image = carmaster.logo
+        brandView.addSubview(imageView)
+        let brandLabel = UILabel(frame: CGRectMake(28, 10, subWidth - 28, 20))
+        brandLabel.text = carmaster.lisencePlate
+        brandLabel.textAlignment = NSTextAlignment.Center
         brandLabel.font = UIFont.systemFontOfSize(XuTextSizeSmall)
-        self.addSubview(brandLabel)
+        brandView.addSubview(brandLabel)
         
-        let brokenLabel = UILabel(frame: CGRectMake(100, 10, 30, 20))
-        brokenLabel.text = "违章  1"
+        //违章
+        let brokenView = UIView(frame: CGRectMake(subWidth, 5, subWidth, 30))
+        brokenView.tag = XuSegmentedViewType.broken.rawValue
+        brokenView.addGestureRecognizer(singleTap)
+        self.addSubview(brokenView)
+        
+        let brokenLabel = UILabel(frame: CGRectMake(0, 0, subWidth, 20))
+        brokenLabel.text = "违章  \(carmaster.timesOfBroken)  扣 \(carmaster.scoresOfBroken) 分"
         brokenLabel.font = UIFont.systemFontOfSize(XuTextSizeSmall)
-        self.addSubview(brokenLabel)
+        brokenLabel.textAlignment = NSTextAlignment.Center
+        brokenView.addSubview(brokenLabel)
         
-        let deductLabel = UILabel(frame: CGRectMake(140, 10, 30, 20))
-        deductLabel.text = "扣6分"
-        deductLabel.font = UIFont.systemFontOfSize(XuTextSizeSmall)
-        self.addSubview(deductLabel)
+        //停车时间
+        let parkView = UIView(frame: CGRectMake(subWidth * 2, 5, subWidth, 30))
+        parkView.tag = XuSegmentedViewType.parkTime.rawValue
+        parkView.addGestureRecognizer(singleTap)
+        self.addSubview(parkView)
         
-        let parkLabel = UILabel(frame: CGRectMake(160, 10, 30, 20))
-        parkLabel.text = "停车"
+        let parkLabel = UILabel(frame: CGRectMake(0, 0, subWidth, 20))
+        parkLabel.text = "停车 \(carmaster.timeParking)"
         parkLabel.font = UIFont.systemFontOfSize(XuTextSizeSmall)
-        self.addSubview(parkLabel)
+        parkLabel.textAlignment = NSTextAlignment.Center
+        parkView.addSubview(parkLabel)
         
-        let timeLabel = UILabel(frame: CGRectMake(160, 10, 30, 20))
-        timeLabel.text = "00:00:00"
-        timeLabel.font = UIFont.systemFontOfSize(XuTextSizeSmall)
-        self.addSubview(timeLabel)
+        //分享
+        let revenueView = UIView(frame: CGRectMake(subWidth * 3, 5, subWidth, 30))
+        revenueView.tag = XuSegmentedViewType.revenue.rawValue
+        revenueView.addGestureRecognizer(singleTap)
+        self.addSubview(revenueView)
         
-        let shareLabel = UILabel(frame: CGRectMake(200, 10, 60, 20))
-        shareLabel.text = "00:00:00"
-        shareLabel.font = UIFont.systemFontOfSize(XuTextSizeSmall)
-        self.addSubview(shareLabel)
-        
+        let revenueLabel = UILabel(frame: CGRectMake(0, 0, subWidth, 20))
+        revenueLabel.text = "分享 ¥ \(carmaster.revenue)"
+        revenueLabel.font = UIFont.systemFontOfSize(XuTextSizeSmall)
+        revenueLabel.textAlignment = NSTextAlignment.Center
+        revenueView.addSubview(revenueLabel)
     }
 
 }

@@ -15,6 +15,7 @@ import UIKit
 let XuTextSizeSmall:CGFloat = 12.0
 let XuTextSizeMiddle:CGFloat = 15.0
 let XutextSizeBig:CGFloat = 20
+let XuCornerRadius:CGFloat = 5
 
 let XuColorBlueThin = UIColor(red: 127/255, green: 193/255, blue: 1, alpha: 1)
 let XuColorBlue = UIColor(red: 0, green: 132/255, blue: 1, alpha: 1)

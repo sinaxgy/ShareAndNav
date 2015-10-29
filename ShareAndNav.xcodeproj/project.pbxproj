@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C5022EC41BE0A9B400DBC2FF /* UniversalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5022EC31BE0A9B400DBC2FF /* UniversalTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		C50E7FF21BDB7D28002BA56D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50E7FF11BDB7D28002BA56D /* AppDelegate.swift */; };
 		C50E7FF71BDB7D28002BA56D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C50E7FF51BDB7D28002BA56D /* Main.storyboard */; };
 		C50E7FF91BDB7D28002BA56D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C50E7FF81BDB7D28002BA56D /* Assets.xcassets */; };
@@ -28,7 +29,6 @@
 		C5843E431BDF4D5F0074C785 /* NewLicensePlateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5843E421BDF4D5F0074C785 /* NewLicensePlateViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		C5843E461BDF5E380074C785 /* FootMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5843E451BDF5E380074C785 /* FootMenuView.swift */; settings = {ASSET_TAGS = (); }; };
 		C5843E481BDF62A40074C785 /* CarMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5843E471BDF62A40074C785 /* CarMaster.swift */; settings = {ASSET_TAGS = (); }; };
-		C5843E4A1BDF66190074C785 /* FooterMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5843E491BDF66190074C785 /* FooterMenuView.xib */; settings = {ASSET_TAGS = (); }; };
 		C5843E4D1BDF6B710074C785 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5843E4B1BDF6B710074C785 /* HomeViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		C5843E4E1BDF6B710074C785 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5843E4C1BDF6B710074C785 /* HomeViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		C5843E531BDF6BB00074C785 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5843E521BDF6BB00074C785 /* HomeViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -52,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C5022EC31BE0A9B400DBC2FF /* UniversalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UniversalTableViewCell.swift; path = Classes/VC/Cell/UniversalTableViewCell.swift; sourceTree = "<group>"; };
 		C50E7FEE1BDB7D28002BA56D /* ShareAndNav.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareAndNav.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C50E7FF11BDB7D28002BA56D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C50E7FF61BDB7D28002BA56D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -71,7 +72,6 @@
 		C5843E421BDF4D5F0074C785 /* NewLicensePlateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewLicensePlateViewController.swift; path = Classes/VC/NewLicensePlateViewController.swift; sourceTree = "<group>"; };
 		C5843E451BDF5E380074C785 /* FootMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FootMenuView.swift; path = Classes/VC/FootMenuView.swift; sourceTree = "<group>"; };
 		C5843E471BDF62A40074C785 /* CarMaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarMaster.swift; path = Classes/Model/CarMaster.swift; sourceTree = "<group>"; };
-		C5843E491BDF66190074C785 /* FooterMenuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FooterMenuView.xib; path = Classes/VC/FooterMenuView.xib; sourceTree = "<group>"; };
 		C5843E4B1BDF6B710074C785 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = Classes/VC/HomeViewController.swift; sourceTree = "<group>"; };
 		C5843E4C1BDF6B710074C785 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeViewController.xib; path = Classes/VC/HomeViewController.xib; sourceTree = "<group>"; };
 		C5843E501BDF6BAF0074C785 /* ShareAndNav-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ShareAndNav-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -130,11 +130,11 @@
 				C50E7FF11BDB7D28002BA56D /* AppDelegate.swift */,
 				C50E801F1BDB7D78002BA56D /* LoginViewController.swift */,
 				C5843E421BDF4D5F0074C785 /* NewLicensePlateViewController.swift */,
+				C5022EC31BE0A9B400DBC2FF /* UniversalTableViewCell.swift */,
 				C5843E511BDF6BB00074C785 /* HomeViewController.h */,
 				C5843E521BDF6BB00074C785 /* HomeViewController.m */,
 				C5843E4B1BDF6B710074C785 /* HomeViewController.swift */,
 				C5843E4C1BDF6B710074C785 /* HomeViewController.xib */,
-				C5843E491BDF66190074C785 /* FooterMenuView.xib */,
 				C5843E451BDF5E380074C785 /* FootMenuView.swift */,
 				C5843E4F1BDF6B8E0074C785 /* Framework */,
 				C5843DF51BDE72240074C785 /* MainFile */,
@@ -165,9 +165,9 @@
 		C5843DEC1BDE719A0074C785 /* Assistant */ = {
 			isa = PBXGroup;
 			children = (
+				C5843DBA1BDDB89C0074C785 /* TypeDefine.swift */,
 				C5843DED1BDE71D80074C785 /* KeyChain.swift */,
 				C5843DEE1BDE71D80074C785 /* SwiftColors.swift */,
-				C5843DBA1BDDB89C0074C785 /* TypeDefine.swift */,
 				C5843E471BDF62A40074C785 /* CarMaster.swift */,
 			);
 			name = Assistant;
@@ -299,7 +299,6 @@
 				C50E7FFC1BDB7D28002BA56D /* LaunchScreen.storyboard in Resources */,
 				C50E7FF91BDB7D28002BA56D /* Assets.xcassets in Resources */,
 				C5843E4E1BDF6B710074C785 /* HomeViewController.xib in Resources */,
-				C5843E4A1BDF66190074C785 /* FooterMenuView.xib in Resources */,
 				C50E7FF71BDB7D28002BA56D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -326,6 +325,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5843E461BDF5E380074C785 /* FootMenuView.swift in Sources */,
+				C5022EC41BE0A9B400DBC2FF /* UniversalTableViewCell.swift in Sources */,
 				C50E80201BDB7D78002BA56D /* LoginViewController.swift in Sources */,
 				C50E7FF21BDB7D28002BA56D /* AppDelegate.swift in Sources */,
 				C5843E531BDF6BB00074C785 /* HomeViewController.m in Sources */,
