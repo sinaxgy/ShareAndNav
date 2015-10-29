@@ -16,11 +16,20 @@ class CarMaster: NSObject {
     var timesOfBroken:UInt = 0
     var scoresOfBroken:UInt = 0
     
-    var parkingTime:String = "00:00:00"
+    var timeParking:String = "00:00:00"
     
     var revenue:Float = 0
 
-    func initWith() {
+    init(logo:UIImage,plate:String,timesOfBroken:UInt,scoresOfBroken:UInt,timeParking:String,revenue:Float) {
+        self.logo = logo
+        self.lisencePlate = plate
+        self.timesOfBroken = timesOfBroken
+        self.scoresOfBroken = scoresOfBroken
+        self.timeParking = timeParking
+        self.revenue = revenue
+    }
+    
+    override init() {
         
     }
 }
