@@ -29,11 +29,24 @@ class KeyChain: NSObject {
     //MARK: -- NEW
     class func set(value:String ,forkey key:String) -> Bool{
         guard let data = value.dataUsingEncoding(NSUTF8StringEncoding) else {return false}
-        print(KeyChain.remove(key))
+        KeyChain.remove(key)
         let query = [
             XuKeyChainConstants.xClass       : kSecClassGenericPassword,
             XuKeyChainConstants.xAttrAcount  : " \(key)",
             XuKeyChainConstants.xValueData   : data,
+            XuKeyChainConstants.xAccessible  : kSecAttrAccessibleWhenUnlocked]
+        let dic:NSDictionary = query
+        print(KeyChain.setDictionary(dic, forkey: key))
+        print(KeyChain.getDictionary(key))
+        return SecItemAdd(query, nil) == noErr
+    }
+    
+    class func setDictionary(xDictionary:NSDictionary,forkey key:String) -> Bool {
+        KeyChain.remove(key)
+        let query = [
+            XuKeyChainConstants.xClass       : kSecClassGenericPassword,
+            XuKeyChainConstants.xAttrAcount  : " \(key)",
+            XuKeyChainConstants.xValueData   : xDictionary.dataValue(),
             XuKeyChainConstants.xAccessible  : kSecAttrAccessibleWhenUnlocked]
         return SecItemAdd(query, nil) == noErr
     }
@@ -43,6 +56,11 @@ class KeyChain: NSObject {
         return NSString(data: (data as NSData), encoding: NSUTF8StringEncoding) as? String
     }
     
+    class func getDictionary(key:String) -> NSDictionary? {
+        guard let data = KeyChain.data(key) else {return nil}
+        return data.dictionaryValue()
+    }
+    
     class func remove(key:String) -> Bool {
         let query:[String:NSObject] = [
             XuKeyChainConstants.xClass       : kSecClassGenericPassword,
@@ -50,6 +68,7 @@ class KeyChain: NSObject {
         return SecItemDelete(query as CFDictionaryRef) == noErr
     }
     
+    //MARK: --Assistant
     class func data(key:String) -> NSData? {
         let query = [
             XuKeyChainConstants.xClass       : kSecClassGenericPassword,
@@ -62,7 +81,6 @@ class KeyChain: NSObject {
         }
         return (status == noErr ? result as? NSData : nil)
     }
-    
     
     //MARK: --OLD
     class func SaveKeyChainItem(user_id:NSString,user_password:NSString,IP:NSString) -> Bool {
