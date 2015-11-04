@@ -16,6 +16,7 @@ struct XuUserDefaultContants {
 }
 
 class XuUserDefault: NSObject {
+    
     class func set(value:String,forkey key:String) {
         let user:NSUserDefaults? = NSUserDefaults.standardUserDefaults()
         if (user != nil) {

@@ -9,25 +9,6 @@
 import Foundation
 import UIKit
 
-extension NSDictionary {
-    func dataValue() -> NSData {
-        let data = NSMutableData()
-        let archiver = NSKeyedArchiver(forWritingWithMutableData: data)
-        archiver.encodeObject(self, forKey: "key")
-        archiver.finishEncoding()
-        return data
-    }
-}
-
-extension NSData {
-    func dictionaryValue() -> NSDictionary {
-        let unarchiver = NSKeyedUnarchiver(forReadingWithData: NSMutableData(data: self))
-        let dictionary = unarchiver.decodeObjectForKey("key") as! NSDictionary
-        unarchiver.finishDecoding()
-        return dictionary
-    }
-}
-
 
 //MARK:-- const value
 let XuAPIKey = "723f58282834ef26a8e354d60aaa8eb7"

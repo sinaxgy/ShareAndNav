@@ -8,6 +8,25 @@
 
 import UIKit
 
+extension NSDictionary {
+    func dataValue() -> NSData {
+        let data = NSMutableData()
+        let archiver = NSKeyedArchiver(forWritingWithMutableData: data)
+        archiver.encodeObject(self, forKey: "key")
+        archiver.finishEncoding()
+        return data
+    }
+}
+
+extension NSData {
+    func dictionaryValue() -> NSDictionary {
+        let unarchiver = NSKeyedUnarchiver(forReadingWithData: NSMutableData(data: self))
+        let dictionary = unarchiver.decodeObjectForKey("key") as! NSDictionary
+        unarchiver.finishDecoding()
+        return dictionary
+    }
+}
+
 struct XuKeyChainConstants {
     static var xClass:String {return toString(kSecClass)}
     static var xClassGenericPW:String {return toString(kSecClassGenericPassword)}
@@ -35,9 +54,6 @@ class KeyChain: NSObject {
             XuKeyChainConstants.xAttrAcount  : " \(key)",
             XuKeyChainConstants.xValueData   : data,
             XuKeyChainConstants.xAccessible  : kSecAttrAccessibleWhenUnlocked]
-        let dic:NSDictionary = query
-        print(KeyChain.setDictionary(dic, forkey: key))
-        print(KeyChain.getDictionary(key))
         return SecItemAdd(query, nil) == noErr
     }
     

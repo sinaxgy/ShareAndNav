@@ -18,6 +18,7 @@ class LoginViewController: UIViewController {
     private var pwTextField:UITextField!
     private var dynamicCodeBtn:UIButton!
     private var changeBtn:UIButton!
+    private var loginBtn:UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,9 @@ class LoginViewController: UIViewController {
         default:
             self.initDynamicCodeView()
         }
+        loginBtn.enabled = false
+        loginBtn.backgroundColor = XuColorGrayThin
+        userTextField.addTarget(self, action: "textFieldDidChanged:", forControlEvents: UIControlEvents.EditingChanged)
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -38,6 +42,20 @@ class LoginViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //MARK: --UITextFieldDidChanged
+    func textFieldDidChanged(textField:UITextField) {
+        if textField == userTextField {
+            switch NSString(string: textField.text!).length {
+            case 11:
+                
+                break
+            case 12...30:
+                textField.text = NSString(string: textField.text!).substringToIndex(11)
+            default:break
+            }
+        }
     }
     
     //MARK: --actions
@@ -170,7 +188,7 @@ class LoginViewController: UIViewController {
         textBtn.addTarget(self, action: "showAgreement:", forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(textBtn)
         
-        let loginBtn = UIButton(type: UIButtonType.System)
+        loginBtn = UIButton(type: UIButtonType.System)
         let attributedTitle = NSMutableAttributedString(string: "登 录", attributes: [
             NSForegroundColorAttributeName:UIColor.whiteColor(),
             NSFontAttributeName:UIFont.systemFontOfSize(XutextSizeNav, weight: 2)])
@@ -237,7 +255,7 @@ class LoginViewController: UIViewController {
         self.view.addSubview(self.pwTextField)
         
         
-        let loginBtn = UIButton(type: UIButtonType.System)
+        loginBtn = UIButton(type: UIButtonType.System)
         let attributedTitle = NSMutableAttributedString(string: "登 录", attributes: [
             NSForegroundColorAttributeName:UIColor.whiteColor(),
             NSFontAttributeName:UIFont.systemFontOfSize(XutextSizeNav, weight: 2)])

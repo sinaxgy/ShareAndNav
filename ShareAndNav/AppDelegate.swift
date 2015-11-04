@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         MAMapServices.sharedServices().apiKey = XuAPIKey
         AMapSearchServices.sharedServices().apiKey = XuAPIKey
+        
         return true
     }
 

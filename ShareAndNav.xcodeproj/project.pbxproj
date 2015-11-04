@@ -35,7 +35,8 @@
 		C59B32DE1BE7AA4F00AAE98C /* SubMasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59B32DD1BE7AA4F00AAE98C /* SubMasterView.swift */; settings = {ASSET_TAGS = (); }; };
 		C5A8E84D1BE306D5008AD59B /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C5A8E84C1BE306D5008AD59B /* AMap.bundle */; settings = {ASSET_TAGS = (); }; };
 		C5A8E8501BE34BF0008AD59B /* park.png in Resources */ = {isa = PBXBuildFile; fileRef = C5A8E84F1BE34BF0008AD59B /* park.png */; settings = {ASSET_TAGS = (); }; };
-		C5C4EC351BE9DD040058B286 /* XuUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C4EC341BE9DD040058B286 /* XuUserDefault.swift */; settings = {ASSET_TAGS = (); }; };
+		C5C4EC3B1BEA06D00058B286 /* XuRegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C4EC391BEA06D00058B286 /* XuRegularExpression.swift */; settings = {ASSET_TAGS = (); }; };
+		C5C4EC3C1BEA06D00058B286 /* XuUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C4EC3A1BEA06D00058B286 /* XuUserDefault.swift */; settings = {ASSET_TAGS = (); }; };
 		C5E5AD8D1BE2684D00AEE7AC /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5E5AD8A1BE2684D00AEE7AC /* AMapSearchKit.framework */; };
 		C5E5AD8E1BE2684D00AEE7AC /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5E5AD8B1BE2684D00AEE7AC /* MAMapKit.framework */; };
 		C5E5AD901BE2685500AEE7AC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5E5AD8F1BE2685500AEE7AC /* UIKit.framework */; };
@@ -98,7 +99,8 @@
 		C59B32DD1BE7AA4F00AAE98C /* SubMasterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubMasterView.swift; path = Classes/VC/SubMasterView.swift; sourceTree = "<group>"; };
 		C5A8E84C1BE306D5008AD59B /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AMap.bundle; path = Framework/AMap.bundle; sourceTree = "<group>"; };
 		C5A8E84F1BE34BF0008AD59B /* park.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = park.png; path = Resources/park.png; sourceTree = "<group>"; };
-		C5C4EC341BE9DD040058B286 /* XuUserDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XuUserDefault.swift; path = Classes/Model/XuUserDefault.swift; sourceTree = "<group>"; };
+		C5C4EC391BEA06D00058B286 /* XuRegularExpression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XuRegularExpression.swift; path = Classes/Model/XuRegularExpression.swift; sourceTree = "<group>"; };
+		C5C4EC3A1BEA06D00058B286 /* XuUserDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XuUserDefault.swift; path = Classes/Model/XuUserDefault.swift; sourceTree = "<group>"; };
 		C5E5AD8A1BE2684D00AEE7AC /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AMapSearchKit.framework; path = Framework/AMapSearchKit.framework; sourceTree = "<group>"; };
 		C5E5AD8B1BE2684D00AEE7AC /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MAMapKit.framework; path = Framework/MAMapKit.framework; sourceTree = "<group>"; };
 		C5E5AD8F1BE2685500AEE7AC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -186,9 +188,9 @@
 				C5843E511BDF6BB00074C785 /* HomeViewController.h */,
 				C5843E521BDF6BB00074C785 /* HomeViewController.m */,
 				C544A4A31BE89602004607DD /* View */,
-				C5843DEC1BDE719A0074C785 /* Assistant */,
 				C5843DF51BDE72240074C785 /* MainFile */,
 				C5843E501BDF6BAF0074C785 /* ShareAndNav-Bridging-Header.h */,
+				C5843DEC1BDE719A0074C785 /* Assistant */,
 				C5A8E84E1BE34B76008AD59B /* Resources */,
 			);
 			path = ShareAndNav;
@@ -225,9 +227,10 @@
 		C5843DEC1BDE719A0074C785 /* Assistant */ = {
 			isa = PBXGroup;
 			children = (
+				C5C4EC391BEA06D00058B286 /* XuRegularExpression.swift */,
+				C5C4EC3A1BEA06D00058B286 /* XuUserDefault.swift */,
 				C5843DBA1BDDB89C0074C785 /* TypeDefine.swift */,
 				C5843DED1BDE71D80074C785 /* KeyChain.swift */,
-				C5C4EC341BE9DD040058B286 /* XuUserDefault.swift */,
 				C5843DEE1BDE71D80074C785 /* SwiftColors.swift */,
 				C5843E471BDF62A40074C785 /* CarMaster.swift */,
 			);
@@ -411,6 +414,7 @@
 			files = (
 				C5843E461BDF5E380074C785 /* FootMenuView.swift in Sources */,
 				C5022EC41BE0A9B400DBC2FF /* UniversalTableViewCell.swift in Sources */,
+				C5C4EC3B1BEA06D00058B286 /* XuRegularExpression.swift in Sources */,
 				C5E5ADA61BE2692F00AEE7AC /* MasterViewController.swift in Sources */,
 				C50E80201BDB7D78002BA56D /* LoginViewController.swift in Sources */,
 				C59B32DE1BE7AA4F00AAE98C /* SubMasterView.swift in Sources */,
@@ -421,9 +425,9 @@
 				C5843E481BDF62A40074C785 /* CarMaster.swift in Sources */,
 				C544A4A51BE89673004607DD /* KeyboardDigitalView.swift in Sources */,
 				C5843DEF1BDE71D80074C785 /* KeyChain.swift in Sources */,
-				C5C4EC351BE9DD040058B286 /* XuUserDefault.swift in Sources */,
 				C5843DBB1BDDB89C0074C785 /* TypeDefine.swift in Sources */,
 				C5843DF21BDE71D80074C785 /* SwiftColors.swift in Sources */,
+				C5C4EC3C1BEA06D00058B286 /* XuUserDefault.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
