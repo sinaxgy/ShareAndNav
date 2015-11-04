@@ -10,7 +10,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    var loginType:XuLoginType = XuLoginType.Default
+    var loginType:XuLoginType = XuLoginType.DynamicCode
     lazy var time = 60
     var timer:NSTimer!
     
@@ -22,7 +22,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.view.backgroundColor = XuColorGray
+        self.view.backgroundColor = XuColorWhite
         switch loginType {
         case .Default:
             self.initDefaultView()
@@ -93,10 +93,13 @@ class LoginViewController: UIViewController {
     
     func loginAction(sender:UIButton) {
         UITextField.appearance().resignFirstResponder()
-        if timer != nil {timer.invalidate()}
-        let carAdditionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("NewLicensePlateViewController") //as! CarBrandAdditionTBVC
-        let nav = UINavigationController(rootViewController: carAdditionVC)
-        self.presentViewController(nav, animated: true, completion: nil)
+        if KeyChain.set(pwTextField.text!, forkey: userTextField.text!) {
+            print(KeyChain.get(userTextField.text!))
+            if timer != nil {timer.invalidate()}
+            let carAdditionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("NewLicensePlateViewController") //as! CarBrandAdditionTBVC
+            let nav = UINavigationController(rootViewController: carAdditionVC)
+            self.presentViewController(nav, animated: true, completion: nil)
+        }
     }
     
     func getDynamicCode(sender:UIButton) {
@@ -170,7 +173,7 @@ class LoginViewController: UIViewController {
         let loginBtn = UIButton(type: UIButtonType.System)
         let attributedTitle = NSMutableAttributedString(string: "登 录", attributes: [
             NSForegroundColorAttributeName:UIColor.whiteColor(),
-            NSFontAttributeName:UIFont.systemFontOfSize(XutextSizeBig, weight: 2)])
+            NSFontAttributeName:UIFont.systemFontOfSize(XutextSizeNav, weight: 2)])
         loginBtn.setAttributedTitle(attributedTitle, forState: UIControlState.Normal)
         loginBtn.frame = CGRectMake(20, originHeight + ctrlHeight + gap * 9, CGRectGetWidth(self.view.frame) - 40, 40)
         loginBtn.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
@@ -237,7 +240,7 @@ class LoginViewController: UIViewController {
         let loginBtn = UIButton(type: UIButtonType.System)
         let attributedTitle = NSMutableAttributedString(string: "登 录", attributes: [
             NSForegroundColorAttributeName:UIColor.whiteColor(),
-            NSFontAttributeName:UIFont.systemFontOfSize(XutextSizeBig, weight: 2)])
+            NSFontAttributeName:UIFont.systemFontOfSize(XutextSizeNav, weight: 2)])
         loginBtn.setAttributedTitle(attributedTitle, forState: UIControlState.Normal)
         loginBtn.frame = CGRectMake(20, originHeight + ctrlHeight + gap * 10, CGRectGetWidth(self.view.frame) - 40, 40)
         loginBtn.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)

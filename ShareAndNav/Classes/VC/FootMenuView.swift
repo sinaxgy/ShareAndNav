@@ -8,92 +8,109 @@
 
 import UIKit
 
-enum XuSegmentedViewType:Int {
+enum XuFooterViewType:Int {
     case brand = 1,broken,parkTime,revenue
 }
 
+typealias FooterViewClickedClosure = ((footerViewType:XuFooterViewType) -> Void)
+
 class FootMenuView: UIView {
     
-    lazy var carmaster = CarMaster()
+    let XuHeight:CGFloat = 40
+    var footerViewClicked:FooterViewClickedClosure?
     
-    init(title:String) {
-        let width = UIScreen.mainScreen().bounds.width - 20
-        super.init(frame: CGRectMake(0, 0, width, 40))
+    init(carmaster:CarMaster) {
+        let width = UIScreen.mainScreen().bounds.width - 10
+        super.init(frame: CGRectMake(0, 0, width, XuHeight))
+        self.backgroundColor = XuColorWhite
         self.layer.cornerRadius = XuCornerRadius
-        for var i:CGFloat = 1;i < 3;i++ {
+        self.layer.borderColor = UIColor(red: 0.7, green: 0.7, blue: 0.7, alpha: 1).CGColor
+        self.layer.borderWidth = 1
+        self.layer.shadowColor = UIColor.grayColor().CGColor//UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1).CGColor
+        self.layer.shadowOffset = CGSizeMake(3, 2)
+        self.layer.shadowOpacity = 0.8
+        self.layer.shadowRadius = 4
+        
+        self.layer.cornerRadius = XuCornerRadius
+        for var i:CGFloat = 1;i < 4;i++ {
             let line = UIView(frame: CGRectMake(0, 0, 0.5, 20))
             line.backgroundColor = XuColorGray
             line.center = CGPointMake(i * width / 4, 20)
             self.addSubview(line)
         }
         
-        self.initView(width / 4)
+        self.initView(width / 4,carmaster:carmaster)
+    }
+    
+    func clickedAction(sender:UIButton) {
+        if self.footerViewClicked != nil {
+            self.footerViewClicked!(footerViewType:XuFooterViewType(rawValue: sender.tag)!)
+        }
+    }
+    
+    func initView(subWidth:CGFloat,carmaster:CarMaster) {
+        //车牌
+        let brandView = UIView(frame: CGRectMake(0, 0, subWidth, XuHeight))
+        let singleTap = UITapGestureRecognizer(target: self, action: "singleTap:")
+        brandView.tag = XuFooterViewType.brand.rawValue
+        brandView.addGestureRecognizer(singleTap)
+        self.addSubview(brandView)
+        
+        let imageView = UIImageView(frame: CGRectMake(5, 10, carmaster.logo.size.width, carmaster.logo.size.width))
+        imageView.bounds.size = carmaster.logo.size
+        imageView.image = carmaster.logo
+        imageView.center.y = 20
+        brandView.addSubview(imageView)
+        
+        let brandButton = UIButton(type: UIButtonType.Custom)
+        brandButton.frame = CGRectMake(20, 0, subWidth - 20, 40)
+        brandButton.titleLabel?.font = UIFont.systemFontOfSize(XuFontSmall)
+        brandButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        brandButton.addTarget(self, action: "clickedAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        brandButton.setTitle("\(carmaster.lisencePlate)", forState: UIControlState.Normal)
+        brandView.addSubview(brandButton)
+        brandButton.tag = XuFooterViewType.brand.rawValue
+        
+        //违章
+        let brokenButton = UIButton(type: UIButtonType.Custom)
+        brokenButton.frame = CGRectMake(subWidth, 0, subWidth, 40)
+        brokenButton.titleLabel?.font = UIFont.systemFontOfSize(XuTextSizeSmall)
+        brokenButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        brokenButton.addTarget(self, action: "clickedAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        brokenButton.setTitle("违章\(carmaster.timesOfBroken) 扣\(carmaster.scoresOfBroken)分", forState: UIControlState.Normal)
+        self.addSubview(brokenButton)
+        brokenButton.tag = XuFooterViewType.broken.rawValue
+        
+        //停车时间
+        let parkButton = UIButton(type: UIButtonType.Custom)
+        parkButton.frame = CGRectMake(subWidth * 2, 0, subWidth, 40)
+        parkButton.titleLabel?.font = UIFont.systemFontOfSize(XuTextSizeSmall)
+        parkButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        parkButton.addTarget(self, action: "clickedAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        parkButton.setTitle("停车\(carmaster.timeParking)", forState: UIControlState.Normal)
+        self.addSubview(parkButton)
+        parkButton.tag = XuFooterViewType.parkTime.rawValue
+        
+        //分享
+        let shareButton = UIButton(type: UIButtonType.Custom)
+        shareButton.frame = CGRectMake(subWidth * 3, 0, subWidth, XuHeight)
+        shareButton.titleLabel?.font = UIFont.systemFontOfSize(XuTextSizeSmall)
+        shareButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        shareButton.addTarget(self, action: "clickedAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        shareButton.setTitle("分享 ¥\(carmaster.revenue)", forState: UIControlState.Normal)
+        self.addSubview(shareButton)
+        shareButton.tag = XuFooterViewType.revenue.rawValue
     }
     
     init() {
         super.init(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width - 20, 40))
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     func singleTap(recoginzer:UITapGestureRecognizer) {
-        
+        print(recoginzer.view?.tag)
     }
-    
-    func initView(subWidth:CGFloat) {
-        //车牌
-        let brandView = UIView(frame: CGRectMake(0, 5, subWidth, 30))
-        let singleTap = UITapGestureRecognizer(target: self, action: "singleTap:")
-        brandView.tag = XuSegmentedViewType.brand.rawValue
-        brandView.addGestureRecognizer(singleTap)
-        self.addSubview(brandView)
-        
-        let imageView = UIImageView(frame: CGRectMake(5, 10, 20, 20))
-        imageView.image = carmaster.logo
-        brandView.addSubview(imageView)
-        let brandLabel = UILabel(frame: CGRectMake(28, 10, subWidth - 28, 20))
-        brandLabel.text = carmaster.lisencePlate
-        brandLabel.textAlignment = NSTextAlignment.Center
-        brandLabel.font = UIFont.systemFontOfSize(XuTextSizeSmall)
-        brandView.addSubview(brandLabel)
-        
-        //违章
-        let brokenView = UIView(frame: CGRectMake(subWidth, 5, subWidth, 30))
-        brokenView.tag = XuSegmentedViewType.broken.rawValue
-        brokenView.addGestureRecognizer(singleTap)
-        self.addSubview(brokenView)
-        
-        let brokenLabel = UILabel(frame: CGRectMake(0, 0, subWidth, 20))
-        brokenLabel.text = "违章  \(carmaster.timesOfBroken)  扣 \(carmaster.scoresOfBroken) 分"
-        brokenLabel.font = UIFont.systemFontOfSize(XuTextSizeSmall)
-        brokenLabel.textAlignment = NSTextAlignment.Center
-        brokenView.addSubview(brokenLabel)
-        
-        //停车时间
-        let parkView = UIView(frame: CGRectMake(subWidth * 2, 5, subWidth, 30))
-        parkView.tag = XuSegmentedViewType.parkTime.rawValue
-        parkView.addGestureRecognizer(singleTap)
-        self.addSubview(parkView)
-        
-        let parkLabel = UILabel(frame: CGRectMake(0, 0, subWidth, 20))
-        parkLabel.text = "停车 \(carmaster.timeParking)"
-        parkLabel.font = UIFont.systemFontOfSize(XuTextSizeSmall)
-        parkLabel.textAlignment = NSTextAlignment.Center
-        parkView.addSubview(parkLabel)
-        
-        //分享
-        let revenueView = UIView(frame: CGRectMake(subWidth * 3, 5, subWidth, 30))
-        revenueView.tag = XuSegmentedViewType.revenue.rawValue
-        revenueView.addGestureRecognizer(singleTap)
-        self.addSubview(revenueView)
-        
-        let revenueLabel = UILabel(frame: CGRectMake(0, 0, subWidth, 20))
-        revenueLabel.text = "分享 ¥ \(carmaster.revenue)"
-        revenueLabel.font = UIFont.systemFontOfSize(XuTextSizeSmall)
-        revenueLabel.textAlignment = NSTextAlignment.Center
-        revenueView.addSubview(revenueLabel)
-    }
-
 }
