@@ -14,6 +14,9 @@ class NewLicensePlateViewController: UIViewController {
     @IBOutlet weak var selectView: UIView!
     @IBOutlet weak var brandLabel: UILabel!
     @IBOutlet weak var determineButton: UIButton!
+    @IBOutlet weak var checkYesButton: UIButton!
+    @IBOutlet weak var checkNoButton: UIButton!
+    
     
 
     override func viewDidLoad() {
@@ -30,20 +33,37 @@ class NewLicensePlateViewController: UIViewController {
         
         boundsView.layer.borderWidth = 1.0
         boundsView.layer.cornerRadius = 6.0
-        boundsView.layer.borderColor = XuColorGray.CGColor
+        boundsView.layer.borderColor = XuColorWhite.CGColor
         
         determineButton.layer.cornerRadius = 6.0
         
-        
+        checkYesButton.setImage(UIImage(named: "check_off"), forState: UIControlState.Normal)
+        self.checkYesButton.setImage(UIImage(named: "check_on"), forState: UIControlState.Selected)
+        checkNoButton.setImage(UIImage(named: "check_off"), forState: UIControlState.Normal)
+        self.checkNoButton.setImage(UIImage(named: "check_on"), forState: UIControlState.Selected)
     }
     
     func skipThisTap(sender:UIBarButtonItem) {
-        
+        let mapView = MasterViewController()
+        let nav = UINavigationController(rootViewController: mapView)
+        self.presentViewController(nav, animated: true, completion: nil)
     }
 
     @IBAction func determainAction(sender: AnyObject) {
         
     }
+    
+    @IBAction func checkedClicked(sender: AnyObject) {
+        switch sender.tag {
+        case 1,2:
+            self.checkYesButton.selected = (self.checkYesButton.selected ? false : true)
+            self.checkNoButton.selected = false
+        default:
+            self.checkNoButton.selected = (self.checkNoButton.selected ? false : true)
+            self.checkYesButton.selected = false
+        }
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
