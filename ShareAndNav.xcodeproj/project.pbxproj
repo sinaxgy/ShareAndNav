@@ -14,10 +14,6 @@
 		C50E7FFC1BDB7D28002BA56D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C50E7FFA1BDB7D28002BA56D /* LaunchScreen.storyboard */; };
 		C50E80071BDB7D28002BA56D /* ShareAndNavTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50E80061BDB7D28002BA56D /* ShareAndNavTests.swift */; };
 		C50E80121BDB7D28002BA56D /* ShareAndNavUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50E80111BDB7D28002BA56D /* ShareAndNavUITests.swift */; };
-		C50E80201BDB7D78002BA56D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50E801F1BDB7D78002BA56D /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		C50E80211BDB7D78002BA56D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50E801F1BDB7D78002BA56D /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		C50E80221BDB7D78002BA56D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50E801F1BDB7D78002BA56D /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		C544A4A21BE89443004607DD /* CarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C544A4A11BE89443004607DD /* CarTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		C544A4A51BE89673004607DD /* KeyboardDigitalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C544A4A41BE89673004607DD /* KeyboardDigitalView.swift */; settings = {ASSET_TAGS = (); }; };
 		C5843DBB1BDDB89C0074C785 /* TypeDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5843DBA1BDDB89C0074C785 /* TypeDefine.swift */; settings = {ASSET_TAGS = (); }; };
 		C5843DBC1BDDB89C0074C785 /* TypeDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5843DBA1BDDB89C0074C785 /* TypeDefine.swift */; settings = {ASSET_TAGS = (); }; };
@@ -35,8 +31,13 @@
 		C59B32DE1BE7AA4F00AAE98C /* SubMasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59B32DD1BE7AA4F00AAE98C /* SubMasterView.swift */; settings = {ASSET_TAGS = (); }; };
 		C5A8E84D1BE306D5008AD59B /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C5A8E84C1BE306D5008AD59B /* AMap.bundle */; settings = {ASSET_TAGS = (); }; };
 		C5A8E8501BE34BF0008AD59B /* park.png in Resources */ = {isa = PBXBuildFile; fileRef = C5A8E84F1BE34BF0008AD59B /* park.png */; settings = {ASSET_TAGS = (); }; };
+		C5BA4FA81BEB2F5500EF6832 /* ViolationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA4FA71BEB2F5500EF6832 /* ViolationViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		C5BA4FAA1BEB327100EF6832 /* CarportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA4FA91BEB327100EF6832 /* CarportViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		C5BA4FAC1BEB355100EF6832 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA4FAB1BEB355100EF6832 /* MessageViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		C5C4EC3B1BEA06D00058B286 /* XuRegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C4EC391BEA06D00058B286 /* XuRegularExpression.swift */; settings = {ASSET_TAGS = (); }; };
 		C5C4EC3C1BEA06D00058B286 /* XuUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C4EC3A1BEA06D00058B286 /* XuUserDefault.swift */; settings = {ASSET_TAGS = (); }; };
+		C5C8D0F41BEA140C00EAFD0B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C8D0F31BEA140C00EAFD0B /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		C5C8D0F71BEA1F8600EAFD0B /* CarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C8D0F61BEA1F8600EAFD0B /* CarViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		C5E5AD8D1BE2684D00AEE7AC /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5E5AD8A1BE2684D00AEE7AC /* AMapSearchKit.framework */; };
 		C5E5AD8E1BE2684D00AEE7AC /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5E5AD8B1BE2684D00AEE7AC /* MAMapKit.framework */; };
 		C5E5AD901BE2685500AEE7AC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5E5AD8F1BE2685500AEE7AC /* UIKit.framework */; };
@@ -84,8 +85,6 @@
 		C50E800D1BDB7D28002BA56D /* ShareAndNavUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShareAndNavUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C50E80111BDB7D28002BA56D /* ShareAndNavUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareAndNavUITests.swift; sourceTree = "<group>"; };
 		C50E80131BDB7D28002BA56D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C50E801F1BDB7D78002BA56D /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Classes/VC/LoginViewController.swift; sourceTree = "<group>"; };
-		C544A4A11BE89443004607DD /* CarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarTableViewController.swift; path = Classes/VC/CarTableViewController.swift; sourceTree = "<group>"; };
 		C544A4A41BE89673004607DD /* KeyboardDigitalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyboardDigitalView.swift; path = Classes/VC/View/KeyboardDigitalView.swift; sourceTree = "<group>"; };
 		C5843DBA1BDDB89C0074C785 /* TypeDefine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TypeDefine.swift; path = Classes/Model/TypeDefine.swift; sourceTree = "<group>"; };
 		C5843DED1BDE71D80074C785 /* KeyChain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyChain.swift; path = Classes/Model/KeyChain.swift; sourceTree = "<group>"; };
@@ -99,8 +98,13 @@
 		C59B32DD1BE7AA4F00AAE98C /* SubMasterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubMasterView.swift; path = Classes/VC/SubMasterView.swift; sourceTree = "<group>"; };
 		C5A8E84C1BE306D5008AD59B /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AMap.bundle; path = Framework/AMap.bundle; sourceTree = "<group>"; };
 		C5A8E84F1BE34BF0008AD59B /* park.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = park.png; path = Resources/park.png; sourceTree = "<group>"; };
+		C5BA4FA71BEB2F5500EF6832 /* ViolationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViolationViewController.swift; path = Classes/VC/ViolationViewController.swift; sourceTree = "<group>"; };
+		C5BA4FA91BEB327100EF6832 /* CarportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarportViewController.swift; path = Classes/VC/CarportViewController.swift; sourceTree = "<group>"; };
+		C5BA4FAB1BEB355100EF6832 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageViewController.swift; path = Classes/VC/MessageViewController.swift; sourceTree = "<group>"; };
 		C5C4EC391BEA06D00058B286 /* XuRegularExpression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XuRegularExpression.swift; path = Classes/Model/XuRegularExpression.swift; sourceTree = "<group>"; };
 		C5C4EC3A1BEA06D00058B286 /* XuUserDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XuUserDefault.swift; path = Classes/Model/XuUserDefault.swift; sourceTree = "<group>"; };
+		C5C8D0F31BEA140C00EAFD0B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Classes/VC/LoginViewController.swift; sourceTree = "<group>"; };
+		C5C8D0F61BEA1F8600EAFD0B /* CarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarViewController.swift; path = Classes/VC/CarViewController.swift; sourceTree = "<group>"; };
 		C5E5AD8A1BE2684D00AEE7AC /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AMapSearchKit.framework; path = Framework/AMapSearchKit.framework; sourceTree = "<group>"; };
 		C5E5AD8B1BE2684D00AEE7AC /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MAMapKit.framework; path = Framework/MAMapKit.framework; sourceTree = "<group>"; };
 		C5E5AD8F1BE2685500AEE7AC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -180,10 +184,13 @@
 			isa = PBXGroup;
 			children = (
 				C50E7FF11BDB7D28002BA56D /* AppDelegate.swift */,
-				C50E801F1BDB7D78002BA56D /* LoginViewController.swift */,
+				C5C8D0F31BEA140C00EAFD0B /* LoginViewController.swift */,
 				C5843E421BDF4D5F0074C785 /* NewLicensePlateViewController.swift */,
 				C5E5ADA51BE2692F00AEE7AC /* MasterViewController.swift */,
-				C544A4A11BE89443004607DD /* CarTableViewController.swift */,
+				C5C8D0F61BEA1F8600EAFD0B /* CarViewController.swift */,
+				C5BA4FA91BEB327100EF6832 /* CarportViewController.swift */,
+				C5BA4FA71BEB2F5500EF6832 /* ViolationViewController.swift */,
+				C5BA4FAB1BEB355100EF6832 /* MessageViewController.swift */,
 				C5022EC31BE0A9B400DBC2FF /* UniversalTableViewCell.swift */,
 				C5843E511BDF6BB00074C785 /* HomeViewController.h */,
 				C5843E521BDF6BB00074C785 /* HomeViewController.m */,
@@ -227,9 +234,9 @@
 		C5843DEC1BDE719A0074C785 /* Assistant */ = {
 			isa = PBXGroup;
 			children = (
-				C5C4EC391BEA06D00058B286 /* XuRegularExpression.swift */,
 				C5C4EC3A1BEA06D00058B286 /* XuUserDefault.swift */,
 				C5843DBA1BDDB89C0074C785 /* TypeDefine.swift */,
+				C5C4EC391BEA06D00058B286 /* XuRegularExpression.swift */,
 				C5843DED1BDE71D80074C785 /* KeyChain.swift */,
 				C5843DEE1BDE71D80074C785 /* SwiftColors.swift */,
 				C5843E471BDF62A40074C785 /* CarMaster.swift */,
@@ -416,15 +423,18 @@
 				C5022EC41BE0A9B400DBC2FF /* UniversalTableViewCell.swift in Sources */,
 				C5C4EC3B1BEA06D00058B286 /* XuRegularExpression.swift in Sources */,
 				C5E5ADA61BE2692F00AEE7AC /* MasterViewController.swift in Sources */,
-				C50E80201BDB7D78002BA56D /* LoginViewController.swift in Sources */,
 				C59B32DE1BE7AA4F00AAE98C /* SubMasterView.swift in Sources */,
 				C50E7FF21BDB7D28002BA56D /* AppDelegate.swift in Sources */,
+				C5BA4FAA1BEB327100EF6832 /* CarportViewController.swift in Sources */,
 				C5843E531BDF6BB00074C785 /* HomeViewController.m in Sources */,
 				C5843E431BDF4D5F0074C785 /* NewLicensePlateViewController.swift in Sources */,
-				C544A4A21BE89443004607DD /* CarTableViewController.swift in Sources */,
 				C5843E481BDF62A40074C785 /* CarMaster.swift in Sources */,
 				C544A4A51BE89673004607DD /* KeyboardDigitalView.swift in Sources */,
 				C5843DEF1BDE71D80074C785 /* KeyChain.swift in Sources */,
+				C5BA4FA81BEB2F5500EF6832 /* ViolationViewController.swift in Sources */,
+				C5C8D0F41BEA140C00EAFD0B /* LoginViewController.swift in Sources */,
+				C5BA4FAC1BEB355100EF6832 /* MessageViewController.swift in Sources */,
+				C5C8D0F71BEA1F8600EAFD0B /* CarViewController.swift in Sources */,
 				C5843DBB1BDDB89C0074C785 /* TypeDefine.swift in Sources */,
 				C5843DF21BDE71D80074C785 /* SwiftColors.swift in Sources */,
 				C5C4EC3C1BEA06D00058B286 /* XuUserDefault.swift in Sources */,
@@ -435,7 +445,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C50E80211BDB7D78002BA56D /* LoginViewController.swift in Sources */,
 				C50E80071BDB7D28002BA56D /* ShareAndNavTests.swift in Sources */,
 				C5843DF01BDE71D80074C785 /* KeyChain.swift in Sources */,
 				C5843DBC1BDDB89C0074C785 /* TypeDefine.swift in Sources */,
@@ -447,7 +456,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C50E80221BDB7D78002BA56D /* LoginViewController.swift in Sources */,
 				C50E80121BDB7D28002BA56D /* ShareAndNavUITests.swift in Sources */,
 				C5843DF11BDE71D80074C785 /* KeyChain.swift in Sources */,
 				C5843DBD1BDDB89C0074C785 /* TypeDefine.swift in Sources */,

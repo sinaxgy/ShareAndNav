@@ -11,12 +11,13 @@ import UIKit
 class NewLicensePlateViewController: UIViewController {
     
     @IBOutlet weak var boundsView: UIView!
-    @IBOutlet weak var selectView: UIView!
+    @IBOutlet weak var selectView: UIView!  //第一行视图
     @IBOutlet weak var brandLabel: UILabel!
     @IBOutlet weak var determineButton: UIButton!
     @IBOutlet weak var checkYesButton: UIButton!
     @IBOutlet weak var checkNoButton: UIButton!
     
+    @IBOutlet weak var plateTextField: UITextField!
     
 
     override func viewDidLoad() {
@@ -43,14 +44,14 @@ class NewLicensePlateViewController: UIViewController {
         self.checkNoButton.setImage(UIImage(named: "check_on"), forState: UIControlState.Selected)
     }
     
-    func skipThisTap(sender:UIBarButtonItem) {
+    func skipThisTap(sender:UIBarButtonItem?) {
         let mapView = MasterViewController()
         let nav = UINavigationController(rootViewController: mapView)
         self.presentViewController(nav, animated: true, completion: nil)
     }
 
     @IBAction func determainAction(sender: AnyObject) {
-        
+        self.skipThisTap(nil)
     }
     
     @IBAction func checkedClicked(sender: AnyObject) {

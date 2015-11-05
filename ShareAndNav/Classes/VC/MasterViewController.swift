@@ -65,24 +65,34 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
         trackButton.addTarget(self, action: "trackingAction:", forControlEvents: UIControlEvents.TouchUpInside)
         mapView.addSubview(trackButton)
         
-        let carMaster = CarMaster(logo: UIImage(named: "fute")!, plate: "京AB1212", timesOfBroken: 1, scoresOfBroken: 6, timeParking: "69:20:20", revenue: 25.00)
+        let carMaster = CarMaster(logo: UIImage(named: "fute")!, plate: "京AB1212", timesOfViolation: 1, scoresOfViolation: 6, timeParking: "69:20:20", revenue: 25.00)
         let footView = FootMenuView(carmaster: carMaster)
         footView.center = CGPointMake(mapView.center.x, mapView.frame.height - 40)
         self.mapView.addSubview(footView)
         footView.footerViewClicked = {
             (type) in
+            let animation = CATransition()
+            animation.duration = 0.5
+            animation.type = "cube"
+            animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
             switch type {
             case .brand:
-                let carVC = CarTableViewController()
+                animation.subtype = kCATransitionFromTop
+                let carVC = CarViewController()
                 self.navigationController?.pushViewController(carVC, animated: true)
-                print("brand")
-            case .broken:
-                print("broken")
+            case .violation:
+                animation.subtype = kCATransitionFromLeft
+                let violationVC = ViolationViewController()
+                self.navigationController?.pushViewController(violationVC, animated: true)
             case .parkTime:
+                animation.subtype = kCATransitionFromBottom
                 print("parkTime")
             case .revenue:
-                print("revenue")
+                let carportVC = CarportViewController()
+                animation.subtype = kCATransitionFromRight
+                self.navigationController?.pushViewController(carportVC, animated: true)
             }
+            self.view.window?.layer.addAnimation(animation, forKey: "push")
         }
     }
     
@@ -96,7 +106,8 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
     }
     
     func showMessageView(sender:UIBarButtonItem) {
-        
+        let messageVC = MessageViewController()
+        self.navigationController?.pushViewController(messageVC, animated: true)
     }
     
     func trackingAction(sender:UIButton) {

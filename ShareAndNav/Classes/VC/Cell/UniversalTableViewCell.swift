@@ -9,7 +9,7 @@
 import UIKit
 
 enum UniversalCellStyle {
-    case RightText,Switch,LeftLogo
+    case RightText,Switch,LeftLogo,CarAuthorize
 }
 
 class UniversalTableViewCell: UITableViewCell {
@@ -35,7 +35,7 @@ class UniversalTableViewCell: UITableViewCell {
     init(universalStyle:UniversalCellStyle,reuseIdentifier:String) {
         super.init(style: UITableViewCellStyle.Default, reuseIdentifier: reuseIdentifier)
         switch universalStyle {
-        case .LeftLogo:
+        case .CarAuthorize:
             break
         default:
             break

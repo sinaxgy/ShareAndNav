@@ -9,7 +9,7 @@
 import UIKit
 
 enum XuFooterViewType:Int {
-    case brand = 1,broken,parkTime,revenue
+    case brand = 1,violation,parkTime,revenue
 }
 
 typealias FooterViewClickedClosure = ((footerViewType:XuFooterViewType) -> Void)
@@ -72,14 +72,14 @@ class FootMenuView: UIView {
         brandButton.tag = XuFooterViewType.brand.rawValue
         
         //违章
-        let brokenButton = UIButton(type: UIButtonType.Custom)
-        brokenButton.frame = CGRectMake(subWidth, 0, subWidth, 40)
-        brokenButton.titleLabel?.font = UIFont.systemFontOfSize(XuTextSizeSmall)
-        brokenButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        brokenButton.addTarget(self, action: "clickedAction:", forControlEvents: UIControlEvents.TouchUpInside)
-        brokenButton.setTitle("违章\(carmaster.timesOfBroken) 扣\(carmaster.scoresOfBroken)分", forState: UIControlState.Normal)
-        self.addSubview(brokenButton)
-        brokenButton.tag = XuFooterViewType.broken.rawValue
+        let violationButton = UIButton(type: UIButtonType.Custom)
+        violationButton.frame = CGRectMake(subWidth, 0, subWidth, 40)
+        violationButton.titleLabel?.font = UIFont.systemFontOfSize(XuTextSizeSmall)
+        violationButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        violationButton.addTarget(self, action: "clickedAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        violationButton.setTitle("违章\(carmaster.timesOfViolation) 扣\(carmaster.scoresOfViolation)分", forState: UIControlState.Normal)
+        self.addSubview(violationButton)
+        violationButton.tag = XuFooterViewType.violation.rawValue
         
         //停车时间
         let parkButton = UIButton(type: UIButtonType.Custom)

@@ -3,6 +3,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -39,7 +41,7 @@
                                 <rect key="frame" x="10" y="50" width="580" height="150"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pGr-zV-13t">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="580" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="车型" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpC-E8-G0A">
                                                 <rect key="frame" x="10" y="14" width="42" height="21"/>
@@ -47,7 +49,7 @@
                                                     <constraint firstAttribute="width" constant="42" id="e4E-zH-Xn3"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="福克斯两厢" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5p-WD-W2v">
@@ -57,7 +59,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mb9-4e-fe2">
-                                                <rect key="frame" x="524" y="14" width="28" height="22"/>
+                                                <rect key="frame" x="547" y="11" width="28" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="28" id="bg7-6f-vsH"/>
                                                 </constraints>
@@ -67,6 +69,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="Mb9-4e-fe2" firstAttribute="baseline" secondItem="kpC-E8-G0A" secondAttribute="baseline" id="4Vr-tk-uxb"/>
+                                            <constraint firstAttribute="trailing" secondItem="Mb9-4e-fe2" secondAttribute="trailing" constant="5" id="9PV-gn-58a"/>
                                             <constraint firstItem="kpC-E8-G0A" firstAttribute="top" secondItem="pGr-zV-13t" secondAttribute="top" constant="14" id="9Vu-VZ-PAI"/>
                                             <constraint firstAttribute="trailing" secondItem="Mb9-4e-fe2" secondAttribute="trailing" constant="8" id="P9X-Bn-Myx"/>
                                             <constraint firstItem="I5p-WD-W2v" firstAttribute="leading" secondItem="kpC-E8-G0A" secondAttribute="trailing" constant="48" id="TWC-n4-Mfu"/>
@@ -80,6 +83,7 @@
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="TWC-n4-Mfu"/>
+                                                <exclude reference="P9X-Bn-Myx"/>
                                             </mask>
                                         </variation>
                                     </view>
@@ -100,7 +104,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="发动机号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F4S-ge-HPK">
                                         <rect key="frame" x="10" y="115" width="60" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="车牌" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ydq-Sp-wuS">
@@ -109,7 +113,7 @@
                                             <constraint firstAttribute="width" constant="42" id="Qfp-rK-Kiu"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="违章查询和车主认证使用（选填）" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ExZ-WB-kuA">
@@ -170,7 +174,7 @@
                                         <rect key="frame" x="492" y="60" width="30" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="是">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="checkedClicked:" destination="np3-Le-ceS" eventType="touchUpInside" id="uDV-eg-gx2"/>
@@ -179,9 +183,17 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="车主" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rno-j0-rjh">
                                         <rect key="frame" x="444" y="64" width="30" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="车牌号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ePZ-TJ-Im2">
+                                        <rect key="frame" x="80" y="65" width="97" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="97" id="oAe-KW-Fbp"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -194,6 +206,7 @@
                                     <constraint firstAttribute="trailing" secondItem="0ik-2H-fYt" secondAttribute="trailing" constant="1" id="6sr-Uk-L3R"/>
                                     <constraint firstItem="pGr-zV-13t" firstAttribute="leading" secondItem="4TC-YR-aRw" secondAttribute="leading" id="8Yw-ai-aZT"/>
                                     <constraint firstItem="0ik-2H-fYt" firstAttribute="leading" secondItem="ah9-ss-yhz" secondAttribute="trailing" constant="8" id="8kW-4c-b32"/>
+                                    <constraint firstItem="ePZ-TJ-Im2" firstAttribute="leading" secondItem="ydq-Sp-wuS" secondAttribute="trailing" constant="28" id="CzD-cj-UBv"/>
                                     <constraint firstItem="ydq-Sp-wuS" firstAttribute="top" secondItem="VSj-Kn-vYr" secondAttribute="bottom" constant="14" id="EHk-bg-u4d"/>
                                     <constraint firstAttribute="trailing" secondItem="0ik-2H-fYt" secondAttribute="trailing" constant="35" id="G3R-t2-UFg"/>
                                     <constraint firstItem="ah9-ss-yhz" firstAttribute="leading" secondItem="VPx-dA-Uda" secondAttribute="trailing" constant="-5" id="HAe-Hy-CZI"/>
@@ -205,6 +218,7 @@
                                     <constraint firstAttribute="trailing" secondItem="pso-8n-Dp7" secondAttribute="trailing" id="N8B-1f-DP1"/>
                                     <constraint firstItem="pso-8n-Dp7" firstAttribute="leading" secondItem="4TC-YR-aRw" secondAttribute="leading" id="NKr-NX-t22"/>
                                     <constraint firstAttribute="height" constant="150" id="Ngk-WO-P2Y"/>
+                                    <constraint firstAttribute="trailing" secondItem="pGr-zV-13t" secondAttribute="trailing" id="PCU-WG-2qP"/>
                                     <constraint firstItem="ah9-ss-yhz" firstAttribute="leading" secondItem="VPx-dA-Uda" secondAttribute="trailing" constant="1" id="QmF-vX-hsp"/>
                                     <constraint firstItem="pso-8n-Dp7" firstAttribute="top" secondItem="rno-j0-rjh" secondAttribute="bottom" constant="15" id="Ru0-Ra-KNM"/>
                                     <constraint firstItem="0ik-2H-fYt" firstAttribute="top" secondItem="VSj-Kn-vYr" secondAttribute="bottom" constant="17" id="T5V-2f-KWe"/>
@@ -217,8 +231,10 @@
                                     <constraint firstAttribute="trailing" secondItem="pso-8n-Dp7" secondAttribute="trailing" constant="20" id="f44-mT-ETN"/>
                                     <constraint firstItem="ydq-Sp-wuS" firstAttribute="leading" secondItem="4TC-YR-aRw" secondAttribute="leading" constant="10" id="fX9-qS-KCn"/>
                                     <constraint firstItem="pso-8n-Dp7" firstAttribute="top" secondItem="g1C-zb-YXr" secondAttribute="bottom" constant="10" id="gMA-at-e4U"/>
+                                    <constraint firstItem="ePZ-TJ-Im2" firstAttribute="baseline" secondItem="ydq-Sp-wuS" secondAttribute="firstBaseline" id="hzS-SB-zDA"/>
                                     <constraint firstAttribute="trailing" secondItem="VSj-Kn-vYr" secondAttribute="trailing" constant="20" id="msc-Ih-QSI"/>
                                     <constraint firstItem="VSj-Kn-vYr" firstAttribute="leading" secondItem="4TC-YR-aRw" secondAttribute="leading" id="ncC-Lw-Ur3"/>
+                                    <constraint firstItem="ePZ-TJ-Im2" firstAttribute="centerY" secondItem="ydq-Sp-wuS" secondAttribute="centerY" id="qSO-xJ-FzE"/>
                                     <constraint firstItem="0ik-2H-fYt" firstAttribute="leading" secondItem="ah9-ss-yhz" secondAttribute="trailing" constant="5" id="rhy-1h-yok"/>
                                     <constraint firstAttribute="trailing" secondItem="pGr-zV-13t" secondAttribute="trailing" constant="20" id="u3M-TG-qLH"/>
                                     <constraint firstItem="pso-8n-Dp7" firstAttribute="top" secondItem="VSj-Kn-vYr" secondAttribute="bottom" constant="50" id="vRC-79-3Ok"/>
@@ -230,6 +246,7 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="u3M-TG-qLH"/>
                                         <exclude reference="msc-Ih-QSI"/>
                                         <exclude reference="f44-mT-ETN"/>
                                         <exclude reference="QmF-vX-hsp"/>
@@ -272,6 +289,7 @@
                         <outlet property="checkNoButton" destination="0ik-2H-fYt" id="sP5-So-OrY"/>
                         <outlet property="checkYesButton" destination="VPx-dA-Uda" id="TL8-0a-8zF"/>
                         <outlet property="determineButton" destination="BdD-Ya-7Nb" id="mEq-tr-8m5"/>
+                        <outlet property="plateTextField" destination="ePZ-TJ-Im2" id="RwM-3h-ZQH"/>
                         <outlet property="selectView" destination="pGr-zV-13t" id="7fc-zT-PZz"/>
                     </connections>
                 </viewController>
@@ -282,6 +300,6 @@
     </scenes>
     <resources>
         <image name="check_off" width="20" height="20"/>
-        <image name="front" width="10" height="14"/>
+        <image name="front" width="20" height="28"/>
     </resources>
 </document>
