@@ -20,7 +20,7 @@ class SubMasterView: UIView ,UITableViewDataSource,UITableViewDelegate{
     init() {
         super.init(frame: UIScreen.mainScreen().bounds)//CGRectMake(0, 0, XuWidth * 2 / 3, UIScreen.mainScreen().bounds.size.height))
         self.backgroundColor = UIColor(red: 24/255, green: 30/255, blue: 36/255, alpha: 1)
-        self.alpha = 0.9
+        self.alpha = 0.96
         self.tableArray.addObject(section0)
         self.tableArray.addObject(section1)
         self.tableArray.addObject(section2)
@@ -33,8 +33,8 @@ class SubMasterView: UIView ,UITableViewDataSource,UITableViewDelegate{
         tableView.backgroundColor = UIColor(red: 24/255, green: 30/255, blue: 36/255, alpha: 1)
         tableView.dataSource = self
         tableView.delegate = self
-        //tableView.separatorColor = XuColorBlue
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        tableView.separatorColor = XuColorBlue  
+        //tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         tableView.scrollEnabled = false
         //tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         self.addSubview(tableView)
@@ -44,13 +44,15 @@ class SubMasterView: UIView ,UITableViewDataSource,UITableViewDelegate{
         if section == 0 {
             return 64
         }
-        return 1
+        return 0.5
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section > 0 {
-            let view = UIView(frame: CGRectMake(0, 0, XuWidth, 1))
-            view.backgroundColor = XuColorBlue
+            let view = UIView(frame: CGRectMake(0, 0, XuWidth, 0.5))
+            view.backgroundColor = UIColor.clearColor()
+            let line = UIView(frame: CGRectMake(14.5, 0, XuWidth, 0.5))
+            view.addSubview(line)
             return view
         }
         let view = UIView(frame: CGRectMake(0, 0, XuWidth, 64))
@@ -99,7 +101,9 @@ class SubMasterView: UIView ,UITableViewDataSource,UITableViewDelegate{
         cell?.detailTextLabel?.text = dic.objectForKey(String(keys[indexPath.row])) as? String
         cell?.detailTextLabel?.font = UIFont.systemFontOfSize(XuTextSizeSmallest)
         cell?.backgroundColor = UIColor.clearColor()
+        //cell?.separatorInset = UIEdgeInsetsMake(0, 50, 0, 100)
         cell?.selectionStyle = UITableViewCellSelectionStyle.None
+        
         return cell!
     }
     

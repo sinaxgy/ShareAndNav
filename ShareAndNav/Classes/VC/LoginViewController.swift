@@ -30,9 +30,8 @@ class LoginViewController: UIViewController {
         default:
             self.initDynamicCodeView()
         }
-        loginBtn.enabled = false
-        loginBtn.backgroundColor = XuColorGrayThin
         userTextField.addTarget(self, action: "textFieldDidChanged:", forControlEvents: UIControlEvents.EditingChanged)
+        pwTextField.addTarget(self, action: "textFieldDidChanged:", forControlEvents: UIControlEvents.EditingChanged)
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -49,11 +48,35 @@ class LoginViewController: UIViewController {
         if textField == userTextField {
             switch NSString(string: textField.text!).length {
             case 11:
-                
-                break
+                if XuRegularExpression.isVaild(textField.text!, fortype: XuRegularType.phone) {
+                    guard self.dynamicCodeBtn != nil else {return}
+                    dynamicCodeBtn.enabled = true
+                    if timer != nil {
+                        timer.invalidate()
+                        self.timer = nil;time = 60
+                        dynamicCodeBtn.setTitle("动态密码", forState: UIControlState.Normal)
+                    }
+                }else {
+                    let alert = UIAlertController(title: nil, message: "请输入正确的手机号", preferredStyle: UIAlertControllerStyle.Alert)
+                    let action = UIAlertAction(title: "确定", style: UIAlertActionStyle.Cancel, handler: nil)
+                    alert.addAction(action)
+                    self.presentViewController(alert, animated: true, completion: nil)
+                }
             case 12...30:
                 textField.text = NSString(string: textField.text!).substringToIndex(11)
+                let alert = UIAlertController(title: nil, message: "请输入正确的手机号", preferredStyle: UIAlertControllerStyle.Alert)
+                let action = UIAlertAction(title: "确定", style: UIAlertActionStyle.Cancel, handler: nil)
+                alert.addAction(action)
+                self.presentViewController(alert, animated: true, completion: nil)
             default:break
+            }
+        }else {
+            if NSString(string: textField.text!).length == 6 {
+                loginBtn.enabled = true
+                loginBtn.backgroundColor = XuColorBlue
+            }else {
+                loginBtn.enabled = false
+                loginBtn.backgroundColor = XuColorGray
             }
         }
     }
@@ -111,8 +134,9 @@ class LoginViewController: UIViewController {
     
     func loginAction(sender:UIButton) {
         UITextField.appearance().resignFirstResponder()
+        
         if KeyChain.set(pwTextField.text!, forkey: userTextField.text!) {
-            print(KeyChain.get(userTextField.text!))
+            currentUser = userTextField.text!
             if timer != nil {timer.invalidate()}
             let carAdditionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("NewLicensePlateViewController") //as! CarBrandAdditionTBVC
             let nav = UINavigationController(rootViewController: carAdditionVC)
@@ -121,6 +145,8 @@ class LoginViewController: UIViewController {
     }
     
     func getDynamicCode(sender:UIButton) {
+        UITextField.appearance().resignFirstResponder()
+        userTextField.resignFirstResponder()
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "OnTimer:", userInfo: nil, repeats: true)
     }
     
@@ -133,10 +159,10 @@ class LoginViewController: UIViewController {
             timer.invalidate()
             self.timer = nil;time = 60
             dynamicCodeBtn.setTitle("重新获取动态密码", forState: UIControlState.Normal)
+            dynamicCodeBtn.enabled = true
         }else {
             dynamicCodeBtn.enabled = false
             dynamicCodeBtn.setTitle("已发送（\(--time)）", forState: UIControlState.Normal)
-            dynamicCodeBtn.setTitleColor(UIColor.grayColor(), forState: UIControlState.Normal)
         }
     }
     
@@ -169,14 +195,14 @@ class LoginViewController: UIViewController {
         self.view.addSubview(self.userTextField)
         
         let line1 = UIView(frame: CGRectMake(20, originHeight + ctrlHeight + gap * 4, CGRectGetWidth(self.view.frame) - 40, 1))
-        line1.backgroundColor = UIColor.lightGrayColor()
+        line1.backgroundColor = XuColorGray
         self.view.addSubview(line1)
         
         self.pwTextField = UITextField(frame: CGRectMake(20, originHeight + ctrlHeight + gap * 5, CGRectGetWidth(self.view.frame) - 40, ctrlHeight))
         self.view.addSubview(self.pwTextField)
         
         let line2 = UIView(frame: CGRectMake(20, originHeight + ctrlHeight + gap * 6, CGRectGetWidth(self.view.frame) - 40, 1))
-        line2.backgroundColor = UIColor.lightGrayColor()
+        line2.backgroundColor = XuColorGray
         self.view.addSubview(line2)
         
         let textBtn = UIButton(type: UIButtonType.Custom)
@@ -195,7 +221,8 @@ class LoginViewController: UIViewController {
         loginBtn.setAttributedTitle(attributedTitle, forState: UIControlState.Normal)
         loginBtn.frame = CGRectMake(20, originHeight + ctrlHeight + gap * 9, CGRectGetWidth(self.view.frame) - 40, 40)
         loginBtn.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        loginBtn.backgroundColor = XuColorBlue
+        //loginBtn.enabled = false
+        loginBtn.backgroundColor = XuColorGray
         loginBtn.addTarget(self, action: "loginAction:", forControlEvents: UIControlEvents.TouchUpInside)
         loginBtn.layer.cornerRadius = 6
         self.view.addSubview(loginBtn)
@@ -207,9 +234,11 @@ class LoginViewController: UIViewController {
             dynamicCodeBtn = UIButton(type: UIButtonType.Custom)
             dynamicCodeBtn.frame = CGRectMake(CGRectGetWidth(self.view.frame) / 2, originHeight + ctrlHeight + gap * 3, CGRectGetWidth(self.view.frame) / 2 - 20, 20)
             dynamicCodeBtn.setTitle("动态密码", forState: UIControlState.Normal)
+            dynamicCodeBtn.enabled = false
             dynamicCodeBtn.titleLabel?.font = UIFont.systemFontOfSize(XuTextSizeMiddle)
             dynamicCodeBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Right
             dynamicCodeBtn.setTitleColor(XuColorBlue, forState: UIControlState.Normal)
+            dynamicCodeBtn.setTitleColor(XuColorGray, forState: UIControlState.Disabled)
             dynamicCodeBtn.addTarget(self, action: "getDynamicCode:", forControlEvents: UIControlEvents.TouchUpInside)
             self.view.addSubview(dynamicCodeBtn)
             

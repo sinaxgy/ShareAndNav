@@ -12,21 +12,23 @@ class CarMaster: NSObject {
     
     var logo:UIImage!
     var lisencePlate:String = "京A B1212"
-    
-    var timesOfBroken:UInt = 0
-    var scoresOfBroken:UInt = 0
+    let xu = XuRegularExpression()
+    var timesOfViolation:UInt = 0
+    var scoresOfViolation:UInt = 0
     
     var timeParking:String = "00:00:00"
     
     var revenue:Float = 0
-
-    init(logo:UIImage,plate:String,timesOfBroken:UInt,scoresOfBroken:UInt,timeParking:String,revenue:Float) {
+    
+    init(logo:UIImage,plate:String,timesOfViolation:UInt,
+                        scoresOfViolation:UInt,timeParking:String,revenue:Float) {
         self.logo = logo
         self.lisencePlate = plate
-        self.timesOfBroken = timesOfBroken
-        self.scoresOfBroken = scoresOfBroken
+        self.timesOfViolation = timesOfViolation
+        self.scoresOfViolation = scoresOfViolation
         self.timeParking = timeParking
         self.revenue = revenue
+                            
     }
     
     override init() {
