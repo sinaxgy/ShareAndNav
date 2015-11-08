@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>BeiChen</key>
+	<dict>
+		<key>date</key>
+		<string>2015/9/25 10:59:59</string>
+		<key>plate</key>
+		<string>京A B1212</string>
+		<key>address</key>
+		<string>北京北城亚运村汽车交易市场</string>
+		<key>bill</key>
+		<dict>
+			<key>停车时间</key>
+			<string>2015/9/25 10:59:59 - 2015/9/25 14:20:05</string>
+			<key>总时长</key>
+			<string>03:20:06</string>
+			<key>车牌号</key>
+			<string>京A B1212</string>
+			<key>收费</key>
+			<string>¥12.00</string>
+			<key>停车场</key>
+			<string>北京北辰亚运村汽车交易市场</string>
+			<key>入口</key>
+			<string>A1</string>
+			<key>出口</key>
+			<string>B2</string>
+			<key>收费标准</key>
+			<string>09：00-21：00  ¥2.00/15min</string>
+			<key>优惠</key>
+			<string>海底捞优惠券 2h</string>
+			<key>支付方式</key>
+			<string>钱包  ¥12.00</string>
+		</dict>
+	</dict>
+	<key>FengLan</key>
+	<dict>
+		<key>date</key>
+		<string>2015/11/05 12:34:10</string>
+		<key>plate</key>
+		<string>京A B1212</string>
+		<key>address</key>
+		<string>枫蓝国际停车场</string>
+		<key>bill</key>
+		<dict>
+			<key>停车时间</key>
+			<string>2015/11/05 12:34:10 - 2015/11/06 07:21:10</string>
+			<key>总时长</key>
+			<string>18:47:00</string>
+			<key>车牌号</key>
+			<string>京A B1212</string>
+			<key>收费</key>
+			<string>¥15.0</string>
+			<key>停车场</key>
+			<string>枫蓝国际停车场</string>
+			<key>入口</key>
+			<string>A2</string>
+			<key>出口</key>
+			<string>B3</string>
+			<key>收费标准</key>
+			<string>07:00-21:00 ¥3.00/15min</string>
+			<key></key>
+			<string>21:00-07:00 ¥0.50/15min</string>
+			<key>优惠</key>
+			<string>物美超市优惠券 5h</string>
+			<key>支付方式</key>
+			<string>钱包 ¥15.00</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

@@ -12,7 +12,6 @@ class CarMaster: NSObject {
     
     var logo:UIImage!
     var lisencePlate:String = "京A B1212"
-    let xu = XuRegularExpression()
     var timesOfViolation:UInt = 0
     var scoresOfViolation:UInt = 0
     

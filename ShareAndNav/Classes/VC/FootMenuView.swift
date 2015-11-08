@@ -64,7 +64,7 @@ class FootMenuView: UIView {
         
         let brandButton = UIButton(type: UIButtonType.Custom)
         brandButton.frame = CGRectMake(20, 0, subWidth - 20, 40)
-        brandButton.titleLabel?.font = UIFont.systemFontOfSize(XuFontSmall)
+        brandButton.titleLabel?.font = UIFont.systemFontOfSize(XuTextSizeSmall)
         brandButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         brandButton.addTarget(self, action: "clickedAction:", forControlEvents: UIControlEvents.TouchUpInside)
         brandButton.setTitle("\(carmaster.lisencePlate)", forState: UIControlState.Normal)
