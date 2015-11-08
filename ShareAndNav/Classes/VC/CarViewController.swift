@@ -11,6 +11,7 @@ import UIKit
 class CarViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource{
     
     private var tableView:UITableView!
+    var carOwnershipArray:NSMutableArray = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,11 +26,14 @@ class CarViewController: UIViewController ,UITableViewDelegate,UITableViewDataSo
         self.navigationItem.title = "车辆"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "message_off"), style: UIBarButtonItemStyle.Plain, target: self, action: "showMessageView:")
         
-        
         tableView = UITableView(frame: CGRectMake(0, 0, XuWidth, XuHeight),style: UITableViewStyle.Grouped)
         self.view.addSubview(tableView)
         tableView.sectionFooterHeight = 0
-        tableView.separatorInset = UIEdgeInsetsZero
+        
+        //tableView.separatorInset = UIEdgeInsetsMake(-10, 0, 0, 0)
+        tableView.separatorColor = XuColorGrayThin
+        //tableView.separatorEffect = UIVibrancyEffect(forBlurEffect: UIBlurEffect(style: UIBlurEffectStyle.Light))
+        
         tableView.layer.borderWidth = 10
         tableView.layer.cornerRadius = 15
         tableView.layer.borderColor = XuColorGrayThin.CGColor
@@ -38,18 +42,42 @@ class CarViewController: UIViewController ,UITableViewDelegate,UITableViewDataSo
         tableView.dataSource = self
         tableView.delegate = self
         
+        let path = NSBundle.mainBundle().pathForResource("CarInfomation", ofType: ".plist")
+        for ar in NSArray(contentsOfFile: path!)! {
+            let array:NSMutableArray = []
+            if let element = ar as? NSArray {
+                for value in element {
+                    if let dic = value as? NSDictionary {
+                        array.addObject(CarOwnership(dic: dic))
+                    }
+                }
+            }
+            self.carOwnershipArray.addObject(array)
+        }
     }
     
     //MARK: --UITableViewDataSource
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
+        return carOwnershipArray.count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 1
-        }
-        return 4
+        guard let array = carOwnershipArray[section] as? NSArray else {return 0}
+        return array.count
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        guard let array = carOwnershipArray[indexPath.section] as? NSArray else {return 0}
+//        if let xco = array[indexPath.row] as? CarOwnership {
+//            if xco.assistPhones != nil {
+//                return (CGFloat(xco.assistPhones!.count) * 0 + 1) * 50
+//            }
+//        }
+        //return 50
+        let cell = self.tableView(self.tableView, cellForRowAtIndexPath: indexPath)
+        print(cell.frame.height)
+        return cell.frame.height
+        //return 50
     }
 
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -67,16 +95,22 @@ class CarViewController: UIViewController ,UITableViewDelegate,UITableViewDataSo
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.imageView?.image = UIImage(named: "fute")
-        cell.textLabel?.text = "nihaoma"
-        cell.backgroundColor = UIColor.clearColor()
-        return cell
+        var cell = tableView.dequeueReusableCellWithIdentifier("carCell") as? CarTableViewCell
+        if cell == nil {
+            cell = CarTableViewCell(reuseIdentifier: "carCell")
+        }
+        cell!.backgroundColor = XuColorGrayThin
+        let array = carOwnershipArray[indexPath.section] as! NSArray
+        if let xco = array[indexPath.row] as? CarOwnership {
+            cell?.setupWithCarOwnership(xco)
+        }
+        cell!.selectionStyle = UITableViewCellSelectionStyle.None
+        return cell!
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         print(indexPath.row)
-        let layer = CAShapeLayer();var addLine = false;let cornerRadius:CGFloat = 5
+        let layer = CAShapeLayer();var addLine = true;let cornerRadius:CGFloat = 8
         let pathRef = CGPathCreateMutable()
         let bounds = CGRectInset(cell.bounds, 10, 0)
         if indexPath.row == 0 && indexPath.row == tableView.numberOfRowsInSection(indexPath.section) - 1 {
@@ -100,7 +134,7 @@ class CarViewController: UIViewController ,UITableViewDelegate,UITableViewDataSo
         if addLine {
             let lineLayer = CALayer()
             let lineHeight = 1 / UIScreen.mainScreen().scale
-            lineLayer.frame = CGRectMake(CGRectGetMinX(bounds) + 10, bounds.size.height - lineHeight, bounds.size.width - 10, lineHeight)
+            lineLayer.frame = CGRectMake(CGRectGetMinX(bounds), bounds.size.height - lineHeight, bounds.size.width - 10, lineHeight)
             lineLayer.backgroundColor = tableView.separatorColor?.CGColor
             layer.addSublayer(lineLayer)
         }

@@ -33,10 +33,8 @@ class SubMasterView: UIView ,UITableViewDataSource,UITableViewDelegate{
         tableView.backgroundColor = UIColor(red: 24/255, green: 30/255, blue: 36/255, alpha: 1)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.separatorColor = XuColorBlue  
-        //tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         tableView.scrollEnabled = false
-        //tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         self.addSubview(tableView)
     }
     
@@ -48,15 +46,15 @@ class SubMasterView: UIView ,UITableViewDataSource,UITableViewDelegate{
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let line = UIView(frame: CGRectMake(14.5, 0, XuWidth * 2 / 3 - 15, 0.5))
+        line.backgroundColor = UIColor(red: 0, green: 89/255, blue: 131/255, alpha: 1)
         if section > 0 {
             let view = UIView(frame: CGRectMake(0, 0, XuWidth, 0.5))
-            view.backgroundColor = UIColor.clearColor()
-            let line = UIView(frame: CGRectMake(14.5, 0, XuWidth, 0.5))
             view.addSubview(line)
             return view
         }
-        let view = UIView(frame: CGRectMake(0, 0, XuWidth, 64))
-        let imageView = UIImageView(frame: CGRectMake(14, 18, 50, 50))
+        let view = UIView(frame: tableView.rectForHeaderInSection(section))
+        let imageView = UIImageView(frame: CGRectMake(14, 18.5, 40, 40))
         imageView.image = UIImage(named: "logo")
         view.addSubview(imageView)
         let label = UILabel(frame: CGRectMake(70, 18, 180, 20))
@@ -71,6 +69,10 @@ class SubMasterView: UIView ,UITableViewDataSource,UITableViewDelegate{
         label1.font = UIFont.systemFontOfSize(XutextSizeBig)
         view.addSubview(label1)
         view.backgroundColor = UIColor.clearColor()
+        
+        line.center.y = view.frame.height - 0.5
+        
+        view.addSubview(line)
         return view
     }
     
@@ -92,6 +94,8 @@ class SubMasterView: UIView ,UITableViewDataSource,UITableViewDelegate{
         if cell == nil {
             cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "subMasterCell")
         }
+        print(cell?.frame)
+        print(cell?.contentView.frame)
         cell?.imageView?.image = UIImage(named: "fute")
         let dic = self.tableArray[indexPath.section] as! NSDictionary
         let keys:NSArray = dic.allKeys

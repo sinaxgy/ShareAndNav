@@ -34,6 +34,12 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "message_off"), style: UIBarButtonItemStyle.Plain, target: self, action: "showMessageView:")
         self.search = AMapSearchAPI()
         self.search.delegate = self
+        
+        let view = UIView(frame: CGRectMake(0, 0, 50, mapView.frame.height - 100))
+        view.backgroundColor = UIColor.clearColor()
+        let panRecognizer = UIPanGestureRecognizer(target: self, action: "panRecognizer:")
+        view.addGestureRecognizer(panRecognizer)
+        mapView.addSubview(view)
     }
     
     func initMapView() {
@@ -151,24 +157,19 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
         secview!.center.x = -self.view.center.x
     }
     
-    func longPressRecoginzer(sender:UILongPressGestureRecognizer) {
-        let point = sender.locationInView(sender.view)
-        if sender.state == UIGestureRecognizerState.Began {
-            if point.x < 50 {
-                self.creatOriginalSubMasterView()
-                self.movement = point.x
-            }else {
-                
-            }
+    func panRecognizer(panRecognizer:UIPanGestureRecognizer) {
+        let movementX = panRecognizer.translationInView(panRecognizer.view).x
+        if movementX > 0 && secview == nil{
+            self.creatOriginalSubMasterView()
         }
-        if secview != nil {
-            if movement < XuWidth * 2 / 3 {
-                secview?.center.x += (point.x - self.movement)
-                self.movement = point.x
-                blackCoverView?.alpha = movement / self.view.frame.width
-            }
+        guard secview != nil else {return}
+        if movement < XuWidth * 2 / 3 {
+            secview?.center.x += (movementX - movement)
+            movement = movementX
+            blackCoverView?.alpha = movement / self.view.frame.width
         }
-        if sender.state == UIGestureRecognizerState.Ended {
+        
+        if panRecognizer.state == UIGestureRecognizerState.Ended {
             if secview != nil {
                 if movement > XuWidth / 3 {
                     UIView.animateWithDuration(0.3, animations: { () -> Void in
@@ -189,6 +190,47 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
                 }
             }
         }
+        
+    }
+    
+    func longPressRecoginzer(sender:UILongPressGestureRecognizer) {
+//        let point = sender.locationInView(sender.view)
+//        if sender.state == UIGestureRecognizerState.Began {
+//            if point.x < 50 {
+//                self.creatOriginalSubMasterView()
+//                self.movement = point.x
+//            }else {
+//                
+//            }
+//        }
+//        if secview != nil {
+//            if movement < XuWidth * 2 / 3 {
+//                secview?.center.x += (point.x - self.movement)
+//                self.movement = point.x
+//                blackCoverView?.alpha = movement / self.view.frame.width
+//            }
+//        }
+//        if sender.state == UIGestureRecognizerState.Ended {
+//            if secview != nil {
+//                if movement > XuWidth / 3 {
+//                    UIView.animateWithDuration(0.3, animations: { () -> Void in
+//                        self.secview?.center.x = XuWidth / 6
+//                        self.blackCoverView?.alpha = 2/3
+//                        }, completion: { (_) -> Void in
+//                            self.movement = 0
+//                    })
+//                    
+//                }else {
+//                    self.movement = 0
+//                    UIView.animateWithDuration(0.3, animations: { () -> Void in
+//                        self.blackCoverView?.alpha = 0
+//                        self.secview?.center.x = -XuWidth/2
+//                        }, completion: { (_) -> Void in
+//                            self.subMasterViewDidDisAppear()
+//                    })
+//                }
+//            }
+//        }
     }
     
     func subMasterViewDidDisAppear() {
