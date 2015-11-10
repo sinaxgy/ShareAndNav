@@ -35,10 +35,10 @@ class CarportViewController: UIViewController ,UITableViewDelegate,UITableViewDa
         tableView.layer.cornerRadius = 15
         tableView.layer.borderColor = XuColorGrayThin.CGColor
         tableView.backgroundColor = XuColorGrayThin
+        tableView.separatorColor = XuColorGrayThin
         
         tableView.dataSource = self
         tableView.delegate = self
-        
     }
     
     //MARK: --UITableViewDataSource
@@ -75,7 +75,6 @@ class CarportViewController: UIViewController ,UITableViewDelegate,UITableViewDa
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        print(indexPath.row)
         let layer = CAShapeLayer();var addLine = false;let cornerRadius:CGFloat = 5
         let pathRef = CGPathCreateMutable()
         let bounds = CGRectInset(cell.bounds, 10, 0)

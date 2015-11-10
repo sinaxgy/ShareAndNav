@@ -41,4 +41,18 @@ class CarOwnership: NSObject {
         self.isAuthorize = xco.isAuthorize
         self.assistPhones = xco.assistPhones
     }
+    
+    func dictionaryValue() -> NSDictionary {
+        let mdic:NSMutableDictionary = [:]
+        mdic.setObject(self.brand!, forKey: "brand")
+        mdic.setObject(self.plate!, forKey: "plate")
+        mdic.setObject(self.isAuthorize!, forKey: "authorize")
+        if self.isCerificate != nil {
+            mdic.setObject(self.isCerificate!, forKey: "cerificate")
+        }
+        if self.assistPhones != nil {
+            mdic.setObject(self.assistPhones!, forKey: "assist")
+        }
+        return mdic
+    }
 }

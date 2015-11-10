@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>plate</key>
+		<string>京AB1212</string>
+		<key>times</key>
+		<integer>0</integer>
+		<key>points</key>
+		<integer>0</integer>
+		<key>forfeit</key>
+		<integer>0</integer>
+	</dict>
+	<dict>
+		<key>plate</key>
+		<string>京CD3434</string>
+		<key>times</key>
+		<integer>1</integer>
+		<key>points</key>
+		<integer>6</integer>
+		<key>forfeit</key>
+		<integer>200</integer>
+		<key>info</key>
+		<array>
+			<dict>
+				<key>address</key>
+				<string>河北省京港高速北京方向63km处</string>
+				<key>content</key>
+				<string>驾驶中型以上载客载货汽车、校车、危险物品运输车辆以外的其他机动车超过规定时速20%以上未达到50%的</string>
+				<key>reason</key>
+				<string>超速</string>
+				<key>time</key>
+				<string>2015/11/11 12:13</string>
+				<key>isHandle</key>
+				<false/>
+				<key>points</key>
+				<integer>6</integer>
+				<key>forfeit</key>
+				<integer>200</integer>
+				<key>numbers</key>
+				<string>2</string>
+			</dict>
+		</array>
+	</dict>
+</array>
+</plist>

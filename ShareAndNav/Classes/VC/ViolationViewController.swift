@@ -11,6 +11,7 @@ import UIKit
 class ViolationViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource{
     
     private var tableView:UITableView!
+    var violationArray:NSMutableArray = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,22 +35,30 @@ class ViolationViewController: UIViewController ,UITableViewDelegate,UITableView
         tableView.layer.cornerRadius = 15
         tableView.layer.borderColor = XuColorGrayThin.CGColor
         tableView.backgroundColor = XuColorGrayThin
+        tableView.separatorColor = XuColorGrayThin
         
         tableView.dataSource = self
         tableView.delegate = self
         
+        let path = NSBundle.mainBundle().pathForResource("Violations", ofType: ".plist")
+        for elem in NSArray(contentsOfFile: path!)! {
+            if let dic = elem as? NSDictionary {
+                self.violationArray.addObject(ViolationObject(dic: dic))
+            }
+        }
     }
     
     //MARK: --UITableViewDataSource
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
+        return self.violationArray.count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 2
+        if let violation = violationArray[section] as? ViolationObject {
+            guard violation.info != nil else {return 2}
+            return 3
         }
-        return 4
+        return 0
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -63,10 +72,25 @@ class ViolationViewController: UIViewController ,UITableViewDelegate,UITableView
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = "京A B1212"
-        cell.backgroundColor = XuColorGrayThin
-        return cell
+        guard let vio = self.violationArray[indexPath.section] as? ViolationObject else {return UITableViewCell()}
+        var cell = tableView.dequeueReusableCellWithIdentifier("rbCell") as? UniversalTableViewCell
+        if cell == nil {
+            cell = UniversalTableViewCell(universalStyle: UniversalCellStyle.RightButton, reuseIdentifier: "rbCell")
+        }
+        switch indexPath.row {
+        case 0:
+            cell?.leftLabelText = vio.plate
+            if vio.info != nil {
+                cell?.rightButtonTitle = "违章处理"
+            }
+        case 1:
+            cell?.leftLabelText = "未处理 \(vio.times!) 扣分 \(vio.points!) 罚款 \(vio.forfeit!)"
+        case 2:
+            break
+        default:break
+        }
+        cell?.backgroundColor = UIColor.clearColor()
+        return cell!
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -94,8 +118,8 @@ class ViolationViewController: UIViewController ,UITableViewDelegate,UITableView
         layer.fillColor = UIColor.whiteColor().CGColor
         if addLine {
             let lineLayer = CALayer()
-            let lineHeight = 1 / UIScreen.mainScreen().scale
-            lineLayer.frame = CGRectMake(CGRectGetMinX(bounds) + 10, bounds.size.height - lineHeight, bounds.size.width - 10, lineHeight)
+            //let lineHeight = 1 / UIScreen.mainScreen().scale
+            lineLayer.frame = CGRectMake(CGRectGetMinX(bounds), bounds.size.height - 1, bounds.size.width - 10, 1)
             lineLayer.backgroundColor = tableView.separatorColor?.CGColor
             layer.addSublayer(lineLayer)
         }

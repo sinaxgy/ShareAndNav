@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CarViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource{
+class CarViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource,CarTableViewCellDelegate{
     
     private var tableView:UITableView!
     var carOwnershipArray:NSMutableArray = []
@@ -28,20 +28,18 @@ class CarViewController: UIViewController ,UITableViewDelegate,UITableViewDataSo
         
         tableView = UITableView(frame: CGRectMake(0, 0, XuWidth, XuHeight),style: UITableViewStyle.Grouped)
         self.view.addSubview(tableView)
-        tableView.sectionFooterHeight = 0
-        
-        //tableView.separatorInset = UIEdgeInsetsMake(-10, 0, 0, 0)
-        tableView.separatorColor = XuColorGrayThin
-        //tableView.separatorEffect = UIVibrancyEffect(forBlurEffect: UIBlurEffect(style: UIBlurEffectStyle.Light))
         
         tableView.layer.borderWidth = 10
         tableView.layer.cornerRadius = 15
         tableView.layer.borderColor = XuColorGrayThin.CGColor
         tableView.backgroundColor = XuColorGrayThin
+        tableView.separatorColor = XuColorGrayThin
         
         tableView.dataSource = self
         tableView.delegate = self
         
+        
+        //解析car数据
         let path = NSBundle.mainBundle().pathForResource("CarInfomation", ofType: ".plist")
         for ar in NSArray(contentsOfFile: path!)! {
             let array:NSMutableArray = []
@@ -67,21 +65,17 @@ class CarViewController: UIViewController ,UITableViewDelegate,UITableViewDataSo
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        guard let array = carOwnershipArray[indexPath.section] as? NSArray else {return 0}
-//        if let xco = array[indexPath.row] as? CarOwnership {
-//            if xco.assistPhones != nil {
-//                return (CGFloat(xco.assistPhones!.count) * 0 + 1) * 50
-//            }
-//        }
-        //return 50
         let cell = self.tableView(self.tableView, cellForRowAtIndexPath: indexPath)
-        print(cell.frame.height)
         return cell.frame.height
-        //return 50
     }
 
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
+    }
+    
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        guard section == 1 else {return 0}
+        return 40
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -91,6 +85,23 @@ class CarViewController: UIViewController ,UITableViewDelegate,UITableViewDataSo
         label.text = (section == 0 ? "车主车辆" : "其他车辆")
         label.font = UIFont.systemFontOfSize(XuTextSizeMiddle)
         view.addSubview(label)
+        return view
+    }
+    
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let view = UIView(frame: tableView.rectForFooterInSection(section))
+        let button = UIButton(type: UIButtonType.System)
+        button.frame = CGRectMake(XuWidth - 85, 15, 60, 20)
+        button.setTitle("添加车辆", forState: UIControlState.Normal)
+        button.titleLabel?.font = UIFont.systemFontOfSize(XuTextSizeMiddle)
+        button.setTitleColor(XuColorBlueThin, forState: UIControlState.Normal)
+        view.addSubview(button)
+        
+        let addBtn = UIButton(type: UIButtonType.System)
+        addBtn.frame = CGRectMake(CGRectGetMinX(button.frame) - 35, 18, 25, 15)
+        addBtn.setImage(UIImage(named: "add"), forState: UIControlState.Normal)
+        view.addSubview(addBtn)
+        
         return view
     }
     
@@ -105,11 +116,11 @@ class CarViewController: UIViewController ,UITableViewDelegate,UITableViewDataSo
             cell?.setupWithCarOwnership(xco)
         }
         cell!.selectionStyle = UITableViewCellSelectionStyle.None
+        cell?.delegate = self
         return cell!
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        print(indexPath.row)
         let layer = CAShapeLayer();var addLine = true;let cornerRadius:CGFloat = 8
         let pathRef = CGPathCreateMutable()
         let bounds = CGRectInset(cell.bounds, 10, 0)
@@ -142,6 +153,16 @@ class CarViewController: UIViewController ,UITableViewDelegate,UITableViewDataSo
         testView.layer.insertSublayer(layer, atIndex: 0)
         testView.backgroundColor = UIColor.clearColor()
         cell.backgroundView = testView
+    }
+    
+    //MARK: --CarTableViewCellDelegate
+    func payAuthorizeSwitch(cell: UITableViewCell, bool: Bool) {
+        let indexPath = self.tableView.indexPathForCell(cell)
+        let array = self.carOwnershipArray[(indexPath?.section)!] as! NSArray
+        if let xc = array.objectAtIndex(indexPath!.row) as? CarOwnership {
+            xc.isAuthorize = bool
+        }
+        
     }
     
     //MARK: --ControllerAction

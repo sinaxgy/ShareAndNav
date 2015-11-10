@@ -7,41 +7,51 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C5022EC41BE0A9B400DBC2FF /* UniversalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5022EC31BE0A9B400DBC2FF /* UniversalTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		C5022EC41BE0A9B400DBC2FF /* UniversalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5022EC31BE0A9B400DBC2FF /* UniversalTableViewCell.swift */; };
 		C50E7FF21BDB7D28002BA56D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50E7FF11BDB7D28002BA56D /* AppDelegate.swift */; };
 		C50E7FF71BDB7D28002BA56D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C50E7FF51BDB7D28002BA56D /* Main.storyboard */; };
 		C50E7FF91BDB7D28002BA56D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C50E7FF81BDB7D28002BA56D /* Assets.xcassets */; };
 		C50E7FFC1BDB7D28002BA56D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C50E7FFA1BDB7D28002BA56D /* LaunchScreen.storyboard */; };
 		C50E80071BDB7D28002BA56D /* ShareAndNavTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50E80061BDB7D28002BA56D /* ShareAndNavTests.swift */; };
 		C50E80121BDB7D28002BA56D /* ShareAndNavUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50E80111BDB7D28002BA56D /* ShareAndNavUITests.swift */; };
-		C544A4A51BE89673004607DD /* KeyboardDigitalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C544A4A41BE89673004607DD /* KeyboardDigitalView.swift */; settings = {ASSET_TAGS = (); }; };
-		C57A47521BEB9DFF00D65AA9 /* ParkingBill.plist in Resources */ = {isa = PBXBuildFile; fileRef = C57A47511BEB9DFF00D65AA9 /* ParkingBill.plist */; settings = {ASSET_TAGS = (); }; };
-		C57A47541BEC39A900D65AA9 /* CarInfomation.plist in Resources */ = {isa = PBXBuildFile; fileRef = C57A47531BEC39A900D65AA9 /* CarInfomation.plist */; settings = {ASSET_TAGS = (); }; };
-		C57A475A1BEC454F00D65AA9 /* CarOwnership.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57A47591BEC454F00D65AA9 /* CarOwnership.swift */; settings = {ASSET_TAGS = (); }; };
-		C57A475C1BEC542F00D65AA9 /* CarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57A475B1BEC542F00D65AA9 /* CarTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		C5843DBB1BDDB89C0074C785 /* TypeDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5843DBA1BDDB89C0074C785 /* TypeDefine.swift */; settings = {ASSET_TAGS = (); }; };
-		C5843DBC1BDDB89C0074C785 /* TypeDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5843DBA1BDDB89C0074C785 /* TypeDefine.swift */; settings = {ASSET_TAGS = (); }; };
-		C5843DBD1BDDB89C0074C785 /* TypeDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5843DBA1BDDB89C0074C785 /* TypeDefine.swift */; settings = {ASSET_TAGS = (); }; };
-		C5843DEF1BDE71D80074C785 /* KeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5843DED1BDE71D80074C785 /* KeyChain.swift */; settings = {ASSET_TAGS = (); }; };
-		C5843DF01BDE71D80074C785 /* KeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5843DED1BDE71D80074C785 /* KeyChain.swift */; settings = {ASSET_TAGS = (); }; };
-		C5843DF11BDE71D80074C785 /* KeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5843DED1BDE71D80074C785 /* KeyChain.swift */; settings = {ASSET_TAGS = (); }; };
-		C5843DF21BDE71D80074C785 /* SwiftColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5843DEE1BDE71D80074C785 /* SwiftColors.swift */; settings = {ASSET_TAGS = (); }; };
-		C5843DF31BDE71D80074C785 /* SwiftColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5843DEE1BDE71D80074C785 /* SwiftColors.swift */; settings = {ASSET_TAGS = (); }; };
-		C5843DF41BDE71D80074C785 /* SwiftColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5843DEE1BDE71D80074C785 /* SwiftColors.swift */; settings = {ASSET_TAGS = (); }; };
-		C5843E431BDF4D5F0074C785 /* NewLicensePlateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5843E421BDF4D5F0074C785 /* NewLicensePlateViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		C5843E461BDF5E380074C785 /* FootMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5843E451BDF5E380074C785 /* FootMenuView.swift */; settings = {ASSET_TAGS = (); }; };
-		C5843E481BDF62A40074C785 /* CarMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5843E471BDF62A40074C785 /* CarMaster.swift */; settings = {ASSET_TAGS = (); }; };
-		C5843E531BDF6BB00074C785 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5843E521BDF6BB00074C785 /* HomeViewController.m */; settings = {ASSET_TAGS = (); }; };
-		C59B32DE1BE7AA4F00AAE98C /* SubMasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59B32DD1BE7AA4F00AAE98C /* SubMasterView.swift */; settings = {ASSET_TAGS = (); }; };
-		C5A8E84D1BE306D5008AD59B /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C5A8E84C1BE306D5008AD59B /* AMap.bundle */; settings = {ASSET_TAGS = (); }; };
-		C5A8E8501BE34BF0008AD59B /* park.png in Resources */ = {isa = PBXBuildFile; fileRef = C5A8E84F1BE34BF0008AD59B /* park.png */; settings = {ASSET_TAGS = (); }; };
-		C5BA4FA81BEB2F5500EF6832 /* ViolationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA4FA71BEB2F5500EF6832 /* ViolationViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		C5BA4FAA1BEB327100EF6832 /* CarportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA4FA91BEB327100EF6832 /* CarportViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		C5BA4FAC1BEB355100EF6832 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA4FAB1BEB355100EF6832 /* MessageViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		C5C4EC3B1BEA06D00058B286 /* XuRegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C4EC391BEA06D00058B286 /* XuRegularExpression.swift */; settings = {ASSET_TAGS = (); }; };
-		C5C4EC3C1BEA06D00058B286 /* XuUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C4EC3A1BEA06D00058B286 /* XuUserDefault.swift */; settings = {ASSET_TAGS = (); }; };
-		C5C8D0F41BEA140C00EAFD0B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C8D0F31BEA140C00EAFD0B /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		C5C8D0F71BEA1F8600EAFD0B /* CarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C8D0F61BEA1F8600EAFD0B /* CarViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		C544A4A51BE89673004607DD /* KeyboardDigitalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C544A4A41BE89673004607DD /* KeyboardDigitalView.swift */; };
+		C57A47521BEB9DFF00D65AA9 /* ParkingBill.plist in Resources */ = {isa = PBXBuildFile; fileRef = C57A47511BEB9DFF00D65AA9 /* ParkingBill.plist */; };
+		C57A47541BEC39A900D65AA9 /* CarInfomation.plist in Resources */ = {isa = PBXBuildFile; fileRef = C57A47531BEC39A900D65AA9 /* CarInfomation.plist */; };
+		C57A475A1BEC454F00D65AA9 /* CarOwnership.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57A47591BEC454F00D65AA9 /* CarOwnership.swift */; };
+		C57A475C1BEC542F00D65AA9 /* CarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57A475B1BEC542F00D65AA9 /* CarTableViewCell.swift */; };
+		C5843DBB1BDDB89C0074C785 /* TypeDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5843DBA1BDDB89C0074C785 /* TypeDefine.swift */; };
+		C5843DBC1BDDB89C0074C785 /* TypeDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5843DBA1BDDB89C0074C785 /* TypeDefine.swift */; };
+		C5843DBD1BDDB89C0074C785 /* TypeDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5843DBA1BDDB89C0074C785 /* TypeDefine.swift */; };
+		C5843DEF1BDE71D80074C785 /* KeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5843DED1BDE71D80074C785 /* KeyChain.swift */; };
+		C5843DF01BDE71D80074C785 /* KeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5843DED1BDE71D80074C785 /* KeyChain.swift */; };
+		C5843DF11BDE71D80074C785 /* KeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5843DED1BDE71D80074C785 /* KeyChain.swift */; };
+		C5843DF21BDE71D80074C785 /* SwiftColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5843DEE1BDE71D80074C785 /* SwiftColors.swift */; };
+		C5843DF31BDE71D80074C785 /* SwiftColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5843DEE1BDE71D80074C785 /* SwiftColors.swift */; };
+		C5843DF41BDE71D80074C785 /* SwiftColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5843DEE1BDE71D80074C785 /* SwiftColors.swift */; };
+		C5843E431BDF4D5F0074C785 /* NewLicensePlateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5843E421BDF4D5F0074C785 /* NewLicensePlateViewController.swift */; };
+		C5843E461BDF5E380074C785 /* FootMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5843E451BDF5E380074C785 /* FootMenuView.swift */; };
+		C5843E481BDF62A40074C785 /* CarMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5843E471BDF62A40074C785 /* CarMaster.swift */; };
+		C5843E531BDF6BB00074C785 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5843E521BDF6BB00074C785 /* HomeViewController.m */; };
+		C58CC88F1BF02E6F006D4F96 /* Carport.plist in Resources */ = {isa = PBXBuildFile; fileRef = C58CC88E1BF02E6E006D4F96 /* Carport.plist */; };
+		C58CC8911BF0349A006D4F96 /* Carport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58CC8901BF0349A006D4F96 /* Carport.swift */; };
+		C58CC8931BF035A3006D4F96 /* CarportShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58CC8921BF035A3006D4F96 /* CarportShare.swift */; };
+		C58CC8961BF04A3B006D4F96 /* XuPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58CC8951BF04A3B006D4F96 /* XuPickerView.swift */; };
+		C58CC8991BF0788A006D4F96 /* Violations.plist in Resources */ = {isa = PBXBuildFile; fileRef = C58CC8981BF0788A006D4F96 /* Violations.plist */; };
+		C58CC89B1BF07AFF006D4F96 /* ViolationObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58CC89A1BF07AFF006D4F96 /* ViolationObject.swift */; };
+		C58CC89E1BF088E7006D4F96 /* VioInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58CC89C1BF088E7006D4F96 /* VioInfoTableViewCell.swift */; };
+		C58CC89F1BF088E7006D4F96 /* VioInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C58CC89D1BF088E7006D4F96 /* VioInfoTableViewCell.xib */; };
+		C58CC8A41BF0E0A5006D4F96 /* CityAndArea.plist in Resources */ = {isa = PBXBuildFile; fileRef = C58CC8A31BF0E0A5006D4F96 /* CityAndArea.plist */; };
+		C58CC8A61BF0F2B8006D4F96 /* area.plist in Resources */ = {isa = PBXBuildFile; fileRef = C58CC8A51BF0F2B8006D4F96 /* area.plist */; };
+		C59B32DE1BE7AA4F00AAE98C /* SubMasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59B32DD1BE7AA4F00AAE98C /* SubMasterView.swift */; };
+		C5A8E84D1BE306D5008AD59B /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C5A8E84C1BE306D5008AD59B /* AMap.bundle */; };
+		C5A8E8501BE34BF0008AD59B /* park.png in Resources */ = {isa = PBXBuildFile; fileRef = C5A8E84F1BE34BF0008AD59B /* park.png */; };
+		C5BA4FA81BEB2F5500EF6832 /* ViolationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA4FA71BEB2F5500EF6832 /* ViolationViewController.swift */; };
+		C5BA4FAA1BEB327100EF6832 /* CarportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA4FA91BEB327100EF6832 /* CarportViewController.swift */; };
+		C5BA4FAC1BEB355100EF6832 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA4FAB1BEB355100EF6832 /* MessageViewController.swift */; };
+		C5C4EC3B1BEA06D00058B286 /* XuRegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C4EC391BEA06D00058B286 /* XuRegularExpression.swift */; };
+		C5C4EC3C1BEA06D00058B286 /* XuUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C4EC3A1BEA06D00058B286 /* XuUserDefault.swift */; };
+		C5C8D0F41BEA140C00EAFD0B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C8D0F31BEA140C00EAFD0B /* LoginViewController.swift */; };
+		C5C8D0F71BEA1F8600EAFD0B /* CarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C8D0F61BEA1F8600EAFD0B /* CarViewController.swift */; };
 		C5E5AD8D1BE2684D00AEE7AC /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5E5AD8A1BE2684D00AEE7AC /* AMapSearchKit.framework */; };
 		C5E5AD8E1BE2684D00AEE7AC /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5E5AD8B1BE2684D00AEE7AC /* MAMapKit.framework */; };
 		C5E5AD901BE2685500AEE7AC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5E5AD8F1BE2685500AEE7AC /* UIKit.framework */; };
@@ -55,7 +65,7 @@
 		C5E5ADA01BE2689000AEE7AC /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C5E5AD9F1BE2689000AEE7AC /* libz.tbd */; };
 		C5E5ADA21BE2689A00AEE7AC /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C5E5ADA11BE2689A00AEE7AC /* libstdc++.6.0.9.tbd */; };
 		C5E5ADA41BE268A600AEE7AC /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C5E5ADA31BE268A600AEE7AC /* libc++.tbd */; };
-		C5E5ADA61BE2692F00AEE7AC /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E5ADA51BE2692F00AEE7AC /* MasterViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		C5E5ADA61BE2692F00AEE7AC /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E5ADA51BE2692F00AEE7AC /* MasterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +113,16 @@
 		C5843E501BDF6BAF0074C785 /* ShareAndNav-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ShareAndNav-Bridging-Header.h"; sourceTree = "<group>"; };
 		C5843E511BDF6BB00074C785 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = Classes/VC/HomeViewController.h; sourceTree = "<group>"; };
 		C5843E521BDF6BB00074C785 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = Classes/VC/HomeViewController.m; sourceTree = "<group>"; };
+		C58CC88E1BF02E6E006D4F96 /* Carport.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Carport.plist; path = Resources/Carport.plist; sourceTree = "<group>"; };
+		C58CC8901BF0349A006D4F96 /* Carport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Carport.swift; path = Classes/Model/Carport.swift; sourceTree = "<group>"; };
+		C58CC8921BF035A3006D4F96 /* CarportShare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarportShare.swift; path = Classes/Model/CarportShare.swift; sourceTree = "<group>"; };
+		C58CC8951BF04A3B006D4F96 /* XuPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XuPickerView.swift; path = Classes/VC/View/XuPickerView.swift; sourceTree = "<group>"; };
+		C58CC8981BF0788A006D4F96 /* Violations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Violations.plist; path = Resources/Violations.plist; sourceTree = "<group>"; };
+		C58CC89A1BF07AFF006D4F96 /* ViolationObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViolationObject.swift; path = Classes/Model/ViolationObject.swift; sourceTree = "<group>"; };
+		C58CC89C1BF088E7006D4F96 /* VioInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VioInfoTableViewCell.swift; path = Classes/VC/Cell/VioInfoTableViewCell.swift; sourceTree = "<group>"; };
+		C58CC89D1BF088E7006D4F96 /* VioInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VioInfoTableViewCell.xib; path = Classes/VC/Cell/VioInfoTableViewCell.xib; sourceTree = "<group>"; };
+		C58CC8A31BF0E0A5006D4F96 /* CityAndArea.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = CityAndArea.plist; path = Resources/CityAndArea.plist; sourceTree = "<group>"; };
+		C58CC8A51BF0F2B8006D4F96 /* area.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = area.plist; path = Resources/area.plist; sourceTree = "<group>"; };
 		C59B32DD1BE7AA4F00AAE98C /* SubMasterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubMasterView.swift; path = Classes/VC/SubMasterView.swift; sourceTree = "<group>"; };
 		C5A8E84C1BE306D5008AD59B /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AMap.bundle; path = Framework/AMap.bundle; sourceTree = "<group>"; };
 		C5A8E84F1BE34BF0008AD59B /* park.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = park.png; path = Resources/park.png; sourceTree = "<group>"; };
@@ -235,6 +255,7 @@
 			children = (
 				C59B32DD1BE7AA4F00AAE98C /* SubMasterView.swift */,
 				C5843E451BDF5E380074C785 /* FootMenuView.swift */,
+				C58CC8951BF04A3B006D4F96 /* XuPickerView.swift */,
 				C544A4A41BE89673004607DD /* KeyboardDigitalView.swift */,
 			);
 			name = View;
@@ -245,6 +266,9 @@
 			children = (
 				C5843E471BDF62A40074C785 /* CarMaster.swift */,
 				C57A47591BEC454F00D65AA9 /* CarOwnership.swift */,
+				C58CC8901BF0349A006D4F96 /* Carport.swift */,
+				C58CC8921BF035A3006D4F96 /* CarportShare.swift */,
+				C58CC89A1BF07AFF006D4F96 /* ViolationObject.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -254,6 +278,8 @@
 			children = (
 				C57A475B1BEC542F00D65AA9 /* CarTableViewCell.swift */,
 				C5022EC31BE0A9B400DBC2FF /* UniversalTableViewCell.swift */,
+				C58CC89C1BF088E7006D4F96 /* VioInfoTableViewCell.swift */,
+				C58CC89D1BF088E7006D4F96 /* VioInfoTableViewCell.xib */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -279,6 +305,10 @@
 				C50E7FFD1BDB7D28002BA56D /* Info.plist */,
 				C57A47511BEB9DFF00D65AA9 /* ParkingBill.plist */,
 				C57A47531BEC39A900D65AA9 /* CarInfomation.plist */,
+				C58CC8A51BF0F2B8006D4F96 /* area.plist */,
+				C58CC88E1BF02E6E006D4F96 /* Carport.plist */,
+				C58CC8981BF0788A006D4F96 /* Violations.plist */,
+				C58CC8A31BF0E0A5006D4F96 /* CityAndArea.plist */,
 			);
 			name = MainFile;
 			sourceTree = "<group>";
@@ -418,12 +448,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C58CC89F1BF088E7006D4F96 /* VioInfoTableViewCell.xib in Resources */,
 				C50E7FFC1BDB7D28002BA56D /* LaunchScreen.storyboard in Resources */,
+				C58CC88F1BF02E6F006D4F96 /* Carport.plist in Resources */,
+				C58CC8A41BF0E0A5006D4F96 /* CityAndArea.plist in Resources */,
 				C57A47541BEC39A900D65AA9 /* CarInfomation.plist in Resources */,
+				C58CC8A61BF0F2B8006D4F96 /* area.plist in Resources */,
 				C5A8E8501BE34BF0008AD59B /* park.png in Resources */,
 				C50E7FF91BDB7D28002BA56D /* Assets.xcassets in Resources */,
 				C5A8E84D1BE306D5008AD59B /* AMap.bundle in Resources */,
 				C57A47521BEB9DFF00D65AA9 /* ParkingBill.plist in Resources */,
+				C58CC8991BF0788A006D4F96 /* Violations.plist in Resources */,
 				C50E7FF71BDB7D28002BA56D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -449,9 +484,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C58CC89B1BF07AFF006D4F96 /* ViolationObject.swift in Sources */,
 				C5843E461BDF5E380074C785 /* FootMenuView.swift in Sources */,
+				C58CC89E1BF088E7006D4F96 /* VioInfoTableViewCell.swift in Sources */,
 				C5022EC41BE0A9B400DBC2FF /* UniversalTableViewCell.swift in Sources */,
 				C5C4EC3B1BEA06D00058B286 /* XuRegularExpression.swift in Sources */,
+				C58CC8911BF0349A006D4F96 /* Carport.swift in Sources */,
 				C5E5ADA61BE2692F00AEE7AC /* MasterViewController.swift in Sources */,
 				C59B32DE1BE7AA4F00AAE98C /* SubMasterView.swift in Sources */,
 				C50E7FF21BDB7D28002BA56D /* AppDelegate.swift in Sources */,
@@ -467,9 +505,11 @@
 				C5C8D0F41BEA140C00EAFD0B /* LoginViewController.swift in Sources */,
 				C5BA4FAC1BEB355100EF6832 /* MessageViewController.swift in Sources */,
 				C5C8D0F71BEA1F8600EAFD0B /* CarViewController.swift in Sources */,
+				C58CC8961BF04A3B006D4F96 /* XuPickerView.swift in Sources */,
 				C5843DBB1BDDB89C0074C785 /* TypeDefine.swift in Sources */,
 				C5843DF21BDE71D80074C785 /* SwiftColors.swift in Sources */,
 				C5C4EC3C1BEA06D00058B286 /* XuUserDefault.swift in Sources */,
+				C58CC8931BF035A3006D4F96 /* CarportShare.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -566,7 +606,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -604,7 +644,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -623,6 +663,7 @@
 					"$(PROJECT_DIR)/ShareAndNav/Framework",
 				);
 				INFOPLIST_FILE = ShareAndNav/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-Objc";
 				PRODUCT_BUNDLE_IDENTIFIER = Pursue.ShareAndNav;
@@ -645,6 +686,7 @@
 					"$(PROJECT_DIR)/ShareAndNav/Framework",
 				);
 				INFOPLIST_FILE = ShareAndNav/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-Objc";
 				PRODUCT_BUNDLE_IDENTIFIER = Pursue.ShareAndNav;

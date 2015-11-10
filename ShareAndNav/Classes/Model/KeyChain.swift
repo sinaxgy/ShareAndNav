@@ -163,7 +163,6 @@ class KeyChain: NSObject {
             let opaque = (result as! Unmanaged<AnyObject>).toOpaque()
             let retrievedData = Unmanaged<NSDictionary>.fromOpaque(opaque).takeUnretainedValue()
             let IP = retrievedData.objectForKey(kSecAttrServer) as! NSString
-            print(IP)
             return IP
             
         }
