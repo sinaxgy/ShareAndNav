@@ -92,7 +92,6 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
                 self.navigationController?.pushViewController(violationVC, animated: true)
             case .parkTime:
                 animation.subtype = kCATransitionFromBottom
-                print("parkTime")
             case .revenue:
                 let carportVC = CarportViewController()
                 animation.subtype = kCATransitionFromRight

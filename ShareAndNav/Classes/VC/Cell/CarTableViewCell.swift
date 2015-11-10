@@ -9,8 +9,13 @@
 
 import UIKit
 
-class CarTableViewCell: UITableViewCell ,UITableViewDataSource,UITableViewDelegate{
+@objc protocol CarTableViewCellDelegate {
+    func payAuthorizeSwitch(cell:UITableViewCell,bool:Bool)
+}
+
+class CarTableViewCell: UITableViewCell ,UITableViewDataSource,UITableViewDelegate,CarTableViewCellDelegate{
     
+    var delegate:CarTableViewCellDelegate?
     var leftImageV:UIImageView?
     var leftLabel:UILabel?
     var certificateBtn:UIButton?
@@ -36,13 +41,12 @@ class CarTableViewCell: UITableViewCell ,UITableViewDataSource,UITableViewDelega
             self.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         }else {
             self.frame.size.height = XuCellHeight * (1 + CGFloat(xcarO.assistPhones!.count))
-            self.initTableView()
             self.xCarOwnership = xcarO
+            self.initTableView()
         }
     }
     
     func initTableView() {
-        print(self.frame.height)
         subTableView = UITableView(frame: CGRectMake(0, 0, XuWidth, self.frame.height), style: UITableViewStyle.Plain)
         subTableView?.backgroundColor = UIColor.clearColor()//XuColorGrayThin
         subTableView?.scrollEnabled = false
@@ -96,13 +100,21 @@ class CarTableViewCell: UITableViewCell ,UITableViewDataSource,UITableViewDelega
         }
     }
     
+    //MARK:--CarTableViewCellDelegate
+    func payAuthorizeSwitch(cell: UITableViewCell, bool: Bool) {
+        guard self.delegate != nil else {return}
+        self.delegate?.payAuthorizeSwitch(self, bool: bool)
+    }
+    
     //MARK:--ControllerAction
     func carOwnerCerificate(sender:UIButton) {
         print("cerificate")
     }
     
     func swithAuthorize(sender:UISwitch) {
-        print("switch")
+        guard self.delegate != nil else {return}
+        self.delegate?.payAuthorizeSwitch(self, bool: sender.on)
+        //(self.superCell == nil ? self : self.superCell!)
     }
     
     //MRAK: --UITableViewDelegate
@@ -123,6 +135,7 @@ class CarTableViewCell: UITableViewCell ,UITableViewDataSource,UITableViewDelega
             let cell = CarTableViewCell(reuseIdentifier: "subCarCell")
             let xcos = CarOwnership(xco: self.xCarOwnership!)
             xcos.assistPhones = nil
+            cell.delegate = self
             cell.setupWithCarOwnership(xcos)
             cell.separatorInset = UIEdgeInsetsMake(0, 0, 110, 300)
             cell.backgroundColor = UIColor.clearColor()//XuColorGrayThin
@@ -148,13 +161,11 @@ class CarTableViewCell: UITableViewCell ,UITableViewDataSource,UITableViewDelega
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         let layer = CAShapeLayer()
-        //let pathRef = CGPathCreateMutable()
         let bounds = CGRectInset(cell.bounds, 10, 0)
-        //layer.path = pathRef
-        layer.fillColor = UIColor.clearColor().CGColor//XuColorWhite.CGColor
+        layer.fillColor = UIColor.clearColor().CGColor
         let lineLayer = CALayer()
         let lineHeight = 1 / UIScreen.mainScreen().scale
-        lineLayer.frame = CGRectMake(CGRectGetMinX(bounds) + 45, bounds.size.height - lineHeight, 135, lineHeight)//bounds.size.width - 10
+        lineLayer.frame = CGRectMake(CGRectGetMinX(bounds) + 45, bounds.size.height - lineHeight, 135, lineHeight)
         lineLayer.backgroundColor = tableView.separatorColor?.CGColor
         layer.addSublayer(lineLayer)
         let testView = UIView(frame: bounds)

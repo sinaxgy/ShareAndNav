@@ -190,7 +190,8 @@ class LoginViewController: UIViewController {
         self.view.addSubview(label)
         
         self.userTextField = UITextField(frame: CGRectMake(20, originHeight + ctrlHeight + gap * 3, CGRectGetWidth(self.view.frame) - 40, ctrlHeight))
-        self.userTextField.keyboardType = UIKeyboardType.DecimalPad
+        //self.userTextField.keyboardType = UIKeyboardType.DecimalPad
+        userTextField.inputView = XuPickerView(style: XuPickerStyle.Date)
         self.userTextField.placeholder = "手机"
         self.view.addSubview(self.userTextField)
         
@@ -242,8 +243,9 @@ class LoginViewController: UIViewController {
             dynamicCodeBtn.addTarget(self, action: "getDynamicCode:", forControlEvents: UIControlEvents.TouchUpInside)
             self.view.addSubview(dynamicCodeBtn)
             
-            self.pwTextField.keyboardType = UIKeyboardType.NumberPad
+            //self.pwTextField.keyboardType = UIKeyboardType.NumberPad
             self.pwTextField.placeholder = "动态密码"
+            pwTextField.inputView = XuPickerView(style: XuPickerStyle.CityAndArea)
             
         default:
             changeBtn.setTitle("动态密码登录", forState: UIControlState.Normal)

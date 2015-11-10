@@ -94,8 +94,6 @@ class SubMasterView: UIView ,UITableViewDataSource,UITableViewDelegate{
         if cell == nil {
             cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "subMasterCell")
         }
-        print(cell?.frame)
-        print(cell?.contentView.frame)
         cell?.imageView?.image = UIImage(named: "fute")
         let dic = self.tableArray[indexPath.section] as! NSDictionary
         let keys:NSArray = dic.allKeys
