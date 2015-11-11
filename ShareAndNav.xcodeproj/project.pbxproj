@@ -41,13 +41,13 @@
 		C58CC89E1BF088E7006D4F96 /* VioInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58CC89C1BF088E7006D4F96 /* VioInfoTableViewCell.swift */; };
 		C58CC89F1BF088E7006D4F96 /* VioInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C58CC89D1BF088E7006D4F96 /* VioInfoTableViewCell.xib */; };
 		C58CC8A41BF0E0A5006D4F96 /* CityAndArea.plist in Resources */ = {isa = PBXBuildFile; fileRef = C58CC8A31BF0E0A5006D4F96 /* CityAndArea.plist */; };
-		C58CC8A61BF0F2B8006D4F96 /* area.plist in Resources */ = {isa = PBXBuildFile; fileRef = C58CC8A51BF0F2B8006D4F96 /* area.plist */; };
 		C59B32DE1BE7AA4F00AAE98C /* SubMasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59B32DD1BE7AA4F00AAE98C /* SubMasterView.swift */; };
 		C5A8E84D1BE306D5008AD59B /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C5A8E84C1BE306D5008AD59B /* AMap.bundle */; };
 		C5A8E8501BE34BF0008AD59B /* park.png in Resources */ = {isa = PBXBuildFile; fileRef = C5A8E84F1BE34BF0008AD59B /* park.png */; };
 		C5BA4FA81BEB2F5500EF6832 /* ViolationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA4FA71BEB2F5500EF6832 /* ViolationViewController.swift */; };
 		C5BA4FAA1BEB327100EF6832 /* CarportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA4FA91BEB327100EF6832 /* CarportViewController.swift */; };
 		C5BA4FAC1BEB355100EF6832 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA4FAB1BEB355100EF6832 /* MessageViewController.swift */; };
+		C5BF9FE51BF314A200E0E697 /* UIButton+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = C5BF9FE41BF314A200E0E697 /* UIButton+Block.m */; };
 		C5C4EC3B1BEA06D00058B286 /* XuRegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C4EC391BEA06D00058B286 /* XuRegularExpression.swift */; };
 		C5C4EC3C1BEA06D00058B286 /* XuUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C4EC3A1BEA06D00058B286 /* XuUserDefault.swift */; };
 		C5C8D0F41BEA140C00EAFD0B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C8D0F31BEA140C00EAFD0B /* LoginViewController.swift */; };
@@ -66,6 +66,7 @@
 		C5E5ADA21BE2689A00AEE7AC /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C5E5ADA11BE2689A00AEE7AC /* libstdc++.6.0.9.tbd */; };
 		C5E5ADA41BE268A600AEE7AC /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C5E5ADA31BE268A600AEE7AC /* libc++.tbd */; };
 		C5E5ADA61BE2692F00AEE7AC /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E5ADA51BE2692F00AEE7AC /* MasterViewController.swift */; };
+		C5FF79CF1BF1FAEC00CAA14A /* CarportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FF79CE1BF1FAEB00CAA14A /* CarportTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,13 +123,14 @@
 		C58CC89C1BF088E7006D4F96 /* VioInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VioInfoTableViewCell.swift; path = Classes/VC/Cell/VioInfoTableViewCell.swift; sourceTree = "<group>"; };
 		C58CC89D1BF088E7006D4F96 /* VioInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VioInfoTableViewCell.xib; path = Classes/VC/Cell/VioInfoTableViewCell.xib; sourceTree = "<group>"; };
 		C58CC8A31BF0E0A5006D4F96 /* CityAndArea.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = CityAndArea.plist; path = Resources/CityAndArea.plist; sourceTree = "<group>"; };
-		C58CC8A51BF0F2B8006D4F96 /* area.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = area.plist; path = Resources/area.plist; sourceTree = "<group>"; };
 		C59B32DD1BE7AA4F00AAE98C /* SubMasterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubMasterView.swift; path = Classes/VC/SubMasterView.swift; sourceTree = "<group>"; };
 		C5A8E84C1BE306D5008AD59B /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AMap.bundle; path = Framework/AMap.bundle; sourceTree = "<group>"; };
 		C5A8E84F1BE34BF0008AD59B /* park.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = park.png; path = Resources/park.png; sourceTree = "<group>"; };
 		C5BA4FA71BEB2F5500EF6832 /* ViolationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViolationViewController.swift; path = Classes/VC/ViolationViewController.swift; sourceTree = "<group>"; };
 		C5BA4FA91BEB327100EF6832 /* CarportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarportViewController.swift; path = Classes/VC/CarportViewController.swift; sourceTree = "<group>"; };
 		C5BA4FAB1BEB355100EF6832 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageViewController.swift; path = Classes/VC/MessageViewController.swift; sourceTree = "<group>"; };
+		C5BF9FE31BF314A200E0E697 /* UIButton+Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIButton+Block.h"; path = "Classes/OC/UIButton+Block.h"; sourceTree = "<group>"; };
+		C5BF9FE41BF314A200E0E697 /* UIButton+Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIButton+Block.m"; path = "Classes/OC/UIButton+Block.m"; sourceTree = "<group>"; };
 		C5C4EC391BEA06D00058B286 /* XuRegularExpression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XuRegularExpression.swift; path = Classes/Model/XuRegularExpression.swift; sourceTree = "<group>"; };
 		C5C4EC3A1BEA06D00058B286 /* XuUserDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XuUserDefault.swift; path = Classes/Model/XuUserDefault.swift; sourceTree = "<group>"; };
 		C5C8D0F31BEA140C00EAFD0B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Classes/VC/LoginViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 		C5E5ADA11BE2689A00AEE7AC /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
 		C5E5ADA31BE268A600AEE7AC /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		C5E5ADA51BE2692F00AEE7AC /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MasterViewController.swift; path = Classes/VC/MasterViewController.swift; sourceTree = "<group>"; };
+		C5FF79CE1BF1FAEB00CAA14A /* CarportTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarportTableViewCell.swift; path = Classes/VC/Cell/CarportTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,6 +281,7 @@
 			children = (
 				C57A475B1BEC542F00D65AA9 /* CarTableViewCell.swift */,
 				C5022EC31BE0A9B400DBC2FF /* UniversalTableViewCell.swift */,
+				C5FF79CE1BF1FAEB00CAA14A /* CarportTableViewCell.swift */,
 				C58CC89C1BF088E7006D4F96 /* VioInfoTableViewCell.swift */,
 				C58CC89D1BF088E7006D4F96 /* VioInfoTableViewCell.xib */,
 			);
@@ -292,6 +296,8 @@
 				C5C4EC391BEA06D00058B286 /* XuRegularExpression.swift */,
 				C5843DED1BDE71D80074C785 /* KeyChain.swift */,
 				C5843DEE1BDE71D80074C785 /* SwiftColors.swift */,
+				C5BF9FE31BF314A200E0E697 /* UIButton+Block.h */,
+				C5BF9FE41BF314A200E0E697 /* UIButton+Block.m */,
 			);
 			name = Assistant;
 			sourceTree = "<group>";
@@ -305,7 +311,6 @@
 				C50E7FFD1BDB7D28002BA56D /* Info.plist */,
 				C57A47511BEB9DFF00D65AA9 /* ParkingBill.plist */,
 				C57A47531BEC39A900D65AA9 /* CarInfomation.plist */,
-				C58CC8A51BF0F2B8006D4F96 /* area.plist */,
 				C58CC88E1BF02E6E006D4F96 /* Carport.plist */,
 				C58CC8981BF0788A006D4F96 /* Violations.plist */,
 				C58CC8A31BF0E0A5006D4F96 /* CityAndArea.plist */,
@@ -453,7 +458,6 @@
 				C58CC88F1BF02E6F006D4F96 /* Carport.plist in Resources */,
 				C58CC8A41BF0E0A5006D4F96 /* CityAndArea.plist in Resources */,
 				C57A47541BEC39A900D65AA9 /* CarInfomation.plist in Resources */,
-				C58CC8A61BF0F2B8006D4F96 /* area.plist in Resources */,
 				C5A8E8501BE34BF0008AD59B /* park.png in Resources */,
 				C50E7FF91BDB7D28002BA56D /* Assets.xcassets in Resources */,
 				C5A8E84D1BE306D5008AD59B /* AMap.bundle in Resources */,
@@ -493,6 +497,7 @@
 				C5E5ADA61BE2692F00AEE7AC /* MasterViewController.swift in Sources */,
 				C59B32DE1BE7AA4F00AAE98C /* SubMasterView.swift in Sources */,
 				C50E7FF21BDB7D28002BA56D /* AppDelegate.swift in Sources */,
+				C5FF79CF1BF1FAEC00CAA14A /* CarportTableViewCell.swift in Sources */,
 				C5BA4FAA1BEB327100EF6832 /* CarportViewController.swift in Sources */,
 				C5843E531BDF6BB00074C785 /* HomeViewController.m in Sources */,
 				C57A475C1BEC542F00D65AA9 /* CarTableViewCell.swift in Sources */,
@@ -503,6 +508,7 @@
 				C5843DEF1BDE71D80074C785 /* KeyChain.swift in Sources */,
 				C5BA4FA81BEB2F5500EF6832 /* ViolationViewController.swift in Sources */,
 				C5C8D0F41BEA140C00EAFD0B /* LoginViewController.swift in Sources */,
+				C5BF9FE51BF314A200E0E697 /* UIButton+Block.m in Sources */,
 				C5BA4FAC1BEB355100EF6832 /* MessageViewController.swift in Sources */,
 				C5C8D0F71BEA1F8600EAFD0B /* CarViewController.swift in Sources */,
 				C58CC8961BF04A3B006D4F96 /* XuPickerView.swift in Sources */,
