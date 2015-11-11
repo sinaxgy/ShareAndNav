@@ -85,6 +85,20 @@ class CarViewController: UIViewController ,UITableViewDelegate,UITableViewDataSo
         label.text = (section == 0 ? "车主车辆" : "其他车辆")
         label.font = UIFont.systemFontOfSize(XuTextSizeMiddle)
         view.addSubview(label)
+        
+        let button = UIButton(type: UIButtonType.Custom)
+        let buttonString:NSString = "我得撤了"
+        button.setup(buttonString as String, fontsize: XuTextSizeMiddle, fontColor: UIColor.whiteColor(), bkColor: XuColorBlue)
+        button.center = CGPointMake(XuWidth - CGFloat(buttonString.length) * XuTextSizeMiddle, 15)
+        view.addSubview(button)
+        button.handleCOntrolEvent(UIControlEvents.TouchUpInside) { (btn) -> Void in
+            print(section)
+            if btn.state == UIControlState.Highlighted {
+                print("hasd")
+            }
+            print(btn.state)
+        }
+        
         return view
     }
     

@@ -47,6 +47,7 @@ class CarTableViewCell: UITableViewCell ,UITableViewDataSource,UITableViewDelega
     }
     
     func initTableView() {
+        print("self.frame.height:\(self.frame.height)")
         subTableView = UITableView(frame: CGRectMake(0, 0, XuWidth, self.frame.height), style: UITableViewStyle.Plain)
         subTableView?.backgroundColor = UIColor.clearColor()//XuColorGrayThin
         subTableView?.scrollEnabled = false

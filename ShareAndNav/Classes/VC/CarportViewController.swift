@@ -11,7 +11,7 @@ import UIKit
 class CarportViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource{
     
     private var tableView:UITableView!
-
+    private var carportArray:NSMutableArray = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +39,12 @@ class CarportViewController: UIViewController ,UITableViewDelegate,UITableViewDa
         
         tableView.dataSource = self
         tableView.delegate = self
+        
+        let path = NSBundle.mainBundle().pathForResource("Carport", ofType: ".plist")
+        for ele in NSArray(contentsOfFile: path!)! {
+            print(ele)
+            self.carportArray.addObject(Carport(dict: ele as! NSDictionary))
+        }
     }
     
     //MARK: --UITableViewDataSource
@@ -68,10 +74,20 @@ class CarportViewController: UIViewController ,UITableViewDelegate,UITableViewDa
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = "北邮B3018"
-        cell.backgroundColor = XuColorGrayThin
-        return cell
+        guard let carport = self.carportArray[indexPath.section] as? Carport else {return UITableViewCell()}
+        
+        print(carport)
+        
+        switch indexPath.row {
+        case 0:
+            var cell = tableView.dequeueReusableCellWithIdentifier("cell0")
+            if cell == nil {
+                cell = UniversalTableViewCell(universalStyle: UniversalCellStyle.RightButton, reuseIdentifier: "cell0")
+            }
+            
+            return cell!
+        default:return UITableViewCell()
+        }
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {

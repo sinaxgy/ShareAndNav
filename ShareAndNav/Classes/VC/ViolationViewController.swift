@@ -29,6 +29,7 @@ class ViolationViewController: UIViewController ,UITableViewDelegate,UITableView
         tableView = UITableView(frame: UIScreen.mainScreen().bounds,style: UITableViewStyle.Grouped)
         self.view.addSubview(tableView)
         tableView.sectionFooterHeight = 0
+        tableView.rowHeight = 50
         
         tableView.separatorInset = UIEdgeInsetsZero
         tableView.layer.borderWidth = 10
@@ -89,12 +90,11 @@ class ViolationViewController: UIViewController ,UITableViewDelegate,UITableView
             break
         default:break
         }
-        cell?.backgroundColor = UIColor.clearColor()
+        cell!.backgroundColor = XuColorGrayThin
         return cell!
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        print(indexPath.row)
         let layer = CAShapeLayer();var addLine = false;let cornerRadius:CGFloat = 5
         let pathRef = CGPathCreateMutable()
         let bounds = CGRectInset(cell.bounds, 10, 0)
@@ -115,11 +115,10 @@ class ViolationViewController: UIViewController ,UITableViewDelegate,UITableView
             CGPathAddRect(pathRef, nil, bounds);addLine = true
         }
         layer.path = pathRef
-        layer.fillColor = UIColor.whiteColor().CGColor
+        layer.fillColor = XuColorWhite.CGColor
         if addLine {
             let lineLayer = CALayer()
-            //let lineHeight = 1 / UIScreen.mainScreen().scale
-            lineLayer.frame = CGRectMake(CGRectGetMinX(bounds), bounds.size.height - 1, bounds.size.width - 10, 1)
+            lineLayer.frame = CGRectMake(CGRectGetMinX(bounds), bounds.size.height - 1, bounds.size.width , 1)
             lineLayer.backgroundColor = tableView.separatorColor?.CGColor
             layer.addSublayer(lineLayer)
         }
