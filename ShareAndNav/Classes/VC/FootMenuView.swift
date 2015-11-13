@@ -25,7 +25,7 @@ class FootMenuView: UIView {
         self.backgroundColor = XuColorWhite
         self.layer.cornerRadius = XuCornerRadius
         self.layer.borderColor = UIColor(red: 0.7, green: 0.7, blue: 0.7, alpha: 1).CGColor
-        self.layer.borderWidth = 1
+        self.layer.borderWidth = 0.5
         self.layer.shadowColor = UIColor.grayColor().CGColor//UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1).CGColor
         self.layer.shadowOffset = CGSizeMake(3, 2)
         self.layer.shadowOpacity = 0.8

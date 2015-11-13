@@ -19,6 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         MAMapServices.sharedServices().apiKey = XuAPIKey
         AMapSearchServices.sharedServices().apiKey = XuAPIKey
         
+        if XuRegularExpression.isVaild(KeyChain.get(XuCurrentUser), fortype: XuRegularType.phone) {
+            //let masterNav = UINavigationController(rootViewController: MasterViewController())
+            
+        }
+        
         return true
     }
 

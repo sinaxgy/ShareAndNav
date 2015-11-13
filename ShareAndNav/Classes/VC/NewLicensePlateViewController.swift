@@ -19,11 +19,14 @@ class NewLicensePlateViewController: UIViewController {
     
     @IBOutlet weak var plateTextField: UITextField!
     
+    var isNewLogin = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "跳过", style: UIBarButtonItemStyle.Plain, target: self, action: "skipThisTap:")
+        if isNewLogin {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "跳过", style: UIBarButtonItemStyle.Plain, target: self, action: "skipThisTap:")
+        }
         
         self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([
             NSForegroundColorAttributeName:XuColorBlue,
@@ -34,7 +37,7 @@ class NewLicensePlateViewController: UIViewController {
         
         boundsView.layer.borderWidth = 1.0
         boundsView.layer.cornerRadius = 6.0
-        boundsView.layer.borderColor = XuColorWhite.CGColor
+        boundsView.layer.borderColor = XuColorGrayThin.CGColor
         
         determineButton.layer.cornerRadius = 6.0
         
@@ -51,7 +54,10 @@ class NewLicensePlateViewController: UIViewController {
     }
 
     @IBAction func determainAction(sender: AnyObject) {
-        self.skipThisTap(nil)
+        if isNewLogin {
+            self.skipThisTap(nil)
+        }
+        
     }
     
     @IBAction func checkedClicked(sender: AnyObject) {
@@ -70,16 +76,4 @@ class NewLicensePlateViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

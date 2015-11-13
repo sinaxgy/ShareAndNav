@@ -23,7 +23,7 @@ enum XuRegularType {
 
 class XuRegularExpression: NSObject {
     
-    class func isVaild(value:String,fortype type:XuRegularType) -> Bool {
+    class func isVaild(value:String?,fortype type:XuRegularType) -> Bool {
         var predicateString:String = ""
         switch type {
         case .digital:

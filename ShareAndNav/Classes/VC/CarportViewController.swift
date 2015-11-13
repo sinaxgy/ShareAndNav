@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CarportViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource{
+class CarportViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource,CarportSharesCellDelegate{
     
     private var tableView:UITableView!
     private var carportArray:NSMutableArray = []
@@ -42,21 +42,17 @@ class CarportViewController: UIViewController ,UITableViewDelegate,UITableViewDa
         
         let path = NSBundle.mainBundle().pathForResource("Carport", ofType: ".plist")
         for ele in NSArray(contentsOfFile: path!)! {
-            print(ele)
             self.carportArray.addObject(Carport(dict: ele as! NSDictionary))
         }
     }
     
     //MARK: --UITableViewDataSource
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
+        return self.carportArray.count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 3
-        }
-        return 4
+        return 3
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -70,28 +66,100 @@ class CarportViewController: UIViewController ,UITableViewDelegate,UITableViewDa
         label.text = "车位\(section + 1)"
         label.font = UIFont.systemFontOfSize(XuTextSizeMiddle)
         view.addSubview(label)
+        
         return view
+    }
+    
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == self.carportArray.count - 1 {
+            return 30
+        }
+        return 0
+    }
+    
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        guard section == self.carportArray.count - 1 else {return nil}
+        let view = UIView(frame: tableView.rectForFooterInSection(section))
+        view.backgroundColor = XuColorGrayThin
+        let ruleButton = UIButton(type: UIButtonType.System);let str:NSString = "《车位分享规则》"
+        ruleButton.setTitle(str as String, forState: UIControlState.Normal)
+        ruleButton.titleLabel?.font = UIFont.systemFontOfSize(XuTextSizeMiddle)
+        ruleButton.setTitleColor(XuColorBlueThin, forState: UIControlState.Normal)
+        ruleButton.addTarget(self, action: "showAcProtocol:", forControlEvents: UIControlEvents.TouchUpInside)
+        view.addSubview(ruleButton)
+        ruleButton.frame = CGRectMake(5, 10, XuTextSizeMiddle * CGFloat(str.length), 20)
+        
+        let button = UIButton(type: UIButtonType.System)
+        button.frame = CGRectMake(XuWidth - 70, 10, 60, 20)
+        button.setTitle("添加车位", forState: UIControlState.Normal)
+        button.titleLabel?.font = UIFont.systemFontOfSize(XuTextSizeMiddle)
+        button.setTitleColor(XuColorBlueThin, forState: UIControlState.Normal)
+        button.addTarget(self, action: "addCarlincense:", forControlEvents: UIControlEvents.TouchUpInside)
+        view.addSubview(button)
+        
+        let addBtn = UIButton(type: UIButtonType.System)
+        addBtn.frame = CGRectMake(CGRectGetMinX(button.frame) - 25, 13, 25, 15)
+        addBtn.setImage(UIImage(named: "add"), forState: UIControlState.Normal)
+        addBtn.addTarget(self, action: "addCarlincense:", forControlEvents: UIControlEvents.TouchUpInside)
+        view.addSubview(addBtn)
+        
+        return view
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.row == 2 {
+            guard let carport = self.carportArray[indexPath.section] as? Carport else {return 0}
+            return (CGFloat(carport.shares!.count) + 1) * XuCellHeight
+        }
+        return XuCellHeight
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         guard let carport = self.carportArray[indexPath.section] as? Carport else {return UITableViewCell()}
         
-        print(carport)
-        
         switch indexPath.row {
         case 0:
-            var cell = tableView.dequeueReusableCellWithIdentifier("cell0")
+            var cell = tableView.dequeueReusableCellWithIdentifier("cell0") as? UniversalTableViewCell
             if cell == nil {
                 cell = UniversalTableViewCell(universalStyle: UniversalCellStyle.RightButton, reuseIdentifier: "cell0")
             }
-            
+            let title:NSMutableString = NSMutableString(string: carport.title!)
+            if carport.isrent {
+                title.appendString("（租赁\(carport.payway!)）")
+                cell?.rightButtonTitle = "续费"
+            }
+            cell?.leftLabelText = title as String
+            cell?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+            cell?.backgroundColor = XuColorGrayThin
+            return cell!
+        case 1:
+            var cell = tableView.dequeueReusableCellWithIdentifier("cell1") as? UniversalTableViewCell
+            if cell == nil {
+                cell = UniversalTableViewCell(universalStyle: UniversalCellStyle.RightLabel, reuseIdentifier: "cell1")
+            }
+            cell?.leftLabelText = "车位收益"
+            cell?.rightLabelText = carport.revenue
+            cell?.backgroundColor = XuColorGrayThin
+            return cell!
+        case 2:
+            var cell = tableView.dequeueReusableCellWithIdentifier("cell2") as? CarportTableViewCell
+            if cell == nil {
+                cell = CarportTableViewCell(reuseIdentifier: "cell2")
+                cell?.delegate = self
+            }
+            cell?.shares = carport.shares!
+            cell?.backgroundColor = XuColorGrayThin
             return cell!
         default:return UITableViewCell()
         }
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+    }
+    
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        let layer = CAShapeLayer();var addLine = false;let cornerRadius:CGFloat = 5
+        let layer = CAShapeLayer();let cornerRadius:CGFloat = 5
         let pathRef = CGPathCreateMutable()
         let bounds = CGRectInset(cell.bounds, 10, 0)
         if indexPath.row == 0 && indexPath.row == tableView.numberOfRowsInSection(indexPath.section) - 1 {
@@ -101,34 +169,55 @@ class CarportViewController: UIViewController ,UITableViewDelegate,UITableViewDa
             CGPathAddArcToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMinY(bounds), CGRectGetMaxX(bounds), CGRectGetMinY(bounds), cornerRadius)
             CGPathAddArcToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMinY(bounds), CGRectGetMaxX(bounds), CGRectGetMaxY(bounds), cornerRadius)
             CGPathAddLineToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMaxY(bounds))
-            //addLine = true
         }else if indexPath.row == tableView.numberOfRowsInSection(indexPath.section) - 1 {
             CGPathMoveToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMinY(bounds))
             CGPathAddArcToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMaxY(bounds), CGRectGetMaxX(bounds), CGRectGetMaxY(bounds), cornerRadius)
             CGPathAddArcToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMaxY(bounds), CGRectGetMaxX(bounds), CGRectGetMinY(bounds), cornerRadius)
             CGPathAddLineToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMinY(bounds))
         }else {
-            CGPathAddRect(pathRef, nil, bounds);addLine = true
+            CGPathAddRect(pathRef, nil, bounds)
         }
         layer.path = pathRef
-        layer.fillColor = UIColor.whiteColor().CGColor
-        if addLine {
-            let lineLayer = CALayer()
-            let lineHeight = 1 / UIScreen.mainScreen().scale
-            lineLayer.frame = CGRectMake(CGRectGetMinX(bounds) + 10, bounds.size.height - lineHeight, bounds.size.width - 10, lineHeight)
-            lineLayer.backgroundColor = tableView.separatorColor?.CGColor
-            layer.addSublayer(lineLayer)
-        }
+        layer.fillColor = XuColorWhite.CGColor
+        let lineLayer = CALayer()
+        let lineHeight = 1 / UIScreen.mainScreen().scale
+        lineLayer.frame = CGRectMake(CGRectGetMinX(bounds), bounds.size.height - lineHeight, bounds.size.width, lineHeight)
+        lineLayer.backgroundColor = tableView.separatorColor?.CGColor
+        layer.addSublayer(lineLayer)
         let testView = UIView(frame: bounds)
         testView.layer.insertSublayer(layer, atIndex: 0)
         testView.backgroundColor = UIColor.clearColor()
         cell.backgroundView = testView
     }
     
+    //MARK:--CarportSharesCellDelegate
+    func CarportButtonClicked(cell: UITableViewCell) {
+        let indexPath = tableView.indexPathForCell(cell)
+        print(indexPath?.row)
+    }
+    
+    func CarportSwitchChanged(cell: UITableViewCell, boolValue: Bool,index:Int) {
+        let indexPath = tableView.indexPathForCell(cell)
+        print("switch>>>>>>>>index:\(index)")
+        print(indexPath?.section)
+        print(boolValue)
+        
+    }
+    
     //MARK: --ControllerAction
     func showMessageView(sender:UIBarButtonItem) {
         let messageVC = MessageViewController()
         self.navigationController?.pushViewController(messageVC, animated: true)
+        
+    }
+    
+    func showAcProtocol(sender:UIButton) {
+        self.navigationController?.pushViewController(AcProtocolViewController(), animated: true)
+    }
+    
+    func addCarlincense(sender:UIButton) {
+        let newLincenseVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("NewLicensePlateViewController")
+        self.navigationController?.pushViewController(newLincenseVC, animated: true)
     }
 
     override func didReceiveMemoryWarning() {

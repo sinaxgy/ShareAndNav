@@ -14,21 +14,18 @@
 		</dict>
 		<key>revenue</key>
 		<string>¥25.00</string>
-		<key>share</key>
+		<key>shares</key>
 		<array>
 			<array>
 				<string>16:00-08:00</string>
-				<false/>
 				<string></string>
+				<false/>
 			</array>
-			<dict>
-				<key>time</key>
-				<string>17：00-09：00</string>
-				<key>isOn</key>
-				<true/>
-				<key>weekly</key>
+			<array>
+				<string>17:00-09:00</string>
 				<string>日、一、二、四、五</string>
-			</dict>
+				<true/>
+			</array>
 		</array>
 	</dict>
 	<dict>
@@ -42,21 +39,18 @@
 			<string></string>
 		</dict>
 		<key>revenue</key>
-		<string>¥16：00</string>
-		<key>share</key>
+		<string>¥16.00</string>
+		<key>shares</key>
 		<array>
-			<dict>
-				<key>time</key>
-				<string>08：00-16：00</string>
-				<key>isOn</key>
-				<true/>
-				<key>weekly</key>
+			<array>
+				<string>08:00-16:00</string>
 				<string>日、六</string>
-			</dict>
+				<true/>
+			</array>
 			<array>
 				<string>09:00-17:00</string>
-				<true/>
 				<string>日、一、二、四、五</string>
+				<true/>
 			</array>
 		</array>
 	</dict>

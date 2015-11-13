@@ -1,21 +1,21 @@
 //
-//  MessageViewController.swift
+//  AcProtocolViewController.swift
 //  ShareAndNav
 //
-//  Created by 徐成 on 15/11/5.
+//  Created by xubupt218 on 15/11/13.
 //  Copyright © 2015年 徐成. All rights reserved.
 //
 
 import UIKit
 
-class MessageViewController: UIViewController {
+class AcProtocolViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         self.view.backgroundColor = XuColorWhite
-        self.navigationItem.title = "消息"
+        self.navigationItem.title = "协议"
         
         self.initView()
     }
@@ -30,5 +30,4 @@ class MessageViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 }
