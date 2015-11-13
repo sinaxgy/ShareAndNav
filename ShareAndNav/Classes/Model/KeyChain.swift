@@ -18,12 +18,29 @@ extension NSDictionary {
     }
 }
 
+extension NSArray {
+    func dataValue() -> NSData {
+        let data = NSMutableData()
+        let archiver = NSKeyedArchiver(forWritingWithMutableData: data)
+        archiver.encodeObject(self, forKey: "key")
+        archiver.finishEncoding()
+        return data
+    }
+}
+
 extension NSData {
     func dictionaryValue() -> NSDictionary {
         let unarchiver = NSKeyedUnarchiver(forReadingWithData: NSMutableData(data: self))
         let dictionary = unarchiver.decodeObjectForKey("key") as! NSDictionary
         unarchiver.finishDecoding()
         return dictionary
+    }
+    
+    func arrayValue() -> NSArray {
+        let unarchiver = NSKeyedUnarchiver(forReadingWithData: NSMutableData(data: self))
+        let array = unarchiver.decodeObjectForKey("key") as! NSArray
+        unarchiver.finishDecoding()
+        return array
     }
 }
 
@@ -67,6 +84,16 @@ class KeyChain: NSObject {
         return SecItemAdd(query, nil) == noErr
     }
     
+    class func setArray(xArray:NSArray,forkey key:String) -> Bool {
+        KeyChain.remove(key)
+        let query = [
+            XuKeyChainConstants.xClass       : kSecClassGenericPassword,
+            XuKeyChainConstants.xAttrAcount  : " \(key)",
+            XuKeyChainConstants.xValueData   : xArray.dataValue(),
+            XuKeyChainConstants.xAccessible  : kSecAttrAccessibleWhenUnlocked]
+        return SecItemAdd(query, nil) == noErr
+    }
+    
     class func get(key:String) -> String? {
         guard let data = KeyChain.data(key) else {return nil}
         return NSString(data: (data as NSData), encoding: NSUTF8StringEncoding) as? String
@@ -75,6 +102,11 @@ class KeyChain: NSObject {
     class func getDictionary(key:String) -> NSDictionary? {
         guard let data = KeyChain.data(key) else {return nil}
         return data.dictionaryValue()
+    }
+    
+    class func getArray(key:String) -> NSArray? {
+        guard let data = KeyChain.data(key) else {return nil}
+        return data.arrayValue()
     }
     
     class func remove(key:String) -> Bool {
@@ -161,9 +193,10 @@ class KeyChain: NSObject {
         }
         if status == noErr {
             let opaque = (result as! Unmanaged<AnyObject>).toOpaque()
-            let retrievedData = Unmanaged<NSDictionary>.fromOpaque(opaque).takeUnretainedValue()
-            let IP = retrievedData.objectForKey(kSecAttrServer) as! NSString
-            return IP
+            let retrievedData = Unmanaged<NSArray>.fromOpaque(opaque).takeUnretainedValue()
+            print(retrievedData)
+            //let IP = retrievedData.objectForKey(kSecAttrServer) as! NSString
+            //return IP
             
         }
 //        SecItemCopyMatching(keyChainItem,(UnsafeMutablePointer)&queryResult)
@@ -191,9 +224,10 @@ class KeyChain: NSObject {
         }
         if status == noErr {
             let opaque = (result as! Unmanaged<AnyObject>).toOpaque()
-            let retrievedData = Unmanaged<NSDictionary>.fromOpaque(opaque).takeUnretainedValue()
-            let IP = retrievedData.objectForKey(kSecAttrServer) as! NSString
-            return IP
+            let retrievedData = Unmanaged<NSArray>.fromOpaque(opaque).takeUnretainedValue()
+            print(retrievedData)
+            //let IP = retrievedData.objectForKey(kSecAttrServer) as! NSString
+            //return IP
         
         }
 //        let opaque = queryResult?.toOpaque()

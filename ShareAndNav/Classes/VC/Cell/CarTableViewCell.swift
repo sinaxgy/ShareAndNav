@@ -47,7 +47,6 @@ class CarTableViewCell: UITableViewCell ,UITableViewDataSource,UITableViewDelega
     }
     
     func initTableView() {
-        print("self.frame.height:\(self.frame.height)")
         subTableView = UITableView(frame: CGRectMake(0, 0, XuWidth, self.frame.height), style: UITableViewStyle.Plain)
         subTableView?.backgroundColor = UIColor.clearColor()//XuColorGrayThin
         subTableView?.scrollEnabled = false
@@ -139,8 +138,7 @@ class CarTableViewCell: UITableViewCell ,UITableViewDataSource,UITableViewDelega
             cell.delegate = self
             cell.setupWithCarOwnership(xcos)
             cell.separatorInset = UIEdgeInsetsMake(0, 0, 110, 300)
-            cell.backgroundColor = UIColor.clearColor()//XuColorGrayThin
-            cell.selectionStyle = UITableViewCellSelectionStyle.None
+            cell.backgroundColor = UIColor.clearColor()
             return cell
         }else {
             var cell = tableView.dequeueReusableCellWithIdentifier("textCell")
@@ -153,11 +151,14 @@ class CarTableViewCell: UITableViewCell ,UITableViewDataSource,UITableViewDelega
             label.text = "账户\(text!)为您的车辆开启在线支付功能"
             label.font = UIFont.systemFontOfSize(XuTextSizeSmallest)
             label.textColor = XuColorGray
-            cell?.backgroundColor = UIColor.clearColor()//XuColorGrayThin
+            cell?.backgroundColor = UIColor.clearColor()
             cell?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-            cell!.selectionStyle = UITableViewCellSelectionStyle.None
             return cell!
         }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -167,7 +168,7 @@ class CarTableViewCell: UITableViewCell ,UITableViewDataSource,UITableViewDelega
         let lineLayer = CALayer()
         let lineHeight = 1 / UIScreen.mainScreen().scale
         lineLayer.frame = CGRectMake(CGRectGetMinX(bounds) + 45, bounds.size.height - lineHeight, 135, lineHeight)
-        lineLayer.backgroundColor = tableView.separatorColor?.CGColor
+        lineLayer.backgroundColor = XuColorGrayThin.CGColor
         layer.addSublayer(lineLayer)
         let testView = UIView(frame: bounds)
         testView.layer.insertSublayer(layer, atIndex: 0)

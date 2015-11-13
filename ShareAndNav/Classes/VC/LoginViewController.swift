@@ -135,6 +135,8 @@ class LoginViewController: UIViewController {
     func loginAction(sender:UIButton) {
         UITextField.appearance().resignFirstResponder()
         
+        print(KeyChain.set(userTextField.text!, forkey: XuCurrentUser))
+        
         if KeyChain.set(pwTextField.text!, forkey: userTextField.text!) {
             currentUser = userTextField.text!
             if timer != nil {timer.invalidate()}
@@ -150,8 +152,8 @@ class LoginViewController: UIViewController {
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "OnTimer:", userInfo: nil, repeats: true)
     }
     
-    func showAgreement(sender:UIButton) {
-        
+    func showAcProtocol(sender:UIButton) {
+        self.navigationController?.pushViewController(AcProtocolViewController(), animated: true)
     }
     
     func OnTimer(timer:NSTimer) {
@@ -190,8 +192,7 @@ class LoginViewController: UIViewController {
         self.view.addSubview(label)
         
         self.userTextField = UITextField(frame: CGRectMake(20, originHeight + ctrlHeight + gap * 3, CGRectGetWidth(self.view.frame) - 40, ctrlHeight))
-        //self.userTextField.keyboardType = UIKeyboardType.DecimalPad
-        userTextField.inputView = XuPickerView(style: XuPickerStyle.Date)
+        self.userTextField.keyboardType = UIKeyboardType.DecimalPad
         self.userTextField.placeholder = "手机"
         self.view.addSubview(self.userTextField)
         
@@ -212,7 +213,7 @@ class LoginViewController: UIViewController {
         attributedText.addAttributes([NSForegroundColorAttributeName:XuColorBlueThin], range: NSMakeRange(attributedText.length - 6, 6))
         textBtn.frame = CGRectMake(20, originHeight + ctrlHeight + gap * 6 + 10, CGFloat(attributedText.length) * 12, 15)
         textBtn.setAttributedTitle(attributedText, forState: UIControlState.Normal)
-        textBtn.addTarget(self, action: "showAgreement:", forControlEvents: UIControlEvents.TouchUpInside)
+        textBtn.addTarget(self, action: "showAcProtocol:", forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(textBtn)
         
         loginBtn = UIButton(type: UIButtonType.System)
@@ -243,9 +244,9 @@ class LoginViewController: UIViewController {
             dynamicCodeBtn.addTarget(self, action: "getDynamicCode:", forControlEvents: UIControlEvents.TouchUpInside)
             self.view.addSubview(dynamicCodeBtn)
             
-            //self.pwTextField.keyboardType = UIKeyboardType.NumberPad
+            self.pwTextField.keyboardType = UIKeyboardType.NumberPad
             self.pwTextField.placeholder = "动态密码"
-            pwTextField.inputView = XuPickerView(style: XuPickerStyle.CityAndArea)
+            //pwTextField.inputView = XuPickerView(style: XuPickerStyle.CityAndArea)
             
         default:
             changeBtn.setTitle("动态密码登录", forState: UIControlState.Normal)

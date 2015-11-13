@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8FE1421E1BF5C86400C236A8 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE1421D1BF5C86400C236A8 /* Helper.swift */; };
+		8FE142201BF5D55600C236A8 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE1421F1BF5D55600C236A8 /* HeaderView.swift */; };
+		8FE142221BF5EF2E00C236A8 /* ReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE142211BF5EF2E00C236A8 /* ReceiptViewController.swift */; };
+		8FE142241BF606FF00C236A8 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE142231BF606FF00C236A8 /* SettingViewController.swift */; };
+		8FE142261BF60F4100C236A8 /* AcProtocolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE142251BF60F4100C236A8 /* AcProtocolViewController.swift */; };
+		8FE71C301BF4CABD0043208F /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE71C2F1BF4CABD0043208F /* PersonalViewController.swift */; };
+		8FE71C321BF4D22B0043208F /* PayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE71C311BF4D22B0043208F /* PayViewController.swift */; };
+		8FE71C341BF4D2CB0043208F /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE71C331BF4D2CB0043208F /* HistoryViewController.swift */; };
 		C5022EC41BE0A9B400DBC2FF /* UniversalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5022EC31BE0A9B400DBC2FF /* UniversalTableViewCell.swift */; };
 		C50E7FF21BDB7D28002BA56D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50E7FF11BDB7D28002BA56D /* AppDelegate.swift */; };
 		C50E7FF71BDB7D28002BA56D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C50E7FF51BDB7D28002BA56D /* Main.storyboard */; };
@@ -38,8 +46,6 @@
 		C58CC8961BF04A3B006D4F96 /* XuPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58CC8951BF04A3B006D4F96 /* XuPickerView.swift */; };
 		C58CC8991BF0788A006D4F96 /* Violations.plist in Resources */ = {isa = PBXBuildFile; fileRef = C58CC8981BF0788A006D4F96 /* Violations.plist */; };
 		C58CC89B1BF07AFF006D4F96 /* ViolationObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58CC89A1BF07AFF006D4F96 /* ViolationObject.swift */; };
-		C58CC89E1BF088E7006D4F96 /* VioInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58CC89C1BF088E7006D4F96 /* VioInfoTableViewCell.swift */; };
-		C58CC89F1BF088E7006D4F96 /* VioInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C58CC89D1BF088E7006D4F96 /* VioInfoTableViewCell.xib */; };
 		C58CC8A41BF0E0A5006D4F96 /* CityAndArea.plist in Resources */ = {isa = PBXBuildFile; fileRef = C58CC8A31BF0E0A5006D4F96 /* CityAndArea.plist */; };
 		C59B32DE1BE7AA4F00AAE98C /* SubMasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59B32DD1BE7AA4F00AAE98C /* SubMasterView.swift */; };
 		C5A8E84D1BE306D5008AD59B /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C5A8E84C1BE306D5008AD59B /* AMap.bundle */; };
@@ -87,6 +93,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8FE1421D1BF5C86400C236A8 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		8FE1421F1BF5D55600C236A8 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeaderView.swift; path = Classes/VC/View/HeaderView.swift; sourceTree = "<group>"; };
+		8FE142211BF5EF2E00C236A8 /* ReceiptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReceiptViewController.swift; path = Classes/VC/ReceiptViewController.swift; sourceTree = "<group>"; };
+		8FE142231BF606FF00C236A8 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingViewController.swift; path = Classes/VC/SettingViewController.swift; sourceTree = "<group>"; };
+		8FE142251BF60F4100C236A8 /* AcProtocolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AcProtocolViewController.swift; path = Classes/VC/AcProtocolViewController.swift; sourceTree = "<group>"; };
+		8FE71C2F1BF4CABD0043208F /* PersonalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersonalViewController.swift; path = Classes/VC/PersonalViewController.swift; sourceTree = "<group>"; };
+		8FE71C311BF4D22B0043208F /* PayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PayViewController.swift; path = Classes/VC/PayViewController.swift; sourceTree = "<group>"; };
+		8FE71C331BF4D2CB0043208F /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HistoryViewController.swift; path = Classes/VC/HistoryViewController.swift; sourceTree = "<group>"; };
 		C5022EC31BE0A9B400DBC2FF /* UniversalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UniversalTableViewCell.swift; path = Classes/VC/Cell/UniversalTableViewCell.swift; sourceTree = "<group>"; };
 		C50E7FEE1BDB7D28002BA56D /* ShareAndNav.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareAndNav.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C50E7FF11BDB7D28002BA56D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -120,8 +134,6 @@
 		C58CC8951BF04A3B006D4F96 /* XuPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XuPickerView.swift; path = Classes/VC/View/XuPickerView.swift; sourceTree = "<group>"; };
 		C58CC8981BF0788A006D4F96 /* Violations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Violations.plist; path = Resources/Violations.plist; sourceTree = "<group>"; };
 		C58CC89A1BF07AFF006D4F96 /* ViolationObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViolationObject.swift; path = Classes/Model/ViolationObject.swift; sourceTree = "<group>"; };
-		C58CC89C1BF088E7006D4F96 /* VioInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VioInfoTableViewCell.swift; path = Classes/VC/Cell/VioInfoTableViewCell.swift; sourceTree = "<group>"; };
-		C58CC89D1BF088E7006D4F96 /* VioInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VioInfoTableViewCell.xib; path = Classes/VC/Cell/VioInfoTableViewCell.xib; sourceTree = "<group>"; };
 		C58CC8A31BF0E0A5006D4F96 /* CityAndArea.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = CityAndArea.plist; path = Resources/CityAndArea.plist; sourceTree = "<group>"; };
 		C59B32DD1BE7AA4F00AAE98C /* SubMasterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubMasterView.swift; path = Classes/VC/SubMasterView.swift; sourceTree = "<group>"; };
 		C5A8E84C1BE306D5008AD59B /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AMap.bundle; path = Framework/AMap.bundle; sourceTree = "<group>"; };
@@ -222,6 +234,12 @@
 				C5BA4FA91BEB327100EF6832 /* CarportViewController.swift */,
 				C5BA4FA71BEB2F5500EF6832 /* ViolationViewController.swift */,
 				C5BA4FAB1BEB355100EF6832 /* MessageViewController.swift */,
+				8FE71C2F1BF4CABD0043208F /* PersonalViewController.swift */,
+				8FE71C331BF4D2CB0043208F /* HistoryViewController.swift */,
+				8FE71C311BF4D22B0043208F /* PayViewController.swift */,
+				8FE142211BF5EF2E00C236A8 /* ReceiptViewController.swift */,
+				8FE142231BF606FF00C236A8 /* SettingViewController.swift */,
+				8FE142251BF60F4100C236A8 /* AcProtocolViewController.swift */,
 				C5843E511BDF6BB00074C785 /* HomeViewController.h */,
 				C5843E521BDF6BB00074C785 /* HomeViewController.m */,
 				C57A475D1BEC543C00D65AA9 /* Cell */,
@@ -256,6 +274,7 @@
 		C544A4A31BE89602004607DD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8FE1421F1BF5D55600C236A8 /* HeaderView.swift */,
 				C59B32DD1BE7AA4F00AAE98C /* SubMasterView.swift */,
 				C5843E451BDF5E380074C785 /* FootMenuView.swift */,
 				C58CC8951BF04A3B006D4F96 /* XuPickerView.swift */,
@@ -282,8 +301,6 @@
 				C57A475B1BEC542F00D65AA9 /* CarTableViewCell.swift */,
 				C5022EC31BE0A9B400DBC2FF /* UniversalTableViewCell.swift */,
 				C5FF79CE1BF1FAEB00CAA14A /* CarportTableViewCell.swift */,
-				C58CC89C1BF088E7006D4F96 /* VioInfoTableViewCell.swift */,
-				C58CC89D1BF088E7006D4F96 /* VioInfoTableViewCell.xib */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -293,6 +310,7 @@
 			children = (
 				C5C4EC3A1BEA06D00058B286 /* XuUserDefault.swift */,
 				C5843DBA1BDDB89C0074C785 /* TypeDefine.swift */,
+				8FE1421D1BF5C86400C236A8 /* Helper.swift */,
 				C5C4EC391BEA06D00058B286 /* XuRegularExpression.swift */,
 				C5843DED1BDE71D80074C785 /* KeyChain.swift */,
 				C5843DEE1BDE71D80074C785 /* SwiftColors.swift */,
@@ -453,7 +471,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C58CC89F1BF088E7006D4F96 /* VioInfoTableViewCell.xib in Resources */,
 				C50E7FFC1BDB7D28002BA56D /* LaunchScreen.storyboard in Resources */,
 				C58CC88F1BF02E6F006D4F96 /* Carport.plist in Resources */,
 				C58CC8A41BF0E0A5006D4F96 /* CityAndArea.plist in Resources */,
@@ -489,8 +506,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C58CC89B1BF07AFF006D4F96 /* ViolationObject.swift in Sources */,
+				8FE71C341BF4D2CB0043208F /* HistoryViewController.swift in Sources */,
+				8FE71C321BF4D22B0043208F /* PayViewController.swift in Sources */,
+				8FE142221BF5EF2E00C236A8 /* ReceiptViewController.swift in Sources */,
 				C5843E461BDF5E380074C785 /* FootMenuView.swift in Sources */,
-				C58CC89E1BF088E7006D4F96 /* VioInfoTableViewCell.swift in Sources */,
+				8FE142241BF606FF00C236A8 /* SettingViewController.swift in Sources */,
 				C5022EC41BE0A9B400DBC2FF /* UniversalTableViewCell.swift in Sources */,
 				C5C4EC3B1BEA06D00058B286 /* XuRegularExpression.swift in Sources */,
 				C58CC8911BF0349A006D4F96 /* Carport.swift in Sources */,
@@ -502,17 +522,21 @@
 				C5843E531BDF6BB00074C785 /* HomeViewController.m in Sources */,
 				C57A475C1BEC542F00D65AA9 /* CarTableViewCell.swift in Sources */,
 				C57A475A1BEC454F00D65AA9 /* CarOwnership.swift in Sources */,
+				8FE71C301BF4CABD0043208F /* PersonalViewController.swift in Sources */,
 				C5843E431BDF4D5F0074C785 /* NewLicensePlateViewController.swift in Sources */,
 				C5843E481BDF62A40074C785 /* CarMaster.swift in Sources */,
 				C544A4A51BE89673004607DD /* KeyboardDigitalView.swift in Sources */,
+				8FE142201BF5D55600C236A8 /* HeaderView.swift in Sources */,
 				C5843DEF1BDE71D80074C785 /* KeyChain.swift in Sources */,
 				C5BA4FA81BEB2F5500EF6832 /* ViolationViewController.swift in Sources */,
 				C5C8D0F41BEA140C00EAFD0B /* LoginViewController.swift in Sources */,
 				C5BF9FE51BF314A200E0E697 /* UIButton+Block.m in Sources */,
+				8FE1421E1BF5C86400C236A8 /* Helper.swift in Sources */,
 				C5BA4FAC1BEB355100EF6832 /* MessageViewController.swift in Sources */,
 				C5C8D0F71BEA1F8600EAFD0B /* CarViewController.swift in Sources */,
 				C58CC8961BF04A3B006D4F96 /* XuPickerView.swift in Sources */,
 				C5843DBB1BDDB89C0074C785 /* TypeDefine.swift in Sources */,
+				8FE142261BF60F4100C236A8 /* AcProtocolViewController.swift in Sources */,
 				C5843DF21BDE71D80074C785 /* SwiftColors.swift in Sources */,
 				C5C4EC3C1BEA06D00058B286 /* XuUserDefault.swift in Sources */,
 				C58CC8931BF035A3006D4F96 /* CarportShare.swift in Sources */,

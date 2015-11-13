@@ -9,25 +9,47 @@
 import UIKit
 
 enum UniversalCellStyle {
-    case RightButton,RightLabel,RightSwitch,LeftLogo,CarAuthorize//,RightObject
+    case RightButton,RightLabel,RightSwitch,LeftILRightL,CarAuthorize//,RightObject
 }
 
-extension UILabel {
-    func initView() {
-        
-    }
+@objc protocol UniversalTableViewCellDelegate {
+    func rightSwitchChanged(cell:UITableViewCell,boolValue:Bool)
 }
-
 
 class UniversalTableViewCell: UITableViewCell {
     
-    private var leftImage:UIImageView?
+    var delegate:UniversalTableViewCellDelegate?
+    
+    private var leftImageView:UIImageView?
     private var leftLabel:UILabel?
     private var rightLabel:UILabel?
-    private var rSwtch:UISwitch?
-    private var subTableView:UITableView?
+    private var rSwitch:UISwitch?
     private var rButton:UIButton?
+    var rightObject:NSObject?
+    var leftShift:CGFloat = 0 {
+        didSet{
+            guard leftLabel != nil else {return}
+            leftLabel?.center.x += leftShift
+        }
+    }
     
+    var leftImage:UIImage? {
+        didSet{
+            guard leftImageView != nil else {return}
+            leftImageView?.frame = CGRectMake(0, 0, 30, 30 * leftImage!.size.height / leftImage!.size.width)
+            leftImageView?.image = leftImage
+            leftImageView?.center = CGPointMake(35, XuCellHeight / 2)
+            guard leftLabel != nil else {return}
+            leftLabel?.center.x += 40
+        }
+    }
+    
+    var rSwitchState:Bool = false {
+        didSet{
+            guard rSwitch != nil else {return}
+            rSwitch?.on = rSwitchState
+        }
+    }
     
     var leftLabelText:String? {
         didSet{
@@ -35,6 +57,7 @@ class UniversalTableViewCell: UITableViewCell {
             let width = XuTextSizeMiddle * CGFloat(NSString(string: leftLabelText!).length)
             leftLabel?.frame.size = CGSizeMake(width + 10, XuTextSizeMiddle + 5)
             leftLabel?.text = leftLabelText
+            leftLabel?.center = CGPointMake(25 + width / 2, XuCellHeight / 2)
         }
     }
     
@@ -44,7 +67,7 @@ class UniversalTableViewCell: UITableViewCell {
             let width = XuTextSizeMiddle * CGFloat(NSString(string: rightLabelText!).length)
             rightLabel?.frame.size = CGSizeMake(width + 10, XuTextSizeMiddle + 5)
             rightLabel?.text = rightLabelText
-            rightLabel?.center = CGPointMake(XuWidth - width / 2 - 25, XuCellHeight / 2)
+            rightLabel?.center = CGPointMake(XuWidth - width / 2 - 35, XuCellHeight / 2)
         }
     }
     
@@ -54,7 +77,7 @@ class UniversalTableViewCell: UITableViewCell {
             rButton?.setTitle(rightButtonTitle, forState: UIControlState.Normal)
             let width = XuTextSizeMiddle * CGFloat(NSString(string: rightButtonTitle!).length) + 5
             rButton?.frame.size = CGSizeMake(width + 10, XuTextSizeMiddle + 5)
-            rButton?.center = CGPointMake(XuWidth - width / 2 - 25, XuCellHeight / 2)
+            rButton?.center = CGPointMake(XuWidth - width / 2 - 35, XuCellHeight / 2)
         }
     }
     
@@ -67,19 +90,25 @@ class UniversalTableViewCell: UITableViewCell {
         case .RightSwitch:
             self.initRightSwitch()
         case .RightLabel:
-            self.initRightButton()
+            self.initRightLabel()
+        case .LeftILRightL:
+            self.initLeftImageView()
+            self.initRightLabel()
         default:break
         }
     }
     
     init(rightObject:NSObject?,reuseIdentifier:String) {
         super.init(style: UITableViewCellStyle.Default, reuseIdentifier: reuseIdentifier)
+        self.backgroundColor = UIColor.clearColor()
+        self.initLeftLabel()
         switch rightObject {
         case nil:
             break
         case is UIView:
-            (rightObject as! UIView).center = CGPointMake(XuWidth - CGRectGetWidth((rightObject as! UIView).frame) / 2 - 20, XuCellHeight / 2)
-            break
+            self.rightObject = rightObject
+            (rightObject as! UIView).center = CGPointMake(XuWidth - CGRectGetWidth((rightObject as! UIView).frame) / 2 - 30, XuCellHeight / 2)
+            self.addSubview(rightObject as! UIView)
         default:break
         }
     }
@@ -90,6 +119,11 @@ class UniversalTableViewCell: UITableViewCell {
         leftLabel?.font = UIFont.systemFontOfSize(XuTextSizeMiddle)
         leftLabel?.center.y = XuCellHeight / 2
         self.addSubview(leftLabel!)
+    }
+    
+    func initLeftImageView() {
+        leftImageView = UIImageView()
+        self.addSubview(leftImageView!)
     }
     
     func initRightButton() {
@@ -103,19 +137,24 @@ class UniversalTableViewCell: UITableViewCell {
     }
     
     func initRightSwitch() {
-        rSwtch = UISwitch(frame: CGRectZero)
-        rSwtch?.addTarget(self, action: "rightSwitchAction:", forControlEvents: UIControlEvents.ValueChanged)
-        rSwtch?.transform = CGAffineTransformMakeScale(0.7, 0.7)
-        rSwtch?.center = CGPointMake(XuWidth - 45, XuCellHeight / 2)
-        contentView.addSubview(rSwtch!)
+        rSwitch = UISwitch(frame: CGRectZero)
+        rSwitch?.addTarget(self, action: "rightSwitchAction:", forControlEvents: UIControlEvents.ValueChanged)
+        rSwitch?.transform = CGAffineTransformMakeScale(0.7, 0.7)
+        rSwitch?.center = CGPointMake(XuWidth - 45, XuCellHeight / 2)
+        contentView.addSubview(rSwitch!)
     }
     
     func initRightLabel() {
         rightLabel = UILabel(frame: CGRectMake(15, 0, 0, 20))
         rightLabel?.font = UIFont.systemFontOfSize(XuTextSizeMiddle)
         rightLabel?.center.y = XuCellHeight / 2
+        rightLabel?.textAlignment = NSTextAlignment.Right
         self.addSubview(rightLabel!)
+    }
     
+    func setupLeft(image:UIImage,andLabel labelText:String) {
+        self.leftLabelText = labelText
+        self.leftImage = image
     }
     
     //MARK: --control event
@@ -124,7 +163,7 @@ class UniversalTableViewCell: UITableViewCell {
     }
     
     func rightSwitchAction(sender:UISwitch) {
-        
+        delegate?.rightSwitchChanged(self, boolValue: sender.on)
     }
     
     required init?(coder aDecoder: NSCoder) {

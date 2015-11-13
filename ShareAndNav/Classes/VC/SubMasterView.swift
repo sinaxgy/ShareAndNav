@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol SubMasterViewDelegate {
+    func SubMasterClicked(index:Int)
+}
+
 class SubMasterView: UIView ,UITableViewDataSource,UITableViewDelegate{
     
     var tableView:UITableView!
@@ -16,6 +20,7 @@ class SubMasterView: UIView ,UITableViewDataSource,UITableViewDelegate{
     let section2 = ["优惠":"3张","推荐有奖":"停车享优惠"]
     let section3 = ["设置":""]
     var tableArray : NSMutableArray = []//section0,section1,section2,section3]
+    var delegate:SubMasterViewDelegate?
     
     init() {
         super.init(frame: UIScreen.mainScreen().bounds)//CGRectMake(0, 0, XuWidth * 2 / 3, UIScreen.mainScreen().bounds.size.height))
@@ -69,10 +74,10 @@ class SubMasterView: UIView ,UITableViewDataSource,UITableViewDelegate{
         label1.font = UIFont.systemFontOfSize(XutextSizeBig)
         view.addSubview(label1)
         view.backgroundColor = UIColor.clearColor()
-        
         line.center.y = view.frame.height - 0.5
-        
         view.addSubview(line)
+        let tap = UITapGestureRecognizer(target: self, action: "headerViewTap:")
+        view.addGestureRecognizer(tap)
         return view
     }
     
@@ -103,14 +108,34 @@ class SubMasterView: UIView ,UITableViewDataSource,UITableViewDelegate{
         cell?.detailTextLabel?.text = dic.objectForKey(String(keys[indexPath.row])) as? String
         cell?.detailTextLabel?.font = UIFont.systemFontOfSize(XuTextSizeSmallest)
         cell?.backgroundColor = UIColor.clearColor()
-        //cell?.separatorInset = UIEdgeInsetsMake(0, 50, 0, 100)
         cell?.selectionStyle = UITableViewCellSelectionStyle.None
-        
         return cell!
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print(indexPath.row)
+        var index = 0
+        switch indexPath.section {
+        case 0:
+            index = 1 + indexPath.row
+        case 1:
+            index = 1 + section0.count + indexPath.row
+        case 2:
+            index = 1 + section0.count + section1.count + indexPath.row
+        case 3:
+            index = 1 + section0.count + section1.count + section2.count + indexPath.row
+        default:break
+        }
+        self.postNotification()
+        delegate?.SubMasterClicked(index)
+    }
+    
+    func headerViewTap(recoginzer:UITapGestureRecognizer) {
+        self.postNotification()
+        delegate?.SubMasterClicked(0)
+    }
+    
+    func postNotification() {
+        NSNotificationCenter.defaultCenter().postNotificationName(NotificationOfHideSubMaster, object: nil)
     }
 
     required init?(coder aDecoder: NSCoder) {

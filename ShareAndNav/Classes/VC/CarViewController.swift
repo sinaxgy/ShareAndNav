@@ -28,13 +28,7 @@ class CarViewController: UIViewController ,UITableViewDelegate,UITableViewDataSo
         
         tableView = UITableView(frame: CGRectMake(0, 0, XuWidth, XuHeight),style: UITableViewStyle.Grouped)
         self.view.addSubview(tableView)
-        
-        tableView.layer.borderWidth = 10
-        tableView.layer.cornerRadius = 15
-        tableView.layer.borderColor = XuColorGrayThin.CGColor
-        tableView.backgroundColor = XuColorGrayThin
-        tableView.separatorColor = XuColorGrayThin
-        
+        XuSetup(tableView)
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -86,19 +80,6 @@ class CarViewController: UIViewController ,UITableViewDelegate,UITableViewDataSo
         label.font = UIFont.systemFontOfSize(XuTextSizeMiddle)
         view.addSubview(label)
         
-        let button = UIButton(type: UIButtonType.Custom)
-        let buttonString:NSString = "我得撤了"
-        button.setup(buttonString as String, fontsize: XuTextSizeMiddle, fontColor: UIColor.whiteColor(), bkColor: XuColorBlue)
-        button.center = CGPointMake(XuWidth - CGFloat(buttonString.length) * XuTextSizeMiddle, 15)
-        view.addSubview(button)
-        button.handleCOntrolEvent(UIControlEvents.TouchUpInside) { (btn) -> Void in
-            print(section)
-            if btn.state == UIControlState.Highlighted {
-                print("hasd")
-            }
-            print(btn.state)
-        }
-        
         return view
     }
     
@@ -109,11 +90,13 @@ class CarViewController: UIViewController ,UITableViewDelegate,UITableViewDataSo
         button.setTitle("添加车辆", forState: UIControlState.Normal)
         button.titleLabel?.font = UIFont.systemFontOfSize(XuTextSizeMiddle)
         button.setTitleColor(XuColorBlueThin, forState: UIControlState.Normal)
+        button.addTarget(self, action: "addCarlincense:", forControlEvents: UIControlEvents.TouchUpInside)
         view.addSubview(button)
         
         let addBtn = UIButton(type: UIButtonType.System)
         addBtn.frame = CGRectMake(CGRectGetMinX(button.frame) - 35, 18, 25, 15)
         addBtn.setImage(UIImage(named: "add"), forState: UIControlState.Normal)
+        addBtn.addTarget(self, action: "addCarlincense:", forControlEvents: UIControlEvents.TouchUpInside)
         view.addSubview(addBtn)
         
         return view
@@ -129,44 +112,16 @@ class CarViewController: UIViewController ,UITableViewDelegate,UITableViewDataSo
         if let xco = array[indexPath.row] as? CarOwnership {
             cell?.setupWithCarOwnership(xco)
         }
-        cell!.selectionStyle = UITableViewCellSelectionStyle.None
         cell?.delegate = self
         return cell!
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+    }
+    
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        let layer = CAShapeLayer();var addLine = true;let cornerRadius:CGFloat = 8
-        let pathRef = CGPathCreateMutable()
-        let bounds = CGRectInset(cell.bounds, 10, 0)
-        if indexPath.row == 0 && indexPath.row == tableView.numberOfRowsInSection(indexPath.section) - 1 {
-            CGPathAddRoundedRect(pathRef, nil, bounds, cornerRadius, cornerRadius)
-        }else if indexPath.row == 0 {   //起点1--2--3，--3--4，终点4
-            CGPathMoveToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMaxY(bounds))
-            CGPathAddArcToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMinY(bounds), CGRectGetMaxX(bounds), CGRectGetMinY(bounds), cornerRadius)
-            CGPathAddArcToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMinY(bounds), CGRectGetMaxX(bounds), CGRectGetMaxY(bounds), cornerRadius)
-            CGPathAddLineToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMaxY(bounds))
-            //addLine = true
-        }else if indexPath.row == tableView.numberOfRowsInSection(indexPath.section) - 1 {
-            CGPathMoveToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMinY(bounds))
-            CGPathAddArcToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMaxY(bounds), CGRectGetMaxX(bounds), CGRectGetMaxY(bounds), cornerRadius)
-            CGPathAddArcToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMaxY(bounds), CGRectGetMaxX(bounds), CGRectGetMinY(bounds), cornerRadius)
-            CGPathAddLineToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMinY(bounds))
-        }else {
-            CGPathAddRect(pathRef, nil, bounds);addLine = true
-        }
-        layer.path = pathRef
-        layer.fillColor = XuColorWhite.CGColor
-        if addLine {
-            let lineLayer = CALayer()
-            let lineHeight = 1 / UIScreen.mainScreen().scale
-            lineLayer.frame = CGRectMake(CGRectGetMinX(bounds), bounds.size.height - lineHeight, bounds.size.width - 10, lineHeight)
-            lineLayer.backgroundColor = tableView.separatorColor?.CGColor
-            layer.addSublayer(lineLayer)
-        }
-        let testView = UIView(frame: bounds)
-        testView.layer.insertSublayer(layer, atIndex: 0)
-        testView.backgroundColor = UIColor.clearColor()
-        cell.backgroundView = testView
+        XutableView(tableView, willDisplayCell: cell, forRowIndexPath: indexPath)
     }
     
     //MARK: --CarTableViewCellDelegate
@@ -176,7 +131,11 @@ class CarViewController: UIViewController ,UITableViewDelegate,UITableViewDataSo
         if let xc = array.objectAtIndex(indexPath!.row) as? CarOwnership {
             xc.isAuthorize = bool
         }
-        
+    }
+    
+    func addCarlincense(sender:UIButton) {
+        let newLincenseVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("NewLicensePlateViewController")
+        self.navigationController?.pushViewController(newLincenseVC, animated: true)
     }
     
     //MARK: --ControllerAction

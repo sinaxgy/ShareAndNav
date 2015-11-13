@@ -8,19 +8,19 @@
 
 import UIKit
 
-class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelegate{
+class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelegate,SubMasterViewDelegate{
     
     var mapView:MAMapView!
     var search:AMapSearchAPI!
     var userLocation:CLLocation!
     
     lazy var movement:CGFloat = 0
-    var secview:UIView?
+    var secview:SubMasterView?
     var blackCoverView:UIView?
     var trackButton:UIButton!
     var subMasterRecoginzerPan:UIPanGestureRecognizer?
     var subMasterRecoginzerTap:UITapGestureRecognizer?
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -77,27 +77,27 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
         self.mapView.addSubview(footView)
         footView.footerViewClicked = {
             (type) in
-            let animation = CATransition()
-            animation.duration = 0.5
-            animation.type = "cube"
-            animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+//            let animation = CATransition()
+//            animation.duration = 0.5
+//            animation.type = "cube"
+//            animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
             switch type {
             case .brand:
-                animation.subtype = kCATransitionFromTop
+                //animation.subtype = kCATransitionFromTop
                 let carVC = CarViewController()
                 self.navigationController?.pushViewController(carVC, animated: true)
             case .violation:
-                animation.subtype = kCATransitionFromLeft
+                //animation.subtype = kCATransitionFromLeft
                 let violationVC = ViolationViewController()
                 self.navigationController?.pushViewController(violationVC, animated: true)
-            case .parkTime:
-                animation.subtype = kCATransitionFromBottom
+            case .parkTime:break
+                //animation.subtype = kCATransitionFromBottom
             case .revenue:
                 let carportVC = CarportViewController()
-                animation.subtype = kCATransitionFromRight
+                //animation.subtype = kCATransitionFromRight
                 self.navigationController?.pushViewController(carportVC, animated: true)
             }
-            self.view.window?.layer.addAnimation(animation, forKey: "push")
+            //self.view.window?.layer.addAnimation(animation, forKey: "push")
         }
     }
     
@@ -136,8 +136,13 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
         //self.search.AMapPOIAroundSearch(request)
     }
     
+    //加油站搜索
     func fuellingSearch(sender:UIButton) {
         
+    }
+    
+    func hideSubMasterView(sender:NSObject) {
+        self.subMasterViewDidDisAppear()
     }
     
     //MARK: --UIGestureRecognizer
@@ -149,7 +154,8 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
         blackCoverView!.addGestureRecognizer(subMasterRecoginzerTap!)
         
         self.navigationController?.view.addSubview(blackCoverView!)
-        secview = SubMasterView()//subMasterView.view
+        secview = SubMasterView()
+        secview?.delegate = self
         subMasterRecoginzerPan = UIPanGestureRecognizer(target: self, action: "panSubMasterView:")
         secview?.addGestureRecognizer(subMasterRecoginzerPan!)
         self.navigationController?.view.addSubview(secview!)
@@ -312,15 +318,28 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "hideSubMasterView:", name: NotificationOfHideSubMaster, object: nil)
     }
-    */
+    
+    override func viewWillDisappear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    //MARK: -- SubMasterViewDelegate
+    func SubMasterClicked(index: Int) {
+        switch index {
+        case 0: self.navigationController?.pushViewController(PersonalViewController(), animated: true)
+        case 1: self.navigationController?.pushViewController(PayViewController(), animated: true)
+        case 2: self.navigationController?.pushViewController(HistoryViewController(), animated: true)
+        case 3: self.navigationController?.pushViewController(CarViewController(), animated: true)
+        case 4: self.navigationController?.pushViewController(CarportViewController(), animated: true)
+        case 5: self.navigationController?.pushViewController(ViolationViewController(), animated: true)
+        case 6: self.navigationController?.pushViewController(PersonalViewController(), animated: true)
+        case 7: self.navigationController?.pushViewController(PersonalViewController(), animated: true)
+        case 8: self.navigationController?.pushViewController(SettingViewController(), animated: true)
+        default:break
+        }
+    }
 
 }
