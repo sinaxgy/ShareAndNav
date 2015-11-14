@@ -12,7 +12,8 @@ class SettingViewController: UIViewController ,UITableViewDelegate,UITableViewDa
     
     private var tableView:UITableView!
     
-    let tbArray = [["修改密码","清理缓存"],["交易消息提醒","活动推送提醒"],["帮助","意见反馈","好评打赏","法律条款","关于我们"],["退出登录"]]
+    let tbArray = [["修改密码","清理缓存"],["交易消息提醒","活动推送提醒"],
+        ["帮助","意见反馈","好评打赏","法律条款","关于我们"],["退 出 登 录"]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +45,13 @@ class SettingViewController: UIViewController ,UITableViewDelegate,UITableViewDa
         return 20
     }
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.section == self.tbArray.count - 1 {
+            return 30
+        }
+        return XuCellHeight
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0,2:
@@ -65,13 +73,13 @@ class SettingViewController: UIViewController ,UITableViewDelegate,UITableViewDa
             cell?.rSwitchState = false
             return cell!
         case 3:
-            let cell = UITableViewCell(frame: tableView.rectForRowAtIndexPath(indexPath))
-            let label = UILabel(frame: tableView.rectForRowAtIndexPath(indexPath))
+            let cell = UITableViewCell(frame: CGRectMake(0, 0, XuWidth, 30))
+            let label = UILabel(frame: CGRectMake(0, 0, XuWidth, 30))
             let text = tbArray[indexPath.section][indexPath.row]
             label.text = text as String
             label.textAlignment = NSTextAlignment.Center
             label.font = UIFont.systemFontOfSize(XuTextSizeMiddle)
-            cell.addSubview(label)
+            cell.contentView.addSubview(label)
             cell.backgroundColor = UIColor.clearColor()
             return cell
         default:return UITableViewCell()
@@ -84,6 +92,15 @@ class SettingViewController: UIViewController ,UITableViewDelegate,UITableViewDa
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        print(indexPath.section)
+        if indexPath.section == 3 {
+            let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("LoginViewController") as? LoginViewController
+            loginVC?.loginType = XuLoginType.Default
+            loginVC?.defaultUser = KeyChain.get(XuCurrentUser)
+            self.presentViewController(loginVC!, animated: true, completion: { () -> Void in
+                KeyChain.set("", forkey: XuCurrentUser)
+            })
+        }
     }
 
     override func didReceiveMemoryWarning() {

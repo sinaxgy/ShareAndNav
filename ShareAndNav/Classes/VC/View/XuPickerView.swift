@@ -12,23 +12,24 @@ enum XuPickerStyle {
     case Time,Date,DateAndTime,Provinces,CityAndArea,City
 }
 
-protocol XuPickerViewDelegate {
-    func pickerViewDidCancel()
-    func pickerViewDidSelected(pickerString:String)
+@objc protocol XuPickerViewDelegate {
+    func XuPickerViewDidCancel()
+    func XuPickerViewDidSelected(pickerString:String)
+    optional func XupickerViewDidChanged(pickerString:String)
 }
 
 class XuPickerView: UIView ,UIPickerViewDataSource,UIPickerViewDelegate{
     
     lazy var datePicker = UIDatePicker()
     var pickerView:UIPickerView?
-    let rectPicker = CGRectMake(0, 44, XuWidth, XuHeight / 4 - 45)
+    let rectPicker = CGRectMake(0, 44, XuWidth, XuHeight / 3 - 45)
     var pathArray:NSArray?
     var delegate:XuPickerViewDelegate?
     lazy var component = 3;lazy var row0 = 0;lazy var row1 = 0
     lazy var addressString:NSMutableString = "北京 通州"
 
     init(style:XuPickerStyle) {
-        super.init(frame: CGRectMake(0, 0, XuWidth, XuHeight / 4))
+        super.init(frame: CGRectMake(0, 0, XuWidth, XuHeight / 3))
         self.layer.borderColor = XuColorGrayThin.CGColor
         self.layer.borderWidth = 1
         self.backgroundColor = XuColorWhite
@@ -83,33 +84,40 @@ class XuPickerView: UIView ,UIPickerViewDataSource,UIPickerViewDelegate{
     
     //MARK:--controller action
     func cancel(sender:UIBarButtonItem) {
-        self.delegate?.pickerViewDidCancel()
+        self.delegate?.XuPickerViewDidCancel()
         print("cancel")
     }
     
     func ensure(sender:UIBarButtonItem) {
         if pickerView != nil {
-            self.addressString = NSMutableString(string: pathArray![pickerView!.selectedRowInComponent(0)]["state"] as! String)
-            let a = dicWithDic(pathArray![pickerView!.selectedRowInComponent(0)] as! NSDictionary, key: "cities", row: pickerView!.selectedRowInComponent(1))
-            self.addressString.appendString(" ")
-            self.addressString.appendString(a.objectForKey("city") as! String)
-            if let areas = a.objectForKey("areas") as? NSArray {
-                if areas.count > 0 {
-                    self.addressString.appendString(" ")
-                    self.addressString.appendString(areas.objectAtIndex(pickerView!.selectedRowInComponent(2)) as! String)
-                }
-            }
-            print(self.addressString)
+            self.getpickerView()
         }else {
             let selectedDate:NSDate = datePicker.date
             let formatter:NSDateFormatter = NSDateFormatter()
             formatter.dateFormat = "yyyy-MM-dd"
-            self.delegate?.pickerViewDidSelected(formatter.stringFromDate(selectedDate))
+            self.delegate?.XuPickerViewDidSelected(formatter.stringFromDate(selectedDate))
         }
     }
     
     func datePickerChanged(datepicker:UIDatePicker) {
-        print("changed")
+        let selectedDate:NSDate = datePicker.date
+        let formatter:NSDateFormatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        delegate?.XupickerViewDidChanged!(formatter.stringFromDate(selectedDate))
+    }
+    
+    func getpickerView() {
+        self.addressString = NSMutableString(string: pathArray![pickerView!.selectedRowInComponent(0)]["state"] as! String)
+        let a = dicWithDic(pathArray![pickerView!.selectedRowInComponent(0)] as! NSDictionary, key: "cities", row: pickerView!.selectedRowInComponent(1))
+        self.addressString.appendString(" ")
+        self.addressString.appendString(a.objectForKey("city") as! String)
+        if let areas = a.objectForKey("areas") as? NSArray {
+        if areas.count > 0 {
+            self.addressString.appendString(" ")
+            self.addressString.appendString(areas.objectAtIndex(pickerView!.selectedRowInComponent(2)) as! String)
+            }
+        }
+        self.delegate?.XuPickerViewDidSelected(addressString as String)
     }
     
     //MARK: --UIPickerViewDelegate
@@ -119,6 +127,7 @@ class XuPickerView: UIView ,UIPickerViewDataSource,UIPickerViewDelegate{
             if self.component > 2 {
                 self.row0 = row
                 self.row1 = 0
+                
                 pickerView.reloadComponent(2)
                 pickerView.reloadComponent(1)
             }else if self.component > 1 {

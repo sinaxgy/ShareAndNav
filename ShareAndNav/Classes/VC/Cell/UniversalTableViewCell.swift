@@ -9,7 +9,7 @@
 import UIKit
 
 enum UniversalCellStyle {
-    case RightButton,RightLabel,RightSwitch,LeftILRightL,CarAuthorize//,RightObject
+    case RightButton,RightLabel,RightSwitch,LeftILRightL,RightTextField//,RightObject
 }
 
 @objc protocol UniversalTableViewCellDelegate {
@@ -22,9 +22,11 @@ class UniversalTableViewCell: UITableViewCell {
     
     private var leftImageView:UIImageView?
     private var leftLabel:UILabel?
-    private var rightLabel:UILabel?
+    private var rLabel:UILabel?
     private var rSwitch:UISwitch?
     private var rButton:UIButton?
+    var rTextField:UITextField?
+    
     var rightObject:NSObject?
     var leftShift:CGFloat = 0 {
         didSet{
@@ -63,11 +65,11 @@ class UniversalTableViewCell: UITableViewCell {
     
     var rightLabelText:String? {
         didSet{
-            guard rightLabel != nil else {return}
+            guard rLabel != nil else {return}
             let width = XuTextSizeMiddle * CGFloat(NSString(string: rightLabelText!).length)
-            rightLabel?.frame.size = CGSizeMake(width + 10, XuTextSizeMiddle + 5)
-            rightLabel?.text = rightLabelText
-            rightLabel?.center = CGPointMake(XuWidth - width / 2 - 35, XuCellHeight / 2)
+            rLabel?.frame.size = CGSizeMake(width + 10, XuTextSizeMiddle + 5)
+            rLabel?.text = rightLabelText
+            rLabel?.center = CGPointMake(XuWidth - width / 2 - 35, XuCellHeight / 2)
         }
     }
     
@@ -78,6 +80,27 @@ class UniversalTableViewCell: UITableViewCell {
             let width = XuTextSizeMiddle * CGFloat(NSString(string: rightButtonTitle!).length) + 5
             rButton?.frame.size = CGSizeMake(width + 10, XuTextSizeMiddle + 5)
             rButton?.center = CGPointMake(XuWidth - width / 2 - 35, XuCellHeight / 2)
+        }
+    }
+    
+    var rightPlaceholder:String? {
+        didSet{
+            guard rTextField != nil else {return}
+            rTextField?.placeholder = rightPlaceholder
+        }
+    }
+    
+    var rightText:String? {
+        didSet{
+            guard rTextField != nil else {return}
+            rTextField?.text = rightText
+        }
+    }
+    
+    var rightTFInputView:UIView? {
+        didSet{
+            guard rTextField != nil else {return}
+            rTextField?.inputView = rightTFInputView
         }
     }
     
@@ -94,7 +117,9 @@ class UniversalTableViewCell: UITableViewCell {
         case .LeftILRightL:
             self.initLeftImageView()
             self.initRightLabel()
-        default:break
+        case .RightTextField:
+            self.initRightTextField()
+        //default:break
         }
     }
     
@@ -145,11 +170,21 @@ class UniversalTableViewCell: UITableViewCell {
     }
     
     func initRightLabel() {
-        rightLabel = UILabel(frame: CGRectMake(15, 0, 0, 20))
-        rightLabel?.font = UIFont.systemFontOfSize(XuTextSizeMiddle)
-        rightLabel?.center.y = XuCellHeight / 2
-        rightLabel?.textAlignment = NSTextAlignment.Right
-        self.addSubview(rightLabel!)
+        rLabel = UILabel(frame: CGRectMake(15, 0, 0, 20))
+        rLabel?.font = UIFont.systemFontOfSize(XuTextSizeMiddle)
+        rLabel?.center.y = XuCellHeight / 2
+        rLabel?.textAlignment = NSTextAlignment.Right
+        self.addSubview(rLabel!)
+    }
+    
+    func initRightTextField() {
+        rTextField = UITextField(frame: CGRectMake(100,0,XuWidth - 125,20))
+        rTextField?.font = UIFont.systemFontOfSize(XuTextSizeMiddle)
+        rTextField?.setValue(UIFont.systemFontOfSize(XuTextSizeSmall), forKeyPath: "_placeholderLabel.font")
+        rTextField?.autocorrectionType = UITextAutocorrectionType.No
+        rTextField?.textAlignment = NSTextAlignment.Right
+        rTextField?.center.y = XuCellHeight / 2
+        self.addSubview(rTextField!)
     }
     
     func setupLeft(image:UIImage,andLabel labelText:String) {

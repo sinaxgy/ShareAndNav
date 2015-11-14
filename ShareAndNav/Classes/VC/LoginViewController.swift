@@ -13,6 +13,7 @@ class LoginViewController: UIViewController {
     var loginType:XuLoginType = XuLoginType.DynamicCode
     lazy var time = 60
     var timer:NSTimer!
+    var defaultUser:String?
     
     private var userTextField:UITextField!
     private var pwTextField:UITextField!
@@ -272,7 +273,7 @@ class LoginViewController: UIViewController {
         self.view.addSubview(imageView)
         
         self.userTextField = UITextField(frame: CGRectMake(20, originHeight + ctrlHeight + gap * 3, CGRectGetWidth(self.view.frame) - 40, ctrlHeight))
-        self.userTextField.text = "13801019898"
+        self.userTextField.text = defaultUser
         self.userTextField.textAlignment = NSTextAlignment.Center
         self.userTextField.enabled = false
         self.view.addSubview(self.userTextField)

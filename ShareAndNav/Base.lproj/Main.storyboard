@@ -88,14 +88,14 @@
                                         </variation>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VSj-Kn-vYr">
-                                        <rect key="frame" x="0.0" y="49" width="580" height="0.5"/>
+                                        <rect key="frame" x="0.0" y="49" width="580" height="1"/>
                                         <color key="backgroundColor" white="0.90835731909999995" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="67X-8j-Olb"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pso-8n-Dp7">
-                                        <rect key="frame" x="0.0" y="100" width="580" height="0.5"/>
+                                        <rect key="frame" x="0.0" y="100" width="580" height="1"/>
                                         <color key="backgroundColor" white="0.90835731909999995" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="Ksx-0c-gVd"/>

@@ -113,6 +113,7 @@ class SubMasterView: UIView ,UITableViewDataSource,UITableViewDelegate{
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
         var index = 0
         switch indexPath.section {
         case 0:

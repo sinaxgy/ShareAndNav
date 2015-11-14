@@ -10,8 +10,7 @@ import UIKit
 
 class PayViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource{
     
-    let payWay:NSArray = [["tag":"visa","account":"个人 *****5310","isCurrent":true],
-        ["tag":"zhifubao","account":"187****1234","isCurrent":false]]
+    var payWay:NSMutableArray = []
     private var tableView:UITableView!
 
     override func viewDidLoad() {
@@ -27,6 +26,8 @@ class PayViewController: UIViewController ,UITableViewDelegate,UITableViewDataSo
         XuSetup(tableView)
         tableView.dataSource = self
         tableView.delegate = self
+        payWay.addObject(NSMutableDictionary(dictionary: ["tag":"visa","account":"个人 *****5310","isCurrent":true]))
+        payWay.addObject(NSMutableDictionary(dictionary: ["tag":"zhifubao","account":"187****1234","isCurrent":false]))
     }
     //MARK: --UITableViewDataSource
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -66,7 +67,9 @@ class PayViewController: UIViewController ,UITableViewDelegate,UITableViewDataSo
         let bText = (section == 0 ? "添加支付方式" : "提 现")
         let view = HeaderView(frame: tableView.rectForHeaderInSection(section), leftText: leftText, rightButtonState: style, rightButtonText: bText)
         view.action = { (sender) in
-            print("section:\(section)")
+            if section == 0 {
+                self.navigationController?.pushViewController(NewPayViewController(), animated: true)
+            }
         }
         return view
     }
@@ -86,6 +89,7 @@ class PayViewController: UIViewController ,UITableViewDelegate,UITableViewDataSo
         leftButton.setup("发 票", fontsize: XuTextSizeMiddle, fontColor: UIColor.whiteColor(), bkColor: XuColorBlue)
         leftButton.handleCOntrolEvent(UIControlEvents.TouchUpInside) { (_) -> Void in
             print("发票")
+            self.navigationController?.pushViewController(ReceiptViewController(), animated: true)
         }
         leftButton.center = CGPointMake(15 + CGRectGetWidth(leftButton.frame) / 2, 20)
         view.addSubview(leftButton)
@@ -106,12 +110,24 @@ class PayViewController: UIViewController ,UITableViewDelegate,UITableViewDataSo
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        if indexPath.section == 0 {
+            self.paywayChanged(indexPath.row)
+            tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
+        }
     }
     
     //MARK: --ControllerAction
     func showMessageView(sender:UIBarButtonItem) {
         let messageVC = MessageViewController()
         self.navigationController?.pushViewController(messageVC, animated: true)
+    }
+    
+    func paywayChanged(selectedIndex:Int) {
+        for ele in payWay {
+            let dic = ele as! NSMutableDictionary
+            dic.setObject(selectedIndex == payWay.indexOfObject(ele), forKey: "isCurrent")
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
