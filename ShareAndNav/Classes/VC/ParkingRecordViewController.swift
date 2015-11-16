@@ -8,41 +8,49 @@
 
 import UIKit
 
-class HistoryViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource{
+class ParkingRecordViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource{
     
-    var records:NSArray!
+    var records:NSMutableArray!
     private var tableView:UITableView!
+    var cellArraydata:NSMutableArray = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.view.backgroundColor = XuColorWhite
         self.navigationItem.title = "历史记录"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "message_off"), style: UIBarButtonItemStyle.Plain, target: self, action: "showMessageView:")
         
         //
+        self.view.backgroundColor = XuColorWhite
         let path = NSBundle.mainBundle().pathForResource("ParkingRecord", ofType: ".plist")
-        for ele in NSArray(contentsOfFile: path!)! {
-            print(ele)
+        self.records = NSMutableArray(contentsOfFile: path!)
+        for ele in records {
+            let dic = NSMutableDictionary(dictionary: ele as! NSDictionary)
+            dic.removeObjectForKey("bill")
+            self.cellArraydata.addObject(dic)
         }
-        self.records = NSArray(contentsOfFile: path!)
         
-        tableView = UITableView(frame: UIScreen.mainScreen().bounds,style: UITableViewStyle.Grouped)
+        tableView = UITableView(frame: CGRectMake(0, 0, XuWidth, XuHeight + 10),style: UITableViewStyle.Grouped)
         self.view.addSubview(tableView)
         XuSetup(tableView)
-        
+        tableView.sectionHeaderHeight = 20
         tableView.dataSource = self
         tableView.delegate = self
     }
     
     //MARK: --UITableViewDelegate
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return self.records.count
+        return self.cellArraydata.count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let cell = self.tableView(self.tableView, cellForRowAtIndexPath: indexPath)
+        return cell.frame.height
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -50,12 +58,23 @@ class HistoryViewController: UIViewController ,UITableViewDelegate,UITableViewDa
         if cell == nil {
             cell = RecordTableViewCell(reuseIdentifier: "cell")
         }
-        cell?.setupData(records[indexPath.section] as! NSDictionary)
+        cell?.setupData(cellArraydata[indexPath.section] as! NSDictionary)
+        cell?.backgroundColor = UIColor.clearColor()
+        cell?.locationClosure = { () in
+            print("locationAction")
+        }
+        cell?.showClosure = { () in
+            let sw = self.cellArraydata[indexPath.section]
+            self.cellArraydata[indexPath.section] = self.records[indexPath.section]
+            self.records[indexPath.section] = sw
+            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+        }
+        cell?.selectionStyle = UITableViewCellSelectionStyle.None
         return cell!
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 20
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {

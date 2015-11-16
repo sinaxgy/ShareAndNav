@@ -9,14 +9,17 @@
 import UIKit
 
 enum UniversalCellStyle {
-    case RightButton,RightLabel,RightSwitch,LeftILRightL,RightTextField//,RightObject
+    case RightButton,RightLabel,RightSwitch,LeftILRightL,TextField//,RightObject
+}
+enum XuTextFieldInputType {
+    case Date,CityAndArea
 }
 
 @objc protocol UniversalTableViewCellDelegate {
     func rightSwitchChanged(cell:UITableViewCell,boolValue:Bool)
 }
 
-class UniversalTableViewCell: UITableViewCell {
+class UniversalTableViewCell: UITableViewCell ,XuPickerViewDelegate{
     
     var delegate:UniversalTableViewCellDelegate?
     
@@ -25,8 +28,7 @@ class UniversalTableViewCell: UITableViewCell {
     private var rLabel:UILabel?
     private var rSwitch:UISwitch?
     private var rButton:UIButton?
-    var rTextField:UITextField?
-    
+    var textField:UITextField?
     var rightObject:NSObject?
     var leftShift:CGFloat = 0 {
         didSet{
@@ -83,41 +85,54 @@ class UniversalTableViewCell: UITableViewCell {
         }
     }
     
-    var rightPlaceholder:String? {
+    var textPlaceholder:String? {
         didSet{
-            guard rTextField != nil else {return}
-            rTextField?.placeholder = rightPlaceholder
+            guard textField != nil else {return}
+            textField?.placeholder = textPlaceholder
         }
     }
     
-    var rightText:String? {
+    var textFieldText:String? {
         didSet{
-            guard rTextField != nil else {return}
-            rTextField?.text = rightText
+            guard textField != nil else {return}
+            textField?.text = textFieldText
         }
     }
     
-    var rightTFInputView:UIView? {
+    var textInputType:XuTextFieldInputType? {
         didSet{
-            guard rTextField != nil else {return}
-            rTextField?.inputView = rightTFInputView
+            guard textField != nil else {return}
+            switch textInputType! {
+            case .Date:
+                let pickerView = XuPickerView(style: XuPickerStyle.Date)
+                textField?.inputView = pickerView
+                pickerView.delegate = self
+            case .CityAndArea:
+                let pickerView = XuPickerView(style: XuPickerStyle.CityAndArea)
+                textField?.inputView = pickerView
+                pickerView.delegate = self
+            //default:break
+            }
         }
     }
     
     init(universalStyle:UniversalCellStyle,reuseIdentifier:String) {
         super.init(style: UITableViewCellStyle.Default, reuseIdentifier: reuseIdentifier)
-        self.initLeftLabel()
         switch universalStyle {
         case .RightButton:
+            self.initLeftLabel()
             self.initRightButton()
         case .RightSwitch:
+            self.initLeftLabel()
             self.initRightSwitch()
         case .RightLabel:
+            self.initLeftLabel()
             self.initRightLabel()
         case .LeftILRightL:
+            self.initLeftLabel()
             self.initLeftImageView()
             self.initRightLabel()
-        case .RightTextField:
+        case .TextField:
             self.initRightTextField()
         //default:break
         }
@@ -178,13 +193,13 @@ class UniversalTableViewCell: UITableViewCell {
     }
     
     func initRightTextField() {
-        rTextField = UITextField(frame: CGRectMake(100,0,XuWidth - 125,20))
-        rTextField?.font = UIFont.systemFontOfSize(XuTextSizeMiddle)
-        rTextField?.setValue(UIFont.systemFontOfSize(XuTextSizeSmall), forKeyPath: "_placeholderLabel.font")
-        rTextField?.autocorrectionType = UITextAutocorrectionType.No
-        rTextField?.textAlignment = NSTextAlignment.Right
-        rTextField?.center.y = XuCellHeight / 2
-        self.addSubview(rTextField!)
+        textField = UITextField(frame: CGRectMake(20,0,XuWidth,20))
+        textField?.font = UIFont.systemFontOfSize(XuTextSizeMiddle)
+        textField?.setValue(UIFont.systemFontOfSize(XuTextSizeSmall), forKeyPath: "_placeholderLabel.font")
+        textField?.autocorrectionType = UITextAutocorrectionType.No
+        //rTextField?.textAlignment = NSTextAlignment.Right
+        textField?.center.y = XuCellHeight / 2
+        self.addSubview(textField!)
     }
     
     func setupLeft(image:UIImage,andLabel labelText:String) {
@@ -199,6 +214,22 @@ class UniversalTableViewCell: UITableViewCell {
     
     func rightSwitchAction(sender:UISwitch) {
         delegate?.rightSwitchChanged(self, boolValue: sender.on)
+    }
+    
+    //MARK: --XuPickerViewDelegate
+    func XuPickerViewDidCancel() {
+        textField?.resignFirstResponder()
+    }
+    
+    func XuPickerViewDidSelected(pickerString: String) {
+        textField?.text = pickerString
+        print(pickerString)
+        textField?.resignFirstResponder()
+    }
+    
+    func XupickerViewDidChanged(pickerString: String) {
+        textField?.text = pickerString
+        print(pickerString)
     }
     
     required init?(coder aDecoder: NSCoder) {

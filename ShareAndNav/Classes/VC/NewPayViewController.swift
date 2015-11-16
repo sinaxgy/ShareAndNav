@@ -21,7 +21,7 @@ class NewPayViewController: UIViewController ,UITableViewDelegate,UITableViewDat
         self.view.backgroundColor = XuColorWhite
         self.navigationItem.title = "添加支付方式"
         
-        tableView = UITableView(frame: UIScreen.mainScreen().bounds,style: UITableViewStyle.Grouped)
+        tableView = UITableView(frame: CGRectMake(0, 0, XuWidth, XuHeight + 10),style: UITableViewStyle.Grouped)
         self.view.addSubview(tableView)
         XuSetup(tableView)
         tableView.dataSource = self

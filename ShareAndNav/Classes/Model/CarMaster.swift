@@ -27,10 +27,10 @@ class CarMaster: NSObject {
         self.scoresOfViolation = scoresOfViolation
         self.timeParking = timeParking
         self.revenue = revenue
-                            
     }
     
     override init() {
         
     }
 }
+

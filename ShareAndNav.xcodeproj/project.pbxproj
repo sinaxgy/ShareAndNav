@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8F38EE9D1BF76B3B003484CC /* NewPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F38EE9C1BF76B3B003484CC /* NewPayViewController.swift */; };
 		8F38EE9F1BF770A2003484CC /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F38EE9E1BF770A2003484CC /* RecordTableViewCell.swift */; };
+		8FDE28531BFA1A0700830E37 /* OwnerIdentifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDE28521BFA1A0700830E37 /* OwnerIdentifyViewController.swift */; };
 		8FE1421E1BF5C86400C236A8 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE1421D1BF5C86400C236A8 /* Helper.swift */; };
 		8FE142201BF5D55600C236A8 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE1421F1BF5D55600C236A8 /* HeaderView.swift */; };
 		8FE142221BF5EF2E00C236A8 /* ReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE142211BF5EF2E00C236A8 /* ReceiptViewController.swift */; };
@@ -16,7 +17,7 @@
 		8FE142261BF60F4100C236A8 /* AcProtocolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE142251BF60F4100C236A8 /* AcProtocolViewController.swift */; };
 		8FE71C301BF4CABD0043208F /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE71C2F1BF4CABD0043208F /* PersonalViewController.swift */; };
 		8FE71C321BF4D22B0043208F /* PayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE71C311BF4D22B0043208F /* PayViewController.swift */; };
-		8FE71C341BF4D2CB0043208F /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE71C331BF4D2CB0043208F /* HistoryViewController.swift */; };
+		8FE71C341BF4D2CB0043208F /* ParkingRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE71C331BF4D2CB0043208F /* ParkingRecordViewController.swift */; };
 		C5022EC41BE0A9B400DBC2FF /* UniversalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5022EC31BE0A9B400DBC2FF /* UniversalTableViewCell.swift */; };
 		C50E7FF21BDB7D28002BA56D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50E7FF11BDB7D28002BA56D /* AppDelegate.swift */; };
 		C50E7FF71BDB7D28002BA56D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C50E7FF51BDB7D28002BA56D /* Main.storyboard */; };
@@ -97,6 +98,7 @@
 /* Begin PBXFileReference section */
 		8F38EE9C1BF76B3B003484CC /* NewPayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewPayViewController.swift; path = Classes/VC/NewPayViewController.swift; sourceTree = "<group>"; };
 		8F38EE9E1BF770A2003484CC /* RecordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecordTableViewCell.swift; path = Classes/VC/Cell/RecordTableViewCell.swift; sourceTree = "<group>"; };
+		8FDE28521BFA1A0700830E37 /* OwnerIdentifyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OwnerIdentifyViewController.swift; path = Classes/VC/OwnerIdentifyViewController.swift; sourceTree = "<group>"; };
 		8FE1421D1BF5C86400C236A8 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		8FE1421F1BF5D55600C236A8 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeaderView.swift; path = Classes/VC/View/HeaderView.swift; sourceTree = "<group>"; };
 		8FE142211BF5EF2E00C236A8 /* ReceiptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReceiptViewController.swift; path = Classes/VC/ReceiptViewController.swift; sourceTree = "<group>"; };
@@ -104,7 +106,7 @@
 		8FE142251BF60F4100C236A8 /* AcProtocolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AcProtocolViewController.swift; path = Classes/VC/AcProtocolViewController.swift; sourceTree = "<group>"; };
 		8FE71C2F1BF4CABD0043208F /* PersonalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersonalViewController.swift; path = Classes/VC/PersonalViewController.swift; sourceTree = "<group>"; };
 		8FE71C311BF4D22B0043208F /* PayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PayViewController.swift; path = Classes/VC/PayViewController.swift; sourceTree = "<group>"; };
-		8FE71C331BF4D2CB0043208F /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HistoryViewController.swift; path = Classes/VC/HistoryViewController.swift; sourceTree = "<group>"; };
+		8FE71C331BF4D2CB0043208F /* ParkingRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParkingRecordViewController.swift; path = Classes/VC/ParkingRecordViewController.swift; sourceTree = "<group>"; };
 		C5022EC31BE0A9B400DBC2FF /* UniversalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UniversalTableViewCell.swift; path = Classes/VC/Cell/UniversalTableViewCell.swift; sourceTree = "<group>"; };
 		C50E7FEE1BDB7D28002BA56D /* 车韵.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "车韵.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C50E7FF11BDB7D28002BA56D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -238,8 +240,9 @@
 				C5BA4FA91BEB327100EF6832 /* CarportViewController.swift */,
 				C5BA4FA71BEB2F5500EF6832 /* ViolationViewController.swift */,
 				C5BA4FAB1BEB355100EF6832 /* MessageViewController.swift */,
+				8FDE28521BFA1A0700830E37 /* OwnerIdentifyViewController.swift */,
 				8FE71C2F1BF4CABD0043208F /* PersonalViewController.swift */,
-				8FE71C331BF4D2CB0043208F /* HistoryViewController.swift */,
+				8FE71C331BF4D2CB0043208F /* ParkingRecordViewController.swift */,
 				8FE71C311BF4D22B0043208F /* PayViewController.swift */,
 				8F38EE9C1BF76B3B003484CC /* NewPayViewController.swift */,
 				8FE142211BF5EF2E00C236A8 /* ReceiptViewController.swift */,
@@ -513,7 +516,8 @@
 			files = (
 				8F38EE9F1BF770A2003484CC /* RecordTableViewCell.swift in Sources */,
 				C58CC89B1BF07AFF006D4F96 /* ViolationObject.swift in Sources */,
-				8FE71C341BF4D2CB0043208F /* HistoryViewController.swift in Sources */,
+				8FDE28531BFA1A0700830E37 /* OwnerIdentifyViewController.swift in Sources */,
+				8FE71C341BF4D2CB0043208F /* ParkingRecordViewController.swift in Sources */,
 				8FE71C321BF4D22B0043208F /* PayViewController.swift in Sources */,
 				8FE142221BF5EF2E00C236A8 /* ReceiptViewController.swift in Sources */,
 				C5843E461BDF5E380074C785 /* FootMenuView.swift in Sources */,

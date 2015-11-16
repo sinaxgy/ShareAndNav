@@ -27,7 +27,7 @@ class ReceiptViewController: UIViewController ,UITableViewDelegate,UITableViewDa
         self.navigationItem.title = "开具发票"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "message_off"), style: UIBarButtonItemStyle.Plain, target: self, action: "showMessageView:")
         
-        tableView = UITableView(frame: UIScreen.mainScreen().bounds,style: UITableViewStyle.Grouped)
+        tableView = UITableView(frame: CGRectMake(0, 0, XuWidth, XuHeight + 10),style: UITableViewStyle.Grouped)
         self.view.addSubview(tableView)
         XuSetup(tableView)
         
@@ -80,16 +80,16 @@ class ReceiptViewController: UIViewController ,UITableViewDelegate,UITableViewDa
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("cell") as? UniversalTableViewCell
         if cell == nil {
-            cell = UniversalTableViewCell(universalStyle: UniversalCellStyle.RightTextField, reuseIdentifier: "cell")
+            cell = UniversalTableViewCell(universalStyle: UniversalCellStyle.TextField, reuseIdentifier: "cell")
         }
         cell?.leftLabelText = tbArray[indexPath.section][indexPath.row]
-        cell?.rightPlaceholder = "请输入\(tbArray[indexPath.section][indexPath.row])"
+        cell?.textPlaceholder = "\(tbArray[indexPath.section][indexPath.row])"
         cell?.backgroundColor = UIColor.clearColor()
         cell?.selectionStyle = UITableViewCellSelectionStyle.None
         if cell?.leftLabelText == "省、市、区" {
             let pickerView = XuPickerView(style: XuPickerStyle.CityAndArea)
             pickerView.delegate = self
-            cell?.rightTFInputView = pickerView
+            cell?.textInputType = XuTextFieldInputType.CityAndArea
         }
         return cell!
     }

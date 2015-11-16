@@ -92,7 +92,7 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
                 self.navigationController?.pushViewController(violationVC, animated: true)
             case .parkTime:
                 //animation.subtype = kCATransitionFromBottom
-                self.navigationController?.pushViewController(HistoryViewController(), animated: true)
+                self.navigationController?.pushViewController(ParkingRecordViewController(), animated: true)
             case .revenue:
                 let carportVC = CarportViewController()
                 //animation.subtype = kCATransitionFromRight
@@ -332,7 +332,7 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
         switch index {
         case 0: self.navigationController?.pushViewController(PersonalViewController(), animated: true)
         case 1: self.navigationController?.pushViewController(PayViewController(), animated: true)
-        case 2: self.navigationController?.pushViewController(HistoryViewController(), animated: true)
+        case 2: self.navigationController?.pushViewController(ParkingRecordViewController(), animated: true)
         case 3: self.navigationController?.pushViewController(CarViewController(), animated: true)
         case 4: self.navigationController?.pushViewController(CarportViewController(), animated: true)
         case 5: self.navigationController?.pushViewController(ViolationViewController(), animated: true)

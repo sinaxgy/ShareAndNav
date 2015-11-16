@@ -24,6 +24,7 @@ class CarTableViewCell: UITableViewCell ,UITableViewDataSource,UITableViewDelega
     var subTableView:UITableView?
     var xCarOwnership:CarOwnership?
     
+    var identifyAction:(() -> Void)?
     private var centerY:CGFloat = 0
     
     
@@ -79,7 +80,9 @@ class CarTableViewCell: UITableViewCell ,UITableViewDataSource,UITableViewDelega
     
     func setupViewData(xcarOwnership:CarOwnership) {
         let image = UIImage(named: xcarOwnership.brand!)
+        leftImageV?.frame.size = CGSizeMake(30, 30 * (image?.size.height)! / (image?.size.width)!)
         leftImageV?.image = image
+        leftImageV?.center.y = self.frame.size.height / 2
         
         leftLabel?.text = xcarOwnership.plate!
         
@@ -109,6 +112,7 @@ class CarTableViewCell: UITableViewCell ,UITableViewDataSource,UITableViewDelega
     //MARK:--ControllerAction
     func carOwnerCerificate(sender:UIButton) {
         print("cerificate")
+        identifyAction!()
     }
     
     func swithAuthorize(sender:UISwitch) {

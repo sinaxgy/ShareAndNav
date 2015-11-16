@@ -18,8 +18,16 @@ enum XuPickerStyle {
     optional func XupickerViewDidChanged(pickerString:String)
 }
 
+struct Locate {
+    var province:String = ""
+    var city:String = ""
+    var area:String = ""
+}
+
 class XuPickerView: UIView ,UIPickerViewDataSource,UIPickerViewDelegate{
     
+    private var cities:NSArray?
+    private var areas:NSArray?
     lazy var datePicker = UIDatePicker()
     var pickerView:UIPickerView?
     let rectPicker = CGRectMake(0, 44, XuWidth, XuHeight / 3 - 45)
@@ -27,6 +35,7 @@ class XuPickerView: UIView ,UIPickerViewDataSource,UIPickerViewDelegate{
     var delegate:XuPickerViewDelegate?
     lazy var component = 3;lazy var row0 = 0;lazy var row1 = 0
     lazy var addressString:NSMutableString = "北京 通州"
+    var locate:Locate = Locate()
 
     init(style:XuPickerStyle) {
         super.init(frame: CGRectMake(0, 0, XuWidth, XuHeight / 3))
@@ -59,6 +68,7 @@ class XuPickerView: UIView ,UIPickerViewDataSource,UIPickerViewDelegate{
         pickerView?.delegate = self
         pickerView?.showsSelectionIndicator = true
         self.addSubview(pickerView!)
+        
         
         let path = NSBundle.mainBundle().pathForResource("CityAndArea", ofType: ".plist")
         self.pathArray = NSArray(contentsOfFile: path!)
@@ -127,25 +137,55 @@ class XuPickerView: UIView ,UIPickerViewDataSource,UIPickerViewDelegate{
             if self.component > 2 {
                 self.row0 = row
                 self.row1 = 0
-                
-                pickerView.reloadComponent(2)
+                cities = pathArray![row]["cities"] as? NSArray
+                pickerView.selectRow(0, inComponent: 1, animated: true)
                 pickerView.reloadComponent(1)
+                areas = cities![0].objectForKey("areas") as? NSArray
+                pickerView.selectRow(0, inComponent: 2, animated: true)
+                pickerView.reloadComponent(2)
+                
+                self.locate.province = self.pathArray![row]["state"] as! String
+                self.locate.city = cities?.objectAtIndex(0).objectForKey("city") as! String
+                if areas?.count > 0 {
+                    self.locate.area = areas![0] as! String
+                }else {
+                    self.locate.area = ""
+                }
             }else if self.component > 1 {
                 self.row0 = row
+                cities = pathArray![row]["cities"] as? NSArray
+                pickerView.selectRow(0, inComponent: 1, animated: true)
                 pickerView.reloadComponent(1)
+                
+                self.locate.province = self.pathArray![row]["state"] as! String
+                self.locate.city = cities?.objectAtIndex(0).objectForKey("city") as! String
             }
         case 1:
             if self.component > 2{
                 self.row1 = row
+                areas = cities![row].objectForKey("areas") as? NSArray
+                pickerView.selectRow(0, inComponent: 2, animated: true)
                 pickerView.reloadComponent(2)
+                self.locate.province = pathArray![pickerView.selectedRowInComponent(0)]["state"] as! String
+                self.locate.city = cities![row].objectForKey("city") as! String
+                if areas?.count > 0 {
+                    self.locate.area = areas![0] as! String
+                }else {
+                    self.locate.area = ""
+                }
+            }
+        case 2:
+            self.locate.province = pathArray![pickerView.selectedRowInComponent(0)]["state"] as! String
+            self.locate.city = cities![pickerView.selectedRowInComponent(1)]["city"] as! String
+            if areas?.count > 0 {
+                self.locate.area = areas![row] as! String
+            }else {
+                self.locate.area = ""
             }
         default:break
         }
+        delegate?.XupickerViewDidChanged?("\(self.locate.province) \(self.locate.city) \(self.locate.area)")
     }
-    
-//    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        return self.stringWithRow(row, component: component)
-//    }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch component {
@@ -186,8 +226,10 @@ class XuPickerView: UIView ,UIPickerViewDataSource,UIPickerViewDelegate{
     func stringWithRow(row:Int,component:Int) -> String? {
         switch component {
         case 0:
+            cities = self.pathArray![row]["cities"] as? NSArray
             return self.pathArray![row]["state"] as? String
         case 1:
+            areas = cities![row]["areas"] as? NSArray
             return dicWithDic(self.pathArray![row0] as! NSDictionary, key: "cities", row: row).objectForKey("city") as? String
         case 2:
             if let array = dicWithDic(self.pathArray![row0] as! NSDictionary, key: "cities", row: row1).objectForKey("areas") as? NSArray {
