@@ -34,7 +34,7 @@ class RecordTableViewCell: UITableViewCell ,UITableViewDataSource,UITableViewDel
     }
     
     func initBaseView() {
-        luLabel = UILabel(frame: CGRectMake(30,5,250,15))
+        luLabel = UILabel(frame: CGRectMake(30,5,200,15))
         luLabel.font = UIFont.systemFontOfSize(XuTextSizeSmall)
         self.addSubview(luLabel)
         
@@ -76,13 +76,13 @@ class RecordTableViewCell: UITableViewCell ,UITableViewDataSource,UITableViewDel
         view.backgroundColor = XuColorGrayThin
         self.addSubview(view)
         
-        let label = UILabel(frame: CGRectMake(0,55,100,20))
+        let label = UILabel(frame: CGRectMake(0,60,100,20))
         label.text = "电子收据";label.font = UIFont.systemFontOfSize(XuTextSizeSmall)
         label.center.x = XuWidth / 2
         label.textAlignment = NSTextAlignment.Center
         self.addSubview(label)
         
-        let tableView = UITableView(frame: CGRectMake(10, 80, XuWidth - 20, 25 * CGFloat(9 + record!.chargeStandard.count)))
+        let tableView = UITableView(frame: CGRectMake(5, 80, XuWidth - 10, 25 * CGFloat(9 + record!.chargeStandard.count)))
         tableView.rowHeight = 25;tableView.scrollEnabled = false
         tableView.backgroundColor = UIColor.clearColor()
         tableView.delegate = self
@@ -107,11 +107,11 @@ class RecordTableViewCell: UITableViewCell ,UITableViewDataSource,UITableViewDel
     }
     
     func locationAction(sender:UIButton) {
-        self.locationClosure!()
+        self.locationClosure?()
     }
     
     func shownDonwDetail(sender:UIButton) {
-        self.showClosure!()
+        self.showClosure?()
     }
     
     //MARK: -- UITableViewDelegate
@@ -145,6 +145,7 @@ class RecordTableViewCell: UITableViewCell ,UITableViewDataSource,UITableViewDel
             self.index = 0
         }
         cell?.selectionStyle = UITableViewCellSelectionStyle.None
+        cell?.separatorInset = UIEdgeInsetsMake(0, 0, 0, 15)
         return cell!
     }
 

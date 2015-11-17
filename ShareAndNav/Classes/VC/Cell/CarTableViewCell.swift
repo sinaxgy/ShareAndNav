@@ -24,7 +24,7 @@ class CarTableViewCell: UITableViewCell ,UITableViewDataSource,UITableViewDelega
     var subTableView:UITableView?
     var xCarOwnership:CarOwnership?
     
-    var identifyAction:(() -> Void)?
+    var identifyClosure : (() -> Void)?
     private var centerY:CGFloat = 0
     
     
@@ -112,7 +112,7 @@ class CarTableViewCell: UITableViewCell ,UITableViewDataSource,UITableViewDelega
     //MARK:--ControllerAction
     func carOwnerCerificate(sender:UIButton) {
         print("cerificate")
-        identifyAction!()
+        self.identifyClosure?()
     }
     
     func swithAuthorize(sender:UISwitch) {
@@ -143,6 +143,10 @@ class CarTableViewCell: UITableViewCell ,UITableViewDataSource,UITableViewDelega
             cell.setupWithCarOwnership(xcos)
             cell.separatorInset = UIEdgeInsetsMake(0, 0, 110, 300)
             cell.backgroundColor = UIColor.clearColor()
+            cell.identifyClosure = {
+                () in
+                self.identifyClosure?()
+            }
             return cell
         }else {
             var cell = tableView.dequeueReusableCellWithIdentifier("textCell")

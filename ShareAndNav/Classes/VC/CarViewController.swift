@@ -107,12 +107,17 @@ class CarViewController: UIViewController ,UITableViewDelegate,UITableViewDataSo
         if cell == nil {
             cell = CarTableViewCell(reuseIdentifier: "carCell")
         }
+        cell?.delegate = self
         cell!.backgroundColor = XuColorGrayThin
         let array = carOwnershipArray[indexPath.section] as! NSArray
         if let xco = array[indexPath.row] as? CarOwnership {
             cell?.setupWithCarOwnership(xco)
         }
-        cell?.delegate = self
+        cell?.identifyClosure = {
+            () in
+            print("identifyAction")
+            self.navigationController?.pushViewController(OwnerIdentifyViewController(), animated: true)
+        }
         return cell!
     }
     

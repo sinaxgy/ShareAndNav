@@ -15,6 +15,8 @@
 		8FE142221BF5EF2E00C236A8 /* ReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE142211BF5EF2E00C236A8 /* ReceiptViewController.swift */; };
 		8FE142241BF606FF00C236A8 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE142231BF606FF00C236A8 /* SettingViewController.swift */; };
 		8FE142261BF60F4100C236A8 /* AcProtocolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE142251BF60F4100C236A8 /* AcProtocolViewController.swift */; };
+		8FE2E25A1BFAC40E009A4F5C /* HoshiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE2E2581BFAC40E009A4F5C /* HoshiTextField.swift */; };
+		8FE2E25B1BFAC40E009A4F5C /* TextFieldsEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE2E2591BFAC40E009A4F5C /* TextFieldsEffects.swift */; };
 		8FE71C301BF4CABD0043208F /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE71C2F1BF4CABD0043208F /* PersonalViewController.swift */; };
 		8FE71C321BF4D22B0043208F /* PayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE71C311BF4D22B0043208F /* PayViewController.swift */; };
 		8FE71C341BF4D2CB0043208F /* ParkingRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE71C331BF4D2CB0043208F /* ParkingRecordViewController.swift */; };
@@ -104,6 +106,8 @@
 		8FE142211BF5EF2E00C236A8 /* ReceiptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReceiptViewController.swift; path = Classes/VC/ReceiptViewController.swift; sourceTree = "<group>"; };
 		8FE142231BF606FF00C236A8 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingViewController.swift; path = Classes/VC/SettingViewController.swift; sourceTree = "<group>"; };
 		8FE142251BF60F4100C236A8 /* AcProtocolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AcProtocolViewController.swift; path = Classes/VC/AcProtocolViewController.swift; sourceTree = "<group>"; };
+		8FE2E2581BFAC40E009A4F5C /* HoshiTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HoshiTextField.swift; path = Classes/VC/Helper/HoshiTextField.swift; sourceTree = "<group>"; };
+		8FE2E2591BFAC40E009A4F5C /* TextFieldsEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextFieldsEffects.swift; path = Classes/VC/Helper/TextFieldsEffects.swift; sourceTree = "<group>"; };
 		8FE71C2F1BF4CABD0043208F /* PersonalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersonalViewController.swift; path = Classes/VC/PersonalViewController.swift; sourceTree = "<group>"; };
 		8FE71C311BF4D22B0043208F /* PayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PayViewController.swift; path = Classes/VC/PayViewController.swift; sourceTree = "<group>"; };
 		8FE71C331BF4D2CB0043208F /* ParkingRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParkingRecordViewController.swift; path = Classes/VC/ParkingRecordViewController.swift; sourceTree = "<group>"; };
@@ -238,9 +242,9 @@
 				C5E5ADA51BE2692F00AEE7AC /* MasterViewController.swift */,
 				C5C8D0F61BEA1F8600EAFD0B /* CarViewController.swift */,
 				C5BA4FA91BEB327100EF6832 /* CarportViewController.swift */,
+				8FDE28521BFA1A0700830E37 /* OwnerIdentifyViewController.swift */,
 				C5BA4FA71BEB2F5500EF6832 /* ViolationViewController.swift */,
 				C5BA4FAB1BEB355100EF6832 /* MessageViewController.swift */,
-				8FDE28521BFA1A0700830E37 /* OwnerIdentifyViewController.swift */,
 				8FE71C2F1BF4CABD0043208F /* PersonalViewController.swift */,
 				8FE71C331BF4D2CB0043208F /* ParkingRecordViewController.swift */,
 				8FE71C311BF4D22B0043208F /* PayViewController.swift */,
@@ -294,6 +298,8 @@
 		C57A47551BEC3ECF00D65AA9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8FE2E2581BFAC40E009A4F5C /* HoshiTextField.swift */,
+				8FE2E2591BFAC40E009A4F5C /* TextFieldsEffects.swift */,
 				C5843E471BDF62A40074C785 /* CarMaster.swift */,
 				C57A47591BEC454F00D65AA9 /* CarOwnership.swift */,
 				C58CC8901BF0349A006D4F96 /* Carport.swift */,
@@ -528,6 +534,7 @@
 				C5E5ADA61BE2692F00AEE7AC /* MasterViewController.swift in Sources */,
 				C59B32DE1BE7AA4F00AAE98C /* SubMasterView.swift in Sources */,
 				C50E7FF21BDB7D28002BA56D /* AppDelegate.swift in Sources */,
+				8FE2E25B1BFAC40E009A4F5C /* TextFieldsEffects.swift in Sources */,
 				C5FF79CF1BF1FAEC00CAA14A /* CarportTableViewCell.swift in Sources */,
 				C5BA4FAA1BEB327100EF6832 /* CarportViewController.swift in Sources */,
 				C5843E531BDF6BB00074C785 /* HomeViewController.m in Sources */,
@@ -538,6 +545,7 @@
 				C5843E431BDF4D5F0074C785 /* NewLicensePlateViewController.swift in Sources */,
 				C5843E481BDF62A40074C785 /* CarMaster.swift in Sources */,
 				C544A4A51BE89673004607DD /* KeyboardDigitalView.swift in Sources */,
+				8FE2E25A1BFAC40E009A4F5C /* HoshiTextField.swift in Sources */,
 				8FE142201BF5D55600C236A8 /* HeaderView.swift in Sources */,
 				C5843DEF1BDE71D80074C785 /* KeyChain.swift in Sources */,
 				C5BA4FA81BEB2F5500EF6832 /* ViolationViewController.swift in Sources */,

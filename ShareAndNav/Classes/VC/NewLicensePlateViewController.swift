@@ -19,7 +19,7 @@ class NewLicensePlateViewController: UIViewController {
     
     @IBOutlet weak var plateTextField: UITextField!
     
-    var isNewLogin = true
+    var isNewLogin = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +56,8 @@ class NewLicensePlateViewController: UIViewController {
     @IBAction func determainAction(sender: AnyObject) {
         if isNewLogin {
             self.skipThisTap(nil)
+        }else {
+            self.navigationController?.popViewControllerAnimated(true)
         }
         
     }
@@ -70,7 +72,6 @@ class NewLicensePlateViewController: UIViewController {
             self.checkYesButton.selected = false
         }
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

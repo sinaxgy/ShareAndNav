@@ -47,6 +47,10 @@ class NewPayViewController: UIViewController ,UITableViewDelegate,UITableViewDat
         return cell
     }
     
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 20
+    }
+    
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         XutableView(tableView, willDisplayCell: cell, forRowIndexPath: indexPath)
     }

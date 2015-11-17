@@ -72,7 +72,7 @@ class CarportViewController: UIViewController ,UITableViewDelegate,UITableViewDa
     
     func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         if section == self.carportArray.count - 1 {
-            return 30
+            return 50
         }
         return 0
     }

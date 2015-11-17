@@ -64,12 +64,14 @@ class LoginViewController: UIViewController {
                     self.presentViewController(alert, animated: true, completion: nil)
                 }
             case 12...30:
+                dynamicCodeBtn.enabled = false
                 textField.text = NSString(string: textField.text!).substringToIndex(11)
                 let alert = UIAlertController(title: nil, message: "请输入正确的手机号", preferredStyle: UIAlertControllerStyle.Alert)
                 let action = UIAlertAction(title: "确定", style: UIAlertActionStyle.Cancel, handler: nil)
                 alert.addAction(action)
                 self.presentViewController(alert, animated: true, completion: nil)
-            default:break
+            default:
+                dynamicCodeBtn.enabled = false
             }
         }else {
             if NSString(string: textField.text!).length == 6 {
@@ -141,8 +143,9 @@ class LoginViewController: UIViewController {
         if KeyChain.set(pwTextField.text!, forkey: userTextField.text!) {
             currentUser = userTextField.text!
             if timer != nil {timer.invalidate()}
-            let carAdditionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("NewLicensePlateViewController") //as! CarBrandAdditionTBVC
-            let nav = UINavigationController(rootViewController: carAdditionVC)
+            let carAdditionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("NewLicensePlateViewController") as? NewLicensePlateViewController
+            carAdditionVC?.isNewLogin = true
+            let nav = UINavigationController(rootViewController: carAdditionVC!)
             self.presentViewController(nav, animated: true, completion: nil)
         }
     }
@@ -154,7 +157,9 @@ class LoginViewController: UIViewController {
     }
     
     func showAcProtocol(sender:UIButton) {
-        self.navigationController?.pushViewController(AcProtocolViewController(), animated: true)
+        let acProtocol = AcProtocolViewController()
+        acProtocol.previousVC = self
+        self.presentViewController(UINavigationController(rootViewController: acProtocol), animated: true, completion: nil)
     }
     
     func OnTimer(timer:NSTimer) {

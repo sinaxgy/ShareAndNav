@@ -28,7 +28,8 @@ class UniversalTableViewCell: UITableViewCell ,XuPickerViewDelegate{
     private var rLabel:UILabel?
     private var rSwitch:UISwitch?
     private var rButton:UIButton?
-    var textField:UITextField?
+    var textField:HoshiTextField?
+    //var textF:HoshiTextField?
     var rightObject:NSObject?
     var leftShift:CGFloat = 0 {
         didSet{
@@ -193,9 +194,9 @@ class UniversalTableViewCell: UITableViewCell ,XuPickerViewDelegate{
     }
     
     func initRightTextField() {
-        textField = UITextField(frame: CGRectMake(20,0,XuWidth,20))
+        textField = HoshiTextField(frame: CGRectMake(20,0,XuWidth,self.frame.height - 0))
         textField?.font = UIFont.systemFontOfSize(XuTextSizeMiddle)
-        textField?.setValue(UIFont.systemFontOfSize(XuTextSizeSmall), forKeyPath: "_placeholderLabel.font")
+        textField?.setValue(UIFont.systemFontOfSize(XuTextSizeMiddle), forKeyPath: "_placeholderLabel.font")
         textField?.autocorrectionType = UITextAutocorrectionType.No
         //rTextField?.textAlignment = NSTextAlignment.Right
         textField?.center.y = XuCellHeight / 2

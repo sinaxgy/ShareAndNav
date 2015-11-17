@@ -19,6 +19,7 @@ class OwnerIdentifyViewController: UIViewController ,UITableViewDelegate,UITable
 
         // Do any additional setup after loading the view.
         self.view.backgroundColor = XuColorWhite
+        self.navigationItem.title = "车主认证"
         tableView = UITableView(frame: CGRectMake(0, 0, XuWidth, XuHeight + 10),style: UITableViewStyle.Grouped)
         self.view.addSubview(tableView)
         XuSetup(tableView)
@@ -32,7 +33,28 @@ class OwnerIdentifyViewController: UIViewController ,UITableViewDelegate,UITable
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return array.count
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 20
+    }
+    
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 60
+    }
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let view = UIView(frame: tableView.rectForFooterInSection(section))
+        let button = UIButton(type: UIButtonType.System)
+        button.frame = CGRectMake(10, CGRectGetHeight(tableView.rectForFooterInSection(section)) - 40, XuWidth - 20, 30)
+        button.setTitle("确 定", forState: UIControlState.Normal)
+        button.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        button.backgroundColor = XuColorBlue
+        button.layer.cornerRadius = XuCornerRadius
+        button.addTarget(self, action: "submitEnsureAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        view.addSubview(button)
+        view.backgroundColor = UIColor.clearColor()
+        return view
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -44,12 +66,31 @@ class OwnerIdentifyViewController: UIViewController ,UITableViewDelegate,UITable
         var cell = tableView.dequeueReusableCellWithIdentifier("cell") as? UniversalTableViewCell
         if cell == nil {
             cell = UniversalTableViewCell(universalStyle: UniversalCellStyle.TextField, reuseIdentifier: "cell")
+            cell?.backgroundColor = UIColor.clearColor()
         }
         cell?.textPlaceholder = array[indexPath.row]
-        if indexPath.row == 2 || indexPath == 3 {
+        if indexPath.row == 4 || indexPath.row == 3 {
             cell?.textInputType = XuTextFieldInputType.Date
         }
+        cell?.selectionStyle = UITableViewCellSelectionStyle.None
         return cell!
+    }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        XutableView(tableView, willDisplayCell: cell, forRowIndexPath: indexPath)
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if let cell = tableView.cellForRowAtIndexPath(indexPath) as? UniversalTableViewCell {
+            guard cell.textField != nil else {return}
+            if !cell.textField!.isFirstResponder() {
+                cell.textField?.becomeFirstResponder()
+            }
+        }
+    }
+    
+    func submitEnsureAction(sender:UIButton) {
+        print("submitEnsureAction")
     }
     
     override func didReceiveMemoryWarning() {
