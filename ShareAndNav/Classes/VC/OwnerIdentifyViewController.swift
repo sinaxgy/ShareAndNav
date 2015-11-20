@@ -27,7 +27,6 @@ class OwnerIdentifyViewController: UIViewController ,UITableViewDelegate,UITable
         tableView.dataSource = self
         tableView.delegate = self
     }
-
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }

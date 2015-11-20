@@ -28,10 +28,51 @@ class ViolationObject: NSObject {
             case ("forfeit",_):
                 forfeit = value as? NSInteger
             case ("info",_):
-                info = value as? NSArray
+                guard let xar = value as? NSArray else {return}
+                if xar.count == 0 {return}
+                let infos:NSMutableArray = []
+                for ele in xar {
+                    guard let dic = ele as? NSDictionary else {return}
+                    if dic.count == 0 {return}
+                    infos.addObject(Violation(dic: dic))
+                }
+                info = infos
             default:break
             }
         }
     }
+}
 
+class Violation: NSObject {
+    
+    var address:String?
+    var content:String?
+    var reason:String?
+    var date:String?
+    var point:String?
+    var forfeit:String?
+    var numbers:String?
+    
+    init(dic:NSDictionary) {
+        for (key,value) in dic {
+            switch (key as! String,value) {
+            case ("address",_):
+                address = value as? String
+            case ("content",_):
+                content = value as? String
+            case ("reason",_):
+                reason = value as? String
+            case ("date",_):
+                date = value as? String
+            case ("point",_):
+                point = value as? String
+            case ("forfeit",_):
+                forfeit = value as? String
+            case ("numbers",_):
+                numbers = value as? String
+            default:break
+            }
+        }
+    }
+    
 }

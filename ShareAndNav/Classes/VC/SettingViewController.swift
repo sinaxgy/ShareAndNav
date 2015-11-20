@@ -102,6 +102,12 @@ class SettingViewController: UIViewController ,UITableViewDelegate,UITableViewDa
             })
         }
     }
+    
+    //MARK: --ControllerAction
+    func showMessageView(sender:UIBarButtonItem) {
+        let messageVC = MessageViewController()
+        self.navigationController?.pushViewController(messageVC, animated: true)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

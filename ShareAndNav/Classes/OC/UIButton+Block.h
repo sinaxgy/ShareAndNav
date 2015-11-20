@@ -13,7 +13,7 @@ typedef void(^ActionBlock)(UIButton* button);
 
 @interface UIButton (Block)
 
-- (void) handleCOntrolEvent:(UIControlEvents)event withBlock:(ActionBlock) block;
+- (void) handleControlEvent:(UIControlEvents)event withBlock:(ActionBlock) block;
 - (void) setup:(NSString*)title fontsize:(CGFloat)size fontColor:(UIColor*)fcolor bkColor:(UIColor*)bkcolor;
 - (void) setup:(UIImage*)image framesize:(CGSize)size;
 

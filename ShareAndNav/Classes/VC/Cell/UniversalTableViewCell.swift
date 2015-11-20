@@ -16,20 +16,20 @@ enum XuTextFieldInputType {
 }
 
 @objc protocol UniversalTableViewCellDelegate {
-    func rightSwitchChanged(cell:UITableViewCell,boolValue:Bool)
+    optional func universalRightSwitchChanged(cell:UITableViewCell,boolValue:Bool)
 }
 
 class UniversalTableViewCell: UITableViewCell ,XuPickerViewDelegate{
     
     var delegate:UniversalTableViewCellDelegate?
-    
+    var rightSwitchChanged : ((Bool) -> Void)?
+    var rightButtonClicked : (() -> Void)?
     private var leftImageView:UIImageView?
     private var leftLabel:UILabel?
-    private var rLabel:UILabel?
-    private var rSwitch:UISwitch?
-    private var rButton:UIButton?
+    private var rightLabel:UILabel?
+    private var rightSwitch:UISwitch?
+    private var rightButton:UIButton?
     var textField:HoshiTextField?
-    //var textF:HoshiTextField?
     var rightObject:NSObject?
     var leftShift:CGFloat = 0 {
         didSet{
@@ -49,13 +49,6 @@ class UniversalTableViewCell: UITableViewCell ,XuPickerViewDelegate{
         }
     }
     
-    var rSwitchState:Bool = false {
-        didSet{
-            guard rSwitch != nil else {return}
-            rSwitch?.on = rSwitchState
-        }
-    }
-    
     var leftLabelText:String? {
         didSet{
             guard leftLabel != nil else {return}
@@ -66,23 +59,49 @@ class UniversalTableViewCell: UITableViewCell ,XuPickerViewDelegate{
         }
     }
     
+    var rightShift:CGFloat? {
+        didSet{
+            
+        }
+    }
+    
+    var rSwitchState:Bool = false {
+        didSet{
+            guard rightSwitch != nil else {return}
+            rightSwitch?.on = rSwitchState
+            if self.accessoryType != UITableViewCellAccessoryType.DisclosureIndicator {
+                rightSwitch?.center.x = XuWidth - 35
+            }
+        }
+    }
+    
     var rightLabelText:String? {
         didSet{
-            guard rLabel != nil else {return}
+            guard rightLabel != nil && rightLabelText != nil else {return}
             let width = XuTextSizeMiddle * CGFloat(NSString(string: rightLabelText!).length)
-            rLabel?.frame.size = CGSizeMake(width + 10, XuTextSizeMiddle + 5)
-            rLabel?.text = rightLabelText
-            rLabel?.center = CGPointMake(XuWidth - width / 2 - 35, XuCellHeight / 2)
+            rightLabel?.frame.size = CGSizeMake(width + 10, XuTextSizeMiddle + 5)
+            rightLabel?.text = rightLabelText
+            rightLabel?.center = CGPointMake(XuWidth - width / 2 - 35, XuCellHeight / 2)
+            if self.accessoryType != UITableViewCellAccessoryType.DisclosureIndicator {
+                rightLabel?.center.x += 10
+            }
         }
     }
     
     var rightButtonTitle:String? {
         didSet{
-            guard rButton != nil else {return}
-            rButton?.setTitle(rightButtonTitle, forState: UIControlState.Normal)
+            guard rightButton != nil else {return}
+            rightButton?.setTitle(rightButtonTitle, forState: UIControlState.Normal)
             let width = XuTextSizeMiddle * CGFloat(NSString(string: rightButtonTitle!).length) + 5
-            rButton?.frame.size = CGSizeMake(width + 10, XuTextSizeMiddle + 5)
-            rButton?.center = CGPointMake(XuWidth - width / 2 - 35, XuCellHeight / 2)
+            rightButton?.frame.size = CGSizeMake(width + 10, XuTextSizeMiddle + 5)
+            rightButton?.center = CGPointMake(XuWidth - width / 2 - 35, XuCellHeight / 2)
+            if rightLabel != nil {
+                rightLabel?.center.x -= width + 20
+            }
+            
+            if self.accessoryType != UITableViewCellAccessoryType.DisclosureIndicator {
+                rightButton?.center.x += 10
+            }
         }
     }
     
@@ -149,6 +168,9 @@ class UniversalTableViewCell: UITableViewCell ,XuPickerViewDelegate{
         case is UIView:
             self.rightObject = rightObject
             (rightObject as! UIView).center = CGPointMake(XuWidth - CGRectGetWidth((rightObject as! UIView).frame) / 2 - 30, XuCellHeight / 2)
+            if self.accessoryType != UITableViewCellAccessoryType.DisclosureIndicator {
+                (rightObject as! UIView).center.x += 10
+            }
             self.addSubview(rightObject as! UIView)
         default:break
         }
@@ -168,37 +190,37 @@ class UniversalTableViewCell: UITableViewCell ,XuPickerViewDelegate{
     }
     
     func initRightButton() {
-        rButton = UIButton(type: UIButtonType.Custom)
-        rButton?.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        rButton?.titleLabel?.font = UIFont.systemFontOfSize(XuTextSizeMiddle)
-        rButton?.backgroundColor = XuColorBlue
-        rButton?.frame = CGRectZero
-        rButton?.layer.cornerRadius = XuCornerRadius
-        self.addSubview(rButton!)
+        rightButton = UIButton(type: UIButtonType.System)
+        rightButton?.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        rightButton?.titleLabel?.font = UIFont.systemFontOfSize(XuTextSizeMiddle)
+        rightButton?.backgroundColor = XuColorBlue
+        rightButton?.frame = CGRectZero
+        rightButton?.layer.cornerRadius = XuCornerRadius
+        rightButton?.addTarget(self, action: "rightButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.addSubview(rightButton!)
     }
     
     func initRightSwitch() {
-        rSwitch = UISwitch(frame: CGRectZero)
-        rSwitch?.addTarget(self, action: "rightSwitchAction:", forControlEvents: UIControlEvents.ValueChanged)
-        rSwitch?.transform = CGAffineTransformMakeScale(0.7, 0.7)
-        rSwitch?.center = CGPointMake(XuWidth - 45, XuCellHeight / 2)
-        contentView.addSubview(rSwitch!)
+        rightSwitch = UISwitch(frame: CGRectZero)
+        rightSwitch?.addTarget(self, action: "rightSwitchAction:", forControlEvents: UIControlEvents.ValueChanged)
+        rightSwitch?.transform = CGAffineTransformMakeScale(0.7, 0.7)
+        rightSwitch?.center = CGPointMake(XuWidth - 45, XuCellHeight / 2)
+        contentView.addSubview(rightSwitch!)
     }
     
     func initRightLabel() {
-        rLabel = UILabel(frame: CGRectMake(15, 0, 0, 20))
-        rLabel?.font = UIFont.systemFontOfSize(XuTextSizeMiddle)
-        rLabel?.center.y = XuCellHeight / 2
-        rLabel?.textAlignment = NSTextAlignment.Right
-        self.addSubview(rLabel!)
+        rightLabel = UILabel(frame: CGRectMake(15, 0, 0, 20))
+        rightLabel?.font = UIFont.systemFontOfSize(XuTextSizeMiddle)
+        rightLabel?.center.y = XuCellHeight / 2
+        rightLabel?.textAlignment = NSTextAlignment.Right
+        self.addSubview(rightLabel!)
     }
     
     func initRightTextField() {
         textField = HoshiTextField(frame: CGRectMake(20,0,XuWidth,self.frame.height - 0))
         textField?.font = UIFont.systemFontOfSize(XuTextSizeMiddle)
-        textField?.setValue(UIFont.systemFontOfSize(XuTextSizeMiddle), forKeyPath: "_placeholderLabel.font")
+        textField?.setValue(UIFont.systemFontOfSize(20), forKeyPath: "_placeholderLabel.font")
         textField?.autocorrectionType = UITextAutocorrectionType.No
-        //rTextField?.textAlignment = NSTextAlignment.Right
         textField?.center.y = XuCellHeight / 2
         self.addSubview(textField!)
     }
@@ -210,11 +232,12 @@ class UniversalTableViewCell: UITableViewCell ,XuPickerViewDelegate{
     
     //MARK: --control event
     func rightButtonAction(sender:UIButton) {
-        
+        self.rightButtonClicked?()
     }
     
     func rightSwitchAction(sender:UISwitch) {
-        delegate?.rightSwitchChanged(self, boolValue: sender.on)
+        delegate?.universalRightSwitchChanged?(self, boolValue: sender.on)
+        self.rightSwitchChanged?(sender.on)
     }
     
     //MARK: --XuPickerViewDelegate

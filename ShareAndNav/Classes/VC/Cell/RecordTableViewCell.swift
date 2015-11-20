@@ -64,7 +64,7 @@ class RecordTableViewCell: UITableViewCell ,UITableViewDataSource,UITableViewDel
     func initShowButton() {
         let imageName = (showDetail ? "up" : "down")
         showButton = UIButton(type: UIButtonType.System)
-        showButton.frame = CGRectMake(0, 0, 15, 15)
+        showButton.frame = CGRectMake(0, 0, 115, 15)
         showButton.center = CGPointMake(XuWidth / 2, self.frame.height - 5)
         showButton.setImage(UIImage(named: imageName), forState: UIControlState.Normal)
         showButton.addTarget(self, action: "shownDonwDetail:", forControlEvents: UIControlEvents.TouchUpInside)

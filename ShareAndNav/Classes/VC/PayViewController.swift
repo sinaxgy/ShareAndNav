@@ -54,7 +54,8 @@ class PayViewController: UIViewController ,UITableViewDelegate,UITableViewDataSo
             cell?.backgroundColor = UIColor.clearColor()
             return cell!
         }
-        return UITableViewCell()
+        return self.rechargeCell(indexPath)
+        //return UITableViewCell()
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -87,7 +88,7 @@ class PayViewController: UIViewController ,UITableViewDelegate,UITableViewDataSo
         view.backgroundColor = XuColorGrayThin
         let leftButton = UIButton(type: UIButtonType.System)
         leftButton.setup("发 票", fontsize: XuTextSizeMiddle, fontColor: UIColor.whiteColor(), bkColor: XuColorBlue)
-        leftButton.handleCOntrolEvent(UIControlEvents.TouchUpInside) { (_) -> Void in
+        leftButton.handleControlEvent(UIControlEvents.TouchUpInside) { (_) -> Void in
             print("发票")
             self.navigationController?.pushViewController(ReceiptViewController(), animated: true)
         }
@@ -95,9 +96,12 @@ class PayViewController: UIViewController ,UITableViewDelegate,UITableViewDataSo
         view.addSubview(leftButton)
         
         let rightButton = UIButton(type: UIButtonType.System)
+        rightButton.adjustsImageWhenHighlighted = true
         rightButton.setup("支付明细", fontsize: XuTextSizeMiddle, fontColor: XuColorBlueThin, bkColor: XuColorGrayThin)
-        rightButton.handleCOntrolEvent(UIControlEvents.TouchUpInside) { (_) -> Void in
+        rightButton.handleControlEvent(UIControlEvents.TouchUpInside) { (_) -> Void in
             print("支付明细")
+            print(rightButton.state == UIControlState.Highlighted)
+            print(rightButton.state == UIControlState.Selected)
         }
         view.addSubview(rightButton)
         rightButton.center = CGPointMake(XuWidth - CGRectGetWidth(rightButton.frame) / 2 - 10, 20)
@@ -127,6 +131,45 @@ class PayViewController: UIViewController ,UITableViewDelegate,UITableViewDataSo
             let dic = ele as! NSMutableDictionary
             dic.setObject(selectedIndex == payWay.indexOfObject(ele), forKey: "isCurrent")
         }
+        
+    }
+    
+    func rechargeCell(indexPath:NSIndexPath) -> UITableViewCell{
+        func lineWith(xLocation:CGFloat) -> UIView {
+            let view = UIView(frame: CGRectMake(0,0,1,XuCellHeight / 2))
+            view.backgroundColor = XuColorGrayThin
+            view.center = CGPointMake(xLocation, XuCellHeight / 2)
+            return view
+        }
+        let leftText = (indexPath.row == 0 ? "余额" : "充值")
+        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "rechargeCell")
+        cell.backgroundColor = UIColor.clearColor()
+        let label = UILabel(frame: CGRectMake(15,20,30,20))
+        label.text = leftText;label.textAlignment = NSTextAlignment.Center
+        label.font = UIFont.systemFontOfSize(XuTextSizeMiddle)
+        label.center.y = XuCellHeight / 2
+        cell.addSubview(label)
+        cell.addSubview(lineWith(60))
+        if indexPath.row == 0 {
+            let rightLabel = UILabel(frame: CGRectMake(0,0,50,20))
+            rightLabel.text = "¥25.00";rightLabel.textAlignment = NSTextAlignment.Right
+            rightLabel.font = UIFont.systemFontOfSize(XuTextSizeMiddle)
+            rightLabel.center = CGPointMake(XuWidth - 45, XuCellHeight / 2)
+            cell.addSubview(rightLabel)
+            return cell
+        }
+        let icons = ["yinlian","zhifubao","weixin","baidu"]
+        for element in icons {
+            let button = UIButton(type: UIButtonType.Custom)
+            button.frame = CGRectMake(0, 0, 50, 40)
+            button.setImage(UIImage(named: element), forState: UIControlState.Normal)
+            button.center = CGPointMake(90 + CGFloat(icons.indexOf(element)!) * 50, XuCellHeight / 2)
+            cell.addSubview(button)
+            button.handleControlEvent(UIControlEvents.TouchUpInside, withBlock: { (_) -> Void in
+                print(element)
+            })
+        }
+        return cell
         
     }
 

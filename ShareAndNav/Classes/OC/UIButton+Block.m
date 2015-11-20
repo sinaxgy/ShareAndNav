@@ -12,7 +12,7 @@
 
 static char overViewKey;
 
-- (void) handleCOntrolEvent:(UIControlEvents)event withBlock:(void (^)(UIButton *))block {
+- (void) handleControlEvent:(UIControlEvents)event withBlock:(void (^)(UIButton *))block {
     objc_setAssociatedObject(self, &overViewKey, block, OBJC_ASSOCIATION_COPY_NONATOMIC);
     [self addTarget:self action:@selector(callActionBlock:) forControlEvents:event];
 }
@@ -34,7 +34,7 @@ static char overViewKey;
 }
 
 - (void) setup:(UIImage*)image framesize:(CGSize)size {
-    self.frame = CGRectMake(0, 0, size.width, size.height);
+    self.frame = CGRectMake(0, 0, size.width + 10, size.height + 20);
     [self setImage:image forState:UIControlStateNormal];
 }
 

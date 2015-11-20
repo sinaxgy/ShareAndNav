@@ -92,9 +92,9 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
                 self.navigationController?.pushViewController(violationVC, animated: true)
             case .parkTime:
                 //animation.subtype = kCATransitionFromBottom
-                self.navigationController?.pushViewController(ParkingRecordViewController(), animated: true)
+                self.navigationController?.pushViewController(ParkStateViewController(), animated: true)
             case .revenue:
-                let carportVC = CarportViewController()
+                let carportVC = CarportShareViewController()
                 //animation.subtype = kCATransitionFromRight
                 self.navigationController?.pushViewController(carportVC, animated: true)
             }
@@ -342,5 +342,4 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
         default:break
         }
     }
-
 }

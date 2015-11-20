@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViolationViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource{
+class ViolationViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource,ArrayTableViewCellDelegate{
     
     private var tableView:UITableView!
     var violationArray:NSMutableArray = []
@@ -54,36 +54,49 @@ class ViolationViewController: UIViewController ,UITableViewDelegate,UITableView
         return 0
     }
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.row == 2 {
+            if let violation = violationArray[indexPath.section] as? ViolationObject {
+                guard violation.info != nil else {return 0}
+                return 50 * CGFloat(violation.info!.count)
+            }
+        }
+        return 50
+    }
+    
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 20
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView()
-        view.backgroundColor = XuColorGrayThin
-        return view
-    }
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         guard let vio = self.violationArray[indexPath.section] as? ViolationObject else {return UITableViewCell()}
-        var cell = tableView.dequeueReusableCellWithIdentifier("rbCell") as? UniversalTableViewCell
-        if cell == nil {
-            cell = UniversalTableViewCell(universalStyle: UniversalCellStyle.RightButton, reuseIdentifier: "rbCell")
-        }
         switch indexPath.row {
-        case 0:
-            cell?.leftLabelText = vio.plate
-            if vio.info != nil {
-                cell?.rightButtonTitle = "违章处理"
+        case 0,1:
+            var cell = tableView.dequeueReusableCellWithIdentifier("rbCell") as? UniversalTableViewCell
+            if cell == nil {
+                cell = UniversalTableViewCell(universalStyle: UniversalCellStyle.RightButton, reuseIdentifier: "rbCell")
+                cell?.backgroundColor = UIColor.clearColor()
             }
-        case 1:
-            cell?.leftLabelText = "未处理 \(vio.times!) 扣分 \(vio.points!) 罚款 \(vio.forfeit!)"
+            if indexPath.row == 1{
+                cell?.leftLabelText = "未处理 \(vio.times!) 扣分 \(vio.points!) 罚款 \(vio.forfeit!)"
+            }else {
+                cell?.leftLabelText = vio.plate
+                if vio.info != nil {
+                    cell?.rightButtonTitle = "违章处理"
+                }
+            }
+            return cell!
         case 2:
-            break
-        default:break
+            var cell = tableView.dequeueReusableCellWithIdentifier("detaledCell") as? ArrayTableViewCell
+            if cell == nil {
+                cell = ArrayTableViewCell(reuseIdentifier: "detailedCell")
+                cell?.backgroundColor = UIColor.clearColor()
+                cell?.delegate = self
+            }
+            cell?.dataArray = vio.info
+            return cell!
+        default:return UITableViewCell()
         }
-        cell!.backgroundColor = XuColorGrayThin
-        return cell!
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -92,6 +105,15 @@ class ViolationViewController: UIViewController ,UITableViewDelegate,UITableView
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         XutableView(tableView, willDisplayCell: cell, forRowIndexPath: indexPath)
+    }
+    
+    //MARK: --ArrayTableViewCellDelegate
+    func arrayTableViewCellLocation(row: Int) {
+        
+    }
+    
+    func arrayTableViewCellSelected(row: Int) {
+        
     }
     
     //MARK: --ControllerAction
@@ -104,16 +126,5 @@ class ViolationViewController: UIViewController ,UITableViewDelegate,UITableView
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+

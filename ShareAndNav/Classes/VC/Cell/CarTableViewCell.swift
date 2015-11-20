@@ -93,7 +93,7 @@ class CarTableViewCell: UITableViewCell ,UITableViewDataSource,UITableViewDelega
         guard xcarOwnership.isCerificate != nil else {return}
         
         if !xcarOwnership.isCerificate! {
-            let button = UIButton(type: UIButtonType.Custom)
+            let button = UIButton(type: UIButtonType.System)
             button.frame = CGRectMake(CGRectGetMaxX((leftLabel?.frame)!) , centerY - 10, 60, 20)
             button.setTitle("车主未认证", forState: UIControlState.Normal)
             button.titleLabel?.font = UIFont.systemFontOfSize(XuTextSizeSmall)

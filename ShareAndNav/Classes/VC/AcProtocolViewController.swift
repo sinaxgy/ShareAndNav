@@ -33,7 +33,7 @@ class AcProtocolViewController: UIViewController {
     }
     
     func backPreviousVC(sender:NSObject) {
-        self.presentViewController(previousVC!, animated: true, completion: nil)
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {

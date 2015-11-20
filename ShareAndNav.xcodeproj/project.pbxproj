@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		8F38EE9D1BF76B3B003484CC /* NewPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F38EE9C1BF76B3B003484CC /* NewPayViewController.swift */; };
 		8F38EE9F1BF770A2003484CC /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F38EE9E1BF770A2003484CC /* RecordTableViewCell.swift */; };
+		8F4327E31BFEFAE8005B4B60 /* ViolationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4327E21BFEFAE8005B4B60 /* ViolationTableViewCell.swift */; };
+		8F4327EA1BFF061D005B4B60 /* ArrayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4327E91BFF061D005B4B60 /* ArrayTableViewCell.swift */; };
+		8F4327EE1BFF12EA005B4B60 /* ViolationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4327ED1BFF12EA005B4B60 /* ViolationDetailViewController.swift */; };
+		8F561BBD1BFE0A4400768276 /* CarportShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F561BBC1BFE0A4400768276 /* CarportShareViewController.swift */; };
+		8F561BBF1BFE10C200768276 /* CarportState.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F561BBE1BFE10C200768276 /* CarportState.plist */; };
+		8F577DDA1BFC22D6007CF72F /* ParkStateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F577DD91BFC22D6007CF72F /* ParkStateViewController.swift */; };
+		8F577DDC1BFC246E007CF72F /* ParkState.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F577DDB1BFC246E007CF72F /* ParkState.plist */; };
+		8F577DE11BFC956B007CF72F /* XuCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F577DE01BFC956B007CF72F /* XuCamera.swift */; };
 		8FDE28531BFA1A0700830E37 /* OwnerIdentifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDE28521BFA1A0700830E37 /* OwnerIdentifyViewController.swift */; };
 		8FE1421E1BF5C86400C236A8 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE1421D1BF5C86400C236A8 /* Helper.swift */; };
 		8FE142201BF5D55600C236A8 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE1421F1BF5D55600C236A8 /* HeaderView.swift */; };
@@ -100,6 +108,14 @@
 /* Begin PBXFileReference section */
 		8F38EE9C1BF76B3B003484CC /* NewPayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewPayViewController.swift; path = Classes/VC/NewPayViewController.swift; sourceTree = "<group>"; };
 		8F38EE9E1BF770A2003484CC /* RecordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecordTableViewCell.swift; path = Classes/VC/Cell/RecordTableViewCell.swift; sourceTree = "<group>"; };
+		8F4327E21BFEFAE8005B4B60 /* ViolationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViolationTableViewCell.swift; path = Classes/VC/Cell/ViolationTableViewCell.swift; sourceTree = "<group>"; };
+		8F4327E91BFF061D005B4B60 /* ArrayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayTableViewCell.swift; path = Classes/VC/Cell/ArrayTableViewCell.swift; sourceTree = "<group>"; };
+		8F4327ED1BFF12EA005B4B60 /* ViolationDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViolationDetailViewController.swift; path = Classes/VC/Violation/ViolationDetailViewController.swift; sourceTree = "<group>"; };
+		8F561BBC1BFE0A4400768276 /* CarportShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarportShareViewController.swift; path = Classes/VC/CarportShareViewController.swift; sourceTree = "<group>"; };
+		8F561BBE1BFE10C200768276 /* CarportState.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CarportState.plist; sourceTree = "<group>"; };
+		8F577DD91BFC22D6007CF72F /* ParkStateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParkStateViewController.swift; path = Classes/VC/ParkStateViewController.swift; sourceTree = "<group>"; };
+		8F577DDB1BFC246E007CF72F /* ParkState.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ParkState.plist; sourceTree = "<group>"; };
+		8F577DE01BFC956B007CF72F /* XuCamera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XuCamera.swift; path = Classes/VC/Helper/XuCamera.swift; sourceTree = "<group>"; };
 		8FDE28521BFA1A0700830E37 /* OwnerIdentifyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OwnerIdentifyViewController.swift; path = Classes/VC/OwnerIdentifyViewController.swift; sourceTree = "<group>"; };
 		8FE1421D1BF5C86400C236A8 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		8FE1421F1BF5D55600C236A8 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeaderView.swift; path = Classes/VC/View/HeaderView.swift; sourceTree = "<group>"; };
@@ -112,7 +128,7 @@
 		8FE71C311BF4D22B0043208F /* PayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PayViewController.swift; path = Classes/VC/PayViewController.swift; sourceTree = "<group>"; };
 		8FE71C331BF4D2CB0043208F /* ParkingRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParkingRecordViewController.swift; path = Classes/VC/ParkingRecordViewController.swift; sourceTree = "<group>"; };
 		C5022EC31BE0A9B400DBC2FF /* UniversalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UniversalTableViewCell.swift; path = Classes/VC/Cell/UniversalTableViewCell.swift; sourceTree = "<group>"; };
-		C50E7FEE1BDB7D28002BA56D /* 车韵.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "车韵.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C50E7FEE1BDB7D28002BA56D /* i车生活.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "i车生活.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C50E7FF11BDB7D28002BA56D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C50E7FF61BDB7D28002BA56D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C50E7FF81BDB7D28002BA56D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -212,6 +228,75 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8F4327E61BFEFEF8005B4B60 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				8FE2E2581BFAC40E009A4F5C /* HoshiTextField.swift */,
+				8FE2E2591BFAC40E009A4F5C /* TextFieldsEffects.swift */,
+			);
+			name = Others;
+			sourceTree = "<group>";
+		};
+		8F577DD31BFC21FA007CF72F /* CarBranch */ = {
+			isa = PBXGroup;
+			children = (
+				C5C8D0F61BEA1F8600EAFD0B /* CarViewController.swift */,
+				C5843E421BDF4D5F0074C785 /* NewLicensePlateViewController.swift */,
+				8FDE28521BFA1A0700830E37 /* OwnerIdentifyViewController.swift */,
+			);
+			name = CarBranch;
+			sourceTree = "<group>";
+		};
+		8F577DD41BFC2209007CF72F /* CarportBranch */ = {
+			isa = PBXGroup;
+			children = (
+				C5BA4FA91BEB327100EF6832 /* CarportViewController.swift */,
+				8F561BBC1BFE0A4400768276 /* CarportShareViewController.swift */,
+			);
+			name = CarportBranch;
+			sourceTree = "<group>";
+		};
+		8F577DD51BFC2221007CF72F /* ViolationBranch */ = {
+			isa = PBXGroup;
+			children = (
+				C5BA4FA71BEB2F5500EF6832 /* ViolationViewController.swift */,
+				8F4327ED1BFF12EA005B4B60 /* ViolationDetailViewController.swift */,
+			);
+			name = ViolationBranch;
+			sourceTree = "<group>";
+		};
+		8F577DD61BFC2231007CF72F /* Master */ = {
+			isa = PBXGroup;
+			children = (
+				C5C8D0F31BEA140C00EAFD0B /* LoginViewController.swift */,
+				C5E5ADA51BE2692F00AEE7AC /* MasterViewController.swift */,
+				C5BA4FAB1BEB355100EF6832 /* MessageViewController.swift */,
+				8FE71C2F1BF4CABD0043208F /* PersonalViewController.swift */,
+				8FE142231BF606FF00C236A8 /* SettingViewController.swift */,
+				8FE142251BF60F4100C236A8 /* AcProtocolViewController.swift */,
+			);
+			name = Master;
+			sourceTree = "<group>";
+		};
+		8F577DD71BFC2249007CF72F /* ParkBranch */ = {
+			isa = PBXGroup;
+			children = (
+				8FE71C331BF4D2CB0043208F /* ParkingRecordViewController.swift */,
+				8F577DD91BFC22D6007CF72F /* ParkStateViewController.swift */,
+			);
+			name = ParkBranch;
+			sourceTree = "<group>";
+		};
+		8F577DD81BFC22A2007CF72F /* PayBranch */ = {
+			isa = PBXGroup;
+			children = (
+				8FE71C311BF4D22B0043208F /* PayViewController.swift */,
+				8F38EE9C1BF76B3B003484CC /* NewPayViewController.swift */,
+				8FE142211BF5EF2E00C236A8 /* ReceiptViewController.swift */,
+			);
+			name = PayBranch;
+			sourceTree = "<group>";
+		};
 		C50E7FE51BDB7D28002BA56D = {
 			isa = PBXGroup;
 			children = (
@@ -226,7 +311,7 @@
 		C50E7FEF1BDB7D28002BA56D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C50E7FEE1BDB7D28002BA56D /* 车韵.app */,
+				C50E7FEE1BDB7D28002BA56D /* i车生活.app */,
 				C50E80021BDB7D28002BA56D /* ShareAndNavTests.xctest */,
 				C50E800D1BDB7D28002BA56D /* ShareAndNavUITests.xctest */,
 			);
@@ -237,30 +322,22 @@
 			isa = PBXGroup;
 			children = (
 				C50E7FF11BDB7D28002BA56D /* AppDelegate.swift */,
-				C5C8D0F31BEA140C00EAFD0B /* LoginViewController.swift */,
-				C5843E421BDF4D5F0074C785 /* NewLicensePlateViewController.swift */,
-				C5E5ADA51BE2692F00AEE7AC /* MasterViewController.swift */,
-				C5C8D0F61BEA1F8600EAFD0B /* CarViewController.swift */,
-				C5BA4FA91BEB327100EF6832 /* CarportViewController.swift */,
-				8FDE28521BFA1A0700830E37 /* OwnerIdentifyViewController.swift */,
-				C5BA4FA71BEB2F5500EF6832 /* ViolationViewController.swift */,
-				C5BA4FAB1BEB355100EF6832 /* MessageViewController.swift */,
-				8FE71C2F1BF4CABD0043208F /* PersonalViewController.swift */,
-				8FE71C331BF4D2CB0043208F /* ParkingRecordViewController.swift */,
-				8FE71C311BF4D22B0043208F /* PayViewController.swift */,
-				8F38EE9C1BF76B3B003484CC /* NewPayViewController.swift */,
-				8FE142211BF5EF2E00C236A8 /* ReceiptViewController.swift */,
-				8FE142231BF606FF00C236A8 /* SettingViewController.swift */,
-				8FE142251BF60F4100C236A8 /* AcProtocolViewController.swift */,
+				8F577DD61BFC2231007CF72F /* Master */,
+				8F577DD31BFC21FA007CF72F /* CarBranch */,
+				8F577DD41BFC2209007CF72F /* CarportBranch */,
+				8F577DD51BFC2221007CF72F /* ViolationBranch */,
+				8F577DD71BFC2249007CF72F /* ParkBranch */,
+				8F577DD81BFC22A2007CF72F /* PayBranch */,
 				C5843E511BDF6BB00074C785 /* HomeViewController.h */,
 				C5843E521BDF6BB00074C785 /* HomeViewController.m */,
 				C57A475D1BEC543C00D65AA9 /* Cell */,
 				C57A47551BEC3ECF00D65AA9 /* Model */,
 				C544A4A31BE89602004607DD /* View */,
+				8F4327E61BFEFEF8005B4B60 /* Others */,
 				C5843DF51BDE72240074C785 /* MainFile */,
-				C5843E501BDF6BAF0074C785 /* ShareAndNav-Bridging-Header.h */,
 				C5843DEC1BDE719A0074C785 /* Assistant */,
 				C5A8E84E1BE34B76008AD59B /* Resources */,
+				C5843E501BDF6BAF0074C785 /* ShareAndNav-Bridging-Header.h */,
 			);
 			path = ShareAndNav;
 			sourceTree = "<group>";
@@ -298,8 +375,6 @@
 		C57A47551BEC3ECF00D65AA9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8FE2E2581BFAC40E009A4F5C /* HoshiTextField.swift */,
-				8FE2E2591BFAC40E009A4F5C /* TextFieldsEffects.swift */,
 				C5843E471BDF62A40074C785 /* CarMaster.swift */,
 				C57A47591BEC454F00D65AA9 /* CarOwnership.swift */,
 				C58CC8901BF0349A006D4F96 /* Carport.swift */,
@@ -316,6 +391,8 @@
 				C5022EC31BE0A9B400DBC2FF /* UniversalTableViewCell.swift */,
 				C5FF79CE1BF1FAEB00CAA14A /* CarportTableViewCell.swift */,
 				8F38EE9E1BF770A2003484CC /* RecordTableViewCell.swift */,
+				8F4327E91BFF061D005B4B60 /* ArrayTableViewCell.swift */,
+				8F4327E21BFEFAE8005B4B60 /* ViolationTableViewCell.swift */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -324,6 +401,7 @@
 			isa = PBXGroup;
 			children = (
 				C5C4EC3A1BEA06D00058B286 /* XuUserDefault.swift */,
+				8F577DE01BFC956B007CF72F /* XuCamera.swift */,
 				C5843DBA1BDDB89C0074C785 /* TypeDefine.swift */,
 				8FE1421D1BF5C86400C236A8 /* Helper.swift */,
 				C5C4EC391BEA06D00058B286 /* XuRegularExpression.swift */,
@@ -347,6 +425,8 @@
 				C58CC88E1BF02E6E006D4F96 /* Carport.plist */,
 				C58CC8981BF0788A006D4F96 /* Violations.plist */,
 				C58CC8A31BF0E0A5006D4F96 /* CityAndArea.plist */,
+				8F577DDB1BFC246E007CF72F /* ParkState.plist */,
+				8F561BBE1BFE10C200768276 /* CarportState.plist */,
 			);
 			name = MainFile;
 			sourceTree = "<group>";
@@ -398,7 +478,7 @@
 			);
 			name = ShareAndNav;
 			productName = ShareAndNav;
-			productReference = C50E7FEE1BDB7D28002BA56D /* 车韵.app */;
+			productReference = C50E7FEE1BDB7D28002BA56D /* i车生活.app */;
 			productType = "com.apple.product-type.application";
 		};
 		C50E80011BDB7D28002BA56D /* ShareAndNavTests */ = {
@@ -486,6 +566,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F561BBF1BFE10C200768276 /* CarportState.plist in Resources */,
 				C50E7FFC1BDB7D28002BA56D /* LaunchScreen.storyboard in Resources */,
 				C58CC88F1BF02E6F006D4F96 /* Carport.plist in Resources */,
 				C58CC8A41BF0E0A5006D4F96 /* CityAndArea.plist in Resources */,
@@ -494,6 +575,7 @@
 				C50E7FF91BDB7D28002BA56D /* Assets.xcassets in Resources */,
 				C5A8E84D1BE306D5008AD59B /* AMap.bundle in Resources */,
 				C57A47521BEB9DFF00D65AA9 /* ParkingRecord.plist in Resources */,
+				8F577DDC1BFC246E007CF72F /* ParkState.plist in Resources */,
 				C58CC8991BF0788A006D4F96 /* Violations.plist in Resources */,
 				C50E7FF71BDB7D28002BA56D /* Main.storyboard in Resources */,
 			);
@@ -521,19 +603,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F38EE9F1BF770A2003484CC /* RecordTableViewCell.swift in Sources */,
+				8F577DDA1BFC22D6007CF72F /* ParkStateViewController.swift in Sources */,
 				C58CC89B1BF07AFF006D4F96 /* ViolationObject.swift in Sources */,
+				8F4327E31BFEFAE8005B4B60 /* ViolationTableViewCell.swift in Sources */,
 				8FDE28531BFA1A0700830E37 /* OwnerIdentifyViewController.swift in Sources */,
 				8FE71C341BF4D2CB0043208F /* ParkingRecordViewController.swift in Sources */,
 				8FE71C321BF4D22B0043208F /* PayViewController.swift in Sources */,
 				8FE142221BF5EF2E00C236A8 /* ReceiptViewController.swift in Sources */,
 				C5843E461BDF5E380074C785 /* FootMenuView.swift in Sources */,
 				8FE142241BF606FF00C236A8 /* SettingViewController.swift in Sources */,
+				8F577DE11BFC956B007CF72F /* XuCamera.swift in Sources */,
 				C5022EC41BE0A9B400DBC2FF /* UniversalTableViewCell.swift in Sources */,
 				C5C4EC3B1BEA06D00058B286 /* XuRegularExpression.swift in Sources */,
 				C58CC8911BF0349A006D4F96 /* Carport.swift in Sources */,
 				C5E5ADA61BE2692F00AEE7AC /* MasterViewController.swift in Sources */,
 				C59B32DE1BE7AA4F00AAE98C /* SubMasterView.swift in Sources */,
 				C50E7FF21BDB7D28002BA56D /* AppDelegate.swift in Sources */,
+				8F561BBD1BFE0A4400768276 /* CarportShareViewController.swift in Sources */,
 				8FE2E25B1BFAC40E009A4F5C /* TextFieldsEffects.swift in Sources */,
 				C5FF79CF1BF1FAEC00CAA14A /* CarportTableViewCell.swift in Sources */,
 				C5BA4FAA1BEB327100EF6832 /* CarportViewController.swift in Sources */,
@@ -545,10 +631,12 @@
 				C5843E431BDF4D5F0074C785 /* NewLicensePlateViewController.swift in Sources */,
 				C5843E481BDF62A40074C785 /* CarMaster.swift in Sources */,
 				C544A4A51BE89673004607DD /* KeyboardDigitalView.swift in Sources */,
+				8F4327EE1BFF12EA005B4B60 /* ViolationDetailViewController.swift in Sources */,
 				8FE2E25A1BFAC40E009A4F5C /* HoshiTextField.swift in Sources */,
 				8FE142201BF5D55600C236A8 /* HeaderView.swift in Sources */,
 				C5843DEF1BDE71D80074C785 /* KeyChain.swift in Sources */,
 				C5BA4FA81BEB2F5500EF6832 /* ViolationViewController.swift in Sources */,
+				8F4327EA1BFF061D005B4B60 /* ArrayTableViewCell.swift in Sources */,
 				C5C8D0F41BEA140C00EAFD0B /* LoginViewController.swift in Sources */,
 				C5BF9FE51BF314A200E0E697 /* UIButton+Block.m in Sources */,
 				8FE1421E1BF5C86400C236A8 /* Helper.swift in Sources */,
@@ -718,7 +806,7 @@
 				OTHER_LDFLAGS = "-Objc";
 				PRODUCT_BUNDLE_IDENTIFIER = Pursue.ShareAndNav;
 				PRODUCT_MODULE_NAME = ShareAndNav;
-				PRODUCT_NAME = "车韵";
+				PRODUCT_NAME = "i车生活";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ShareAndNav/ShareAndNav-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -742,7 +830,7 @@
 				OTHER_LDFLAGS = "-Objc";
 				PRODUCT_BUNDLE_IDENTIFIER = Pursue.ShareAndNav;
 				PRODUCT_MODULE_NAME = ShareAndNav;
-				PRODUCT_NAME = "车韵";
+				PRODUCT_NAME = "i车生活";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ShareAndNav/ShareAndNav-Bridging-Header.h";
 			};

@@ -113,8 +113,7 @@ class CarViewController: UIViewController ,UITableViewDelegate,UITableViewDataSo
         if let xco = array[indexPath.row] as? CarOwnership {
             cell?.setupWithCarOwnership(xco)
         }
-        cell?.identifyClosure = {
-            () in
+        cell?.identifyClosure = { () in
             print("identifyAction")
             self.navigationController?.pushViewController(OwnerIdentifyViewController(), animated: true)
         }

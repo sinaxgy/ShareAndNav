@@ -70,7 +70,7 @@ class ReceiptViewController: UIViewController ,UITableViewDelegate,UITableViewDa
         button.backgroundColor = XuColorBlue
         button.layer.cornerRadius = XuCornerRadius
         view.addSubview(button)
-        button.handleCOntrolEvent(UIControlEvents.TouchUpInside) { (_) -> Void in
+        button.handleControlEvent(UIControlEvents.TouchUpInside) { (_) -> Void in
             print("确定")
         }
         return view

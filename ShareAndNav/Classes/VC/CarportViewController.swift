@@ -122,6 +122,7 @@ class CarportViewController: UIViewController ,UITableViewDelegate,UITableViewDa
             var cell = tableView.dequeueReusableCellWithIdentifier("cell0") as? UniversalTableViewCell
             if cell == nil {
                 cell = UniversalTableViewCell(universalStyle: UniversalCellStyle.RightButton, reuseIdentifier: "cell0")
+                cell?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             }
             let title:NSMutableString = NSMutableString(string: carport.title!)
             if carport.isrent {
@@ -129,7 +130,6 @@ class CarportViewController: UIViewController ,UITableViewDelegate,UITableViewDa
                 cell?.rightButtonTitle = "续费"
             }
             cell?.leftLabelText = title as String
-            cell?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             cell?.backgroundColor = XuColorGrayThin
             return cell!
         case 1:

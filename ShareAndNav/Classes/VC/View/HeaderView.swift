@@ -29,7 +29,7 @@ class HeaderView: UIView {
             let button = UIButton(type: UIButtonType.System)
             button.setup(bText, fontsize: XuTextSizeMiddle, fontColor: UIColor.whiteColor(), bkColor: XuColorBlue)
             button.center = CGPointMake(XuWidth - CGRectGetWidth(button.frame) / 2 - 10, frame.height - 10)
-            button.handleCOntrolEvent(UIControlEvents.TouchUpInside, withBlock: { (sender) -> Void in
+            button.handleControlEvent(UIControlEvents.TouchUpInside, withBlock: { (sender) -> Void in
                 self.action?(sender: sender)
             })
             self.addSubview(button)

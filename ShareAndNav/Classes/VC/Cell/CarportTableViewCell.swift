@@ -60,7 +60,7 @@ class CarportTableViewCell: UITableViewCell ,UITableViewDelegate,UITableViewData
             }
             cell?.leftLabelText = "车位分享"
             if cell?.rightObject is UIButton {
-                (cell!.rightObject as! UIButton).handleCOntrolEvent(UIControlEvents.TouchUpInside, withBlock: { (_) -> Void in
+                (cell!.rightObject as! UIButton).handleControlEvent(UIControlEvents.TouchUpInside, withBlock: { (_) -> Void in
                     self.delegate?.CarportButtonClicked(self)
                 })
             }
@@ -112,7 +112,7 @@ class CarportTableViewCell: UITableViewCell ,UITableViewDelegate,UITableViewData
         return button
     }
     
-    func rightSwitchChanged(cell: UITableViewCell, boolValue: Bool) {
+    func universalRightSwitchChanged(cell: UITableViewCell, boolValue: Bool) {
         let indexPath = self.tableView.indexPathForCell(cell)
         delegate?.CarportSwitchChanged(self, boolValue: boolValue,index: indexPath!.row - 1)
     }
