@@ -171,7 +171,7 @@ class UniversalTableViewCell: UITableViewCell ,XuPickerViewDelegate{
             if self.accessoryType != UITableViewCellAccessoryType.DisclosureIndicator {
                 (rightObject as! UIView).center.x += 10
             }
-            self.addSubview(rightObject as! UIView)
+            self.contentView.addSubview(rightObject as! UIView)
         default:break
         }
     }
@@ -181,12 +181,12 @@ class UniversalTableViewCell: UITableViewCell ,XuPickerViewDelegate{
         leftLabel = UILabel(frame: CGRectMake(15, 0, 0, 20))
         leftLabel?.font = UIFont.systemFontOfSize(XuTextSizeMiddle)
         leftLabel?.center.y = XuCellHeight / 2
-        self.addSubview(leftLabel!)
+        self.contentView.addSubview(leftLabel!)
     }
     
     func initLeftImageView() {
         leftImageView = UIImageView()
-        self.addSubview(leftImageView!)
+        self.contentView.addSubview(leftImageView!)
     }
     
     func initRightButton() {
@@ -197,7 +197,7 @@ class UniversalTableViewCell: UITableViewCell ,XuPickerViewDelegate{
         rightButton?.frame = CGRectZero
         rightButton?.layer.cornerRadius = XuCornerRadius
         rightButton?.addTarget(self, action: "rightButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
-        self.addSubview(rightButton!)
+        self.contentView.addSubview(rightButton!)
     }
     
     func initRightSwitch() {
@@ -213,7 +213,7 @@ class UniversalTableViewCell: UITableViewCell ,XuPickerViewDelegate{
         rightLabel?.font = UIFont.systemFontOfSize(XuTextSizeMiddle)
         rightLabel?.center.y = XuCellHeight / 2
         rightLabel?.textAlignment = NSTextAlignment.Right
-        self.addSubview(rightLabel!)
+        self.contentView.addSubview(rightLabel!)
     }
     
     func initRightTextField() {
@@ -222,7 +222,7 @@ class UniversalTableViewCell: UITableViewCell ,XuPickerViewDelegate{
         textField?.setValue(UIFont.systemFontOfSize(20), forKeyPath: "_placeholderLabel.font")
         textField?.autocorrectionType = UITextAutocorrectionType.No
         textField?.center.y = XuCellHeight / 2
-        self.addSubview(textField!)
+        self.contentView.addSubview(textField!)
     }
     
     func setupLeft(image:UIImage,andLabel labelText:String) {

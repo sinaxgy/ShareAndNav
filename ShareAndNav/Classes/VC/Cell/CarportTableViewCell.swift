@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CarportSharesCellDelegate {
-    func CarportButtonClicked(cell:UITableViewCell)
+    func CarportAddButtonClicked(cell:UITableViewCell)
     func CarportSwitchChanged(cell:UITableViewCell,boolValue:Bool,index:Int)
 }
 
@@ -61,7 +61,7 @@ class CarportTableViewCell: UITableViewCell ,UITableViewDelegate,UITableViewData
             cell?.leftLabelText = "车位分享"
             if cell?.rightObject is UIButton {
                 (cell!.rightObject as! UIButton).handleControlEvent(UIControlEvents.TouchUpInside, withBlock: { (_) -> Void in
-                    self.delegate?.CarportButtonClicked(self)
+                    self.delegate?.CarportAddButtonClicked(self)
                 })
             }
             return cell!

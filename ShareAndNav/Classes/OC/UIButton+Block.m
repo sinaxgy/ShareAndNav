@@ -34,7 +34,7 @@ static char overViewKey;
 }
 
 - (void) setup:(UIImage*)image framesize:(CGSize)size {
-    self.frame = CGRectMake(0, 0, size.width + 10, size.height + 20);
+    self.frame = CGRectMake(0, 0, size.width, size.height);
     [self setImage:image forState:UIControlStateNormal];
 }
 

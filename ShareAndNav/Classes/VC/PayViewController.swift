@@ -148,23 +148,23 @@ class PayViewController: UIViewController ,UITableViewDelegate,UITableViewDataSo
         label.text = leftText;label.textAlignment = NSTextAlignment.Center
         label.font = UIFont.systemFontOfSize(XuTextSizeMiddle)
         label.center.y = XuCellHeight / 2
-        cell.addSubview(label)
-        cell.addSubview(lineWith(60))
+        cell.contentView.addSubview(label)
+        cell.contentView.addSubview(lineWith(60))
         if indexPath.row == 0 {
             let rightLabel = UILabel(frame: CGRectMake(0,0,50,20))
             rightLabel.text = "¥25.00";rightLabel.textAlignment = NSTextAlignment.Right
             rightLabel.font = UIFont.systemFontOfSize(XuTextSizeMiddle)
             rightLabel.center = CGPointMake(XuWidth - 45, XuCellHeight / 2)
-            cell.addSubview(rightLabel)
+            cell.contentView.addSubview(rightLabel)
             return cell
         }
-        let icons = ["yinlian","zhifubao","weixin","baidu"]
+        let icons = ["visa","zhifubao","weixin","baidu"]
         for element in icons {
             let button = UIButton(type: UIButtonType.Custom)
             button.frame = CGRectMake(0, 0, 50, 40)
             button.setImage(UIImage(named: element), forState: UIControlState.Normal)
             button.center = CGPointMake(90 + CGFloat(icons.indexOf(element)!) * 50, XuCellHeight / 2)
-            cell.addSubview(button)
+            cell.contentView.addSubview(button)
             button.handleControlEvent(UIControlEvents.TouchUpInside, withBlock: { (_) -> Void in
                 print(element)
             })

@@ -92,7 +92,6 @@ class SettingViewController: UIViewController ,UITableViewDelegate,UITableViewDa
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
-        print(indexPath.section)
         if indexPath.section == 3 {
             let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("LoginViewController") as? LoginViewController
             loginVC?.loginType = XuLoginType.Default

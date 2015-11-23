@@ -29,7 +29,6 @@ class CarportViewController: UIViewController ,UITableViewDelegate,UITableViewDa
         tableView = UITableView(frame: CGRectMake(0, 0, XuWidth, XuHeight + 10),style: UITableViewStyle.Grouped)
         self.view.addSubview(tableView)
         tableView.sectionFooterHeight = 0
-        
         tableView.separatorInset = UIEdgeInsetsZero
         tableView.layer.borderWidth = 10
         tableView.layer.cornerRadius = 15
@@ -128,6 +127,9 @@ class CarportViewController: UIViewController ,UITableViewDelegate,UITableViewDa
             if carport.isrent {
                 title.appendString("（租赁\(carport.payway!)）")
                 cell?.rightButtonTitle = "续费"
+                cell?.rightButtonClicked = { () in
+                    print("续费")
+                }
             }
             cell?.leftLabelText = title as String
             cell?.backgroundColor = XuColorGrayThin
@@ -163,9 +165,10 @@ class CarportViewController: UIViewController ,UITableViewDelegate,UITableViewDa
     }
     
     //MARK:--CarportSharesCellDelegate
-    func CarportButtonClicked(cell: UITableViewCell) {
+    func CarportAddButtonClicked(cell: UITableViewCell) {
         let indexPath = tableView.indexPathForCell(cell)
-        print(indexPath?.row)
+        print("add")
+        print(indexPath?.section)
     }
     
     func CarportSwitchChanged(cell: UITableViewCell, boolValue: Bool,index:Int) {

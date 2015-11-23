@@ -30,7 +30,7 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
     }
     
     func initNavigationItemView() {
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "head_protraits"), style: UIBarButtonItemStyle.Plain, target: self, action: "showSubMasterView:")
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "head_protraits"), style: UIBarButtonItemStyle.Plain, target: self, action: "showSubMasterView:")   //head_protraits
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "message_off"), style: UIBarButtonItemStyle.Plain, target: self, action: "showMessageView:")
         self.search = AMapSearchAPI()
         self.search.delegate = self

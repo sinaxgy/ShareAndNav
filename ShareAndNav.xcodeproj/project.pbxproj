@@ -62,7 +62,6 @@
 		C58CC8A41BF0E0A5006D4F96 /* CityAndArea.plist in Resources */ = {isa = PBXBuildFile; fileRef = C58CC8A31BF0E0A5006D4F96 /* CityAndArea.plist */; };
 		C59B32DE1BE7AA4F00AAE98C /* SubMasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59B32DD1BE7AA4F00AAE98C /* SubMasterView.swift */; };
 		C5A8E84D1BE306D5008AD59B /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C5A8E84C1BE306D5008AD59B /* AMap.bundle */; };
-		C5A8E8501BE34BF0008AD59B /* park.png in Resources */ = {isa = PBXBuildFile; fileRef = C5A8E84F1BE34BF0008AD59B /* park.png */; };
 		C5BA4FA81BEB2F5500EF6832 /* ViolationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA4FA71BEB2F5500EF6832 /* ViolationViewController.swift */; };
 		C5BA4FAA1BEB327100EF6832 /* CarportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA4FA91BEB327100EF6832 /* CarportViewController.swift */; };
 		C5BA4FAC1BEB355100EF6832 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA4FAB1BEB355100EF6832 /* MessageViewController.swift */; };
@@ -163,7 +162,6 @@
 		C58CC8A31BF0E0A5006D4F96 /* CityAndArea.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = CityAndArea.plist; path = Resources/CityAndArea.plist; sourceTree = "<group>"; };
 		C59B32DD1BE7AA4F00AAE98C /* SubMasterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubMasterView.swift; path = Classes/VC/SubMasterView.swift; sourceTree = "<group>"; };
 		C5A8E84C1BE306D5008AD59B /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AMap.bundle; path = Framework/AMap.bundle; sourceTree = "<group>"; };
-		C5A8E84F1BE34BF0008AD59B /* park.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = park.png; path = Resources/park.png; sourceTree = "<group>"; };
 		C5BA4FA71BEB2F5500EF6832 /* ViolationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViolationViewController.swift; path = Classes/VC/ViolationViewController.swift; sourceTree = "<group>"; };
 		C5BA4FA91BEB327100EF6832 /* CarportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarportViewController.swift; path = Classes/VC/CarportViewController.swift; sourceTree = "<group>"; };
 		C5BA4FAB1BEB355100EF6832 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageViewController.swift; path = Classes/VC/MessageViewController.swift; sourceTree = "<group>"; };
@@ -456,7 +454,6 @@
 		C5A8E84E1BE34B76008AD59B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				C5A8E84F1BE34BF0008AD59B /* park.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -571,7 +568,6 @@
 				C58CC88F1BF02E6F006D4F96 /* Carport.plist in Resources */,
 				C58CC8A41BF0E0A5006D4F96 /* CityAndArea.plist in Resources */,
 				C57A47541BEC39A900D65AA9 /* CarInfomation.plist in Resources */,
-				C5A8E8501BE34BF0008AD59B /* park.png in Resources */,
 				C50E7FF91BDB7D28002BA56D /* Assets.xcassets in Resources */,
 				C5A8E84D1BE306D5008AD59B /* AMap.bundle in Resources */,
 				C57A47521BEB9DFF00D65AA9 /* ParkingRecord.plist in Resources */,

@@ -31,7 +31,7 @@ class CarViewController: UIViewController ,UITableViewDelegate,UITableViewDataSo
         XuSetup(tableView)
         tableView.dataSource = self
         tableView.delegate = self
-        
+        tableView.delaysContentTouches = false
         
         //解析car数据
         let path = NSBundle.mainBundle().pathForResource("CarInfomation", ofType: ".plist")
