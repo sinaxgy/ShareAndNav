@@ -16,6 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+//        NSThread.sleepForTimeInterval(30)
+//        self.launchScreen()
         MAMapServices.sharedServices().apiKey = XuAPIKey
         AMapSearchServices.sharedServices().apiKey = XuAPIKey
         
@@ -48,6 +51,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    func launchScreen() {
+        let launchView = UIStoryboard(name: "LaunchScreen", bundle: nil).instantiateViewControllerWithIdentifier("LaunchScreen")
+        launchView.view.backgroundColor = UIColor.greenColor()
+        let imageView = UIImageView(frame: UIScreen.mainScreen().bounds)
+        imageView.image = UIImage(named: "logo")
+        launchView.view.addSubview(imageView)
+        
+        self.window?.rootViewController = launchView
+    }
 }
 

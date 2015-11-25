@@ -239,8 +239,8 @@
 			isa = PBXGroup;
 			children = (
 				C5C8D0F61BEA1F8600EAFD0B /* CarViewController.swift */,
-				C5843E421BDF4D5F0074C785 /* NewLicensePlateViewController.swift */,
 				8FDE28521BFA1A0700830E37 /* OwnerIdentifyViewController.swift */,
+				C5843E421BDF4D5F0074C785 /* NewLicensePlateViewController.swift */,
 			);
 			name = CarBranch;
 			sourceTree = "<group>";
@@ -271,7 +271,6 @@
 				C5BA4FAB1BEB355100EF6832 /* MessageViewController.swift */,
 				8FE71C2F1BF4CABD0043208F /* PersonalViewController.swift */,
 				8FE142231BF606FF00C236A8 /* SettingViewController.swift */,
-				8FE142251BF60F4100C236A8 /* AcProtocolViewController.swift */,
 			);
 			name = Master;
 			sourceTree = "<group>";
@@ -280,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				8FE71C331BF4D2CB0043208F /* ParkingRecordViewController.swift */,
+				8FE142251BF60F4100C236A8 /* AcProtocolViewController.swift */,
 				8F577DD91BFC22D6007CF72F /* ParkStateViewController.swift */,
 			);
 			name = ParkBranch;
@@ -332,10 +332,10 @@
 				C57A47551BEC3ECF00D65AA9 /* Model */,
 				C544A4A31BE89602004607DD /* View */,
 				8F4327E61BFEFEF8005B4B60 /* Others */,
-				C5843DF51BDE72240074C785 /* MainFile */,
 				C5843DEC1BDE719A0074C785 /* Assistant */,
 				C5A8E84E1BE34B76008AD59B /* Resources */,
 				C5843E501BDF6BAF0074C785 /* ShareAndNav-Bridging-Header.h */,
+				C5843DF51BDE72240074C785 /* MainFile */,
 			);
 			path = ShareAndNav;
 			sourceTree = "<group>";
@@ -799,7 +799,7 @@
 				INFOPLIST_FILE = ShareAndNav/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "-Objc";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = Pursue.ShareAndNav;
 				PRODUCT_MODULE_NAME = ShareAndNav;
 				PRODUCT_NAME = "i车生活";
@@ -823,7 +823,7 @@
 				INFOPLIST_FILE = ShareAndNav/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "-Objc";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = Pursue.ShareAndNav;
 				PRODUCT_MODULE_NAME = ShareAndNav;
 				PRODUCT_NAME = "i车生活";

@@ -33,7 +33,7 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "head_protraits"), style: UIBarButtonItemStyle.Plain, target: self, action: "showSubMasterView:")   //head_protraits
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "message_off"), style: UIBarButtonItemStyle.Plain, target: self, action: "showMessageView:")
         self.search = AMapSearchAPI()
-        self.search.delegate = self
+        search.delegate = self
         
         let view = UIView(frame: CGRectMake(0, 0, 50, mapView.frame.height - 100))
         view.backgroundColor = UIColor.clearColor()
@@ -59,11 +59,19 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
             let imageName = (i == 0 ? "parking" : "fuelling")
             let selector:Selector = (i == 0 ? "parkingSearch:" : "fuellingSearch:")
             let button = UIButton(type: UIButtonType.Custom)
-            button.frame = CGRectMake(mapView.frame.width - 45, mapView.frame.height - 300 + i * 45, 40, 40)
+            button.frame = CGRectMake(mapView.frame.width - 45, mapView.frame.height - 300 + i * 45, 30, 30)
             button.setImage(UIImage(named: imageName), forState: UIControlState.Normal)
             button.addTarget(self, action: selector, forControlEvents: UIControlEvents.TouchUpInside)
             mapView.addSubview(button)
         }
+        
+        let stepper = UIStepper(frame: CGRectMake(XuWidth - 140,XuHeight - 150,0,0))
+        stepper.addTarget(self, action: "stepperChanged:", forControlEvents: UIControlEvents.ValueChanged)
+        stepper.value = 5;stepper.maximumValue = 10
+        //stepper.setIncrementImage(UIImage(named: "track_on"), forState: UIControlState.Normal)
+        //stepper.setDecrementImage(UIImage(named: "track_off"), forState: UIControlState.Normal)
+        stepper.layer.transform = CATransform3DMakeRotation(CGFloat(M_PI), -1, 1, 0)
+        mapView.addSubview(stepper)
         
         trackButton = UIButton(type: UIButtonType.Custom)
         trackButton.frame = CGRectMake(5, mapView.frame.height - 100, 40, 40)
@@ -77,73 +85,20 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
         self.mapView.addSubview(footView)
         footView.footerViewClicked = {
             (type) in
-//            let animation = CATransition()
-//            animation.duration = 0.5
-//            animation.type = "cube"
-//            animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
             switch type {
             case .brand:
-                //animation.subtype = kCATransitionFromTop
                 let carVC = CarViewController()
                 self.navigationController?.pushViewController(carVC, animated: true)
             case .violation:
-                //animation.subtype = kCATransitionFromLeft
                 let violationVC = ViolationViewController()
                 self.navigationController?.pushViewController(violationVC, animated: true)
             case .parkTime:
-                //animation.subtype = kCATransitionFromBottom
                 self.navigationController?.pushViewController(ParkStateViewController(), animated: true)
             case .revenue:
                 let carportVC = CarportShareViewController()
-                //animation.subtype = kCATransitionFromRight
                 self.navigationController?.pushViewController(carportVC, animated: true)
             }
-            //self.view.window?.layer.addAnimation(animation, forKey: "push")
         }
-    }
-    
-    //MARK: --ControllerAction
-    func showSubMasterView(sender:UIBarButtonItem) {
-        self.creatOriginalSubMasterView()
-        UIView.animateWithDuration(0.3, animations: { () -> Void in
-            self.blackCoverView?.alpha = 2 / 3
-            self.secview?.center.x = XuWidth / 6
-            }, completion: nil)
-    }
-    
-    func showMessageView(sender:UIBarButtonItem) {
-        let messageVC = MessageViewController()
-        self.navigationController?.pushViewController(messageVC, animated: true)
-    }
-    
-    func trackingAction(sender:UIButton) {
-        if mapView.userTrackingMode != MAUserTrackingMode.Follow {
-            mapView.userTrackingMode = MAUserTrackingMode.Follow
-            sender.setImage(UIImage(named: "track_on"), forState: UIControlState.Normal)
-        }
-        mapView.setZoomLevel(16, animated: true)
-    }
-    
-    func parkingSearch(sender:UIButton) {   //周边搜索
-        let request = AMapPOIAroundSearchRequest()
-        let latitude = CGFloat(userLocation.coordinate.latitude)
-        let longtitude = CGFloat(userLocation.coordinate.longitude)
-        request.location = AMapGeoPoint.locationWithLatitude(latitude, longitude: longtitude)
-        request.keywords = "停车场"
-        request.types = "汽车服务"
-        request.sortrule = 0
-        request.requireExtension = true
-        
-        //self.search.AMapPOIAroundSearch(request)
-    }
-    
-    //加油站搜索
-    func fuellingSearch(sender:UIButton) {
-        
-    }
-    
-    func hideSubMasterView(sender:NSObject) {
-        self.subMasterViewDidDisAppear()
     }
     
     //MARK: --UIGestureRecognizer
@@ -184,7 +139,6 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
                         }, completion: { (_) -> Void in
                             self.movement = 0
                     })
-                    
                 }else {
                     self.movement = 0
                     UIView.animateWithDuration(0.3, animations: { () -> Void in
@@ -196,47 +150,10 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
                 }
             }
         }
-        
     }
     
     func longPressRecoginzer(sender:UILongPressGestureRecognizer) {
-//        let point = sender.locationInView(sender.view)
-//        if sender.state == UIGestureRecognizerState.Began {
-//            if point.x < 50 {
-//                self.creatOriginalSubMasterView()
-//                self.movement = point.x
-//            }else {
-//                
-//            }
-//        }
-//        if secview != nil {
-//            if movement < XuWidth * 2 / 3 {
-//                secview?.center.x += (point.x - self.movement)
-//                self.movement = point.x
-//                blackCoverView?.alpha = movement / self.view.frame.width
-//            }
-//        }
-//        if sender.state == UIGestureRecognizerState.Ended {
-//            if secview != nil {
-//                if movement > XuWidth / 3 {
-//                    UIView.animateWithDuration(0.3, animations: { () -> Void in
-//                        self.secview?.center.x = XuWidth / 6
-//                        self.blackCoverView?.alpha = 2/3
-//                        }, completion: { (_) -> Void in
-//                            self.movement = 0
-//                    })
-//                    
-//                }else {
-//                    self.movement = 0
-//                    UIView.animateWithDuration(0.3, animations: { () -> Void in
-//                        self.blackCoverView?.alpha = 0
-//                        self.secview?.center.x = -XuWidth/2
-//                        }, completion: { (_) -> Void in
-//                            self.subMasterViewDidDisAppear()
-//                    })
-//                }
-//            }
-//        }
+
     }
     
     func subMasterViewDidDisAppear() {
@@ -260,7 +177,6 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
                     self.blackCoverView = nil
                     self.secview = nil
             })
-            
         }
     }
     
@@ -287,6 +203,57 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
                     }, completion: nil)
             }
         }
+    }
+    
+    //MARK: --ControllerAction
+    func showSubMasterView(sender:UIBarButtonItem) {
+        self.creatOriginalSubMasterView()
+        UIView.animateWithDuration(0.3, animations: { () -> Void in
+            self.blackCoverView?.alpha = 2 / 3
+            self.secview?.center.x = XuWidth / 6
+            }, completion: nil)
+    }
+    
+    func stepperChanged(sender:UIStepper) {
+        mapView.setZoomLevel(CGFloat(sender.value) * 2, animated: true)
+    }
+    
+    func showMessageView(sender:UIBarButtonItem) {
+        let messageVC = MessageViewController()
+        self.navigationController?.pushViewController(messageVC, animated: true)
+    }
+    
+    func trackingAction(sender:UIButton) {
+        if mapView.userTrackingMode != MAUserTrackingMode.Follow {
+            mapView.userTrackingMode = MAUserTrackingMode.Follow
+            sender.setImage(UIImage(named: "track_on"), forState: UIControlState.Normal)
+        }
+        mapView.setZoomLevel(16 * 3, animated: true)
+    }
+    
+    func hideSubMasterView(sender:NSObject) {
+        self.subMasterViewDidDisAppear()
+    }
+    
+    func parkingSearch(sender:UIButton) {   //周边搜索
+        AMapSearchServices.sharedServices().apiKey = XuAPIKey
+        //let search = AMapSearchAPI()
+        //search.delegate = self
+        let request = AMapPOIAroundSearchRequest()
+        //        let latitude = CGFloat(userLocation.coordinate.latitude)
+        //        let longtitude = CGFloat(userLocation.coordinate.longitude)
+        //        request.location = AMapGeoPoint.locationWithLatitude(latitude, longitude: longtitude)
+        request.location = AMapGeoPoint.locationWithLatitude(39.990459, longitude: 116.481476)
+        request.keywords = "停车场"
+        request.types = "汽车服务"
+        request.sortrule = 0
+        request.requireExtension = true
+        search.AMapPOIAroundSearch(request)
+        //self.search.AMapPOIAroundSearch(request)
+    }
+    
+    //加油站搜索
+    func fuellingSearch(sender:UIButton) {
         
     }
     
@@ -311,7 +278,17 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
     func onPOISearchDone(request: AMapPOISearchBaseRequest!, response: AMapPOISearchResponse!) {
         if response.pois.count == 0 { return }
         print(response.pois.count)
-        print(response.suggestion)
+        print(response.suggestion.keywords)
+        print(response.suggestion.cities)
+        for ele in response.pois {
+            if let poi = ele as? AMapPOI {
+                print("name:\(poi.name)>>>>>>location:\(poi.location.latitude)")
+            }
+        }
+    }
+    
+    func onRouteSearchDone(request: AMapRouteSearchBaseRequest!, response: AMapRouteSearchResponse!) {
+        print(response.route)
     }
 
     override func didReceiveMemoryWarning() {

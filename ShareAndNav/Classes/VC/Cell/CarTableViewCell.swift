@@ -157,7 +157,7 @@ class CarTableViewCell: UITableViewCell ,UITableViewDataSource,UITableViewDelega
             let label = UILabel(frame: CGRectMake(55, 15, XuWidth - 60, 20))
             cell?.contentView.addSubview(label)
             label.text = "账户\(text!)为您的车辆开启在线支付功能"
-            label.font = UIFont.systemFontOfSize(XuTextSizeSmallest)
+            label.font = UIFont.systemFontOfSize(XuTextSizeSmall)
             label.textColor = XuColorGray
             cell?.backgroundColor = UIColor.clearColor()
             cell?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator

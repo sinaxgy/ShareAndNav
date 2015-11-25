@@ -90,6 +90,13 @@ class CarportShareViewController: UIViewController ,UITableViewDelegate,UITableV
         XutableView(tableView, willDisplayCell: cell, forRowIndexPath: indexPath, leftShft: leftShift)
     }
     
+    //MARK: --ControllerAction
+    func showMessageView(sender:UIBarButtonItem) {
+        let messageVC = MessageViewController()
+        self.navigationController?.pushViewController(messageVC, animated: true)
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
