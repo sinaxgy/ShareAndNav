@@ -17,12 +17,13 @@ class ViolationTableViewCell: UITableViewCell {
     private var locateBtn:UIButton!
     
     var locationClosure : (() -> Void)?
-    var xviolation:Violation? {
+    var xviolation:NSDictionary? {
         didSet{
-            luLabel.text = xviolation?.date
-            ruLabel.text = "\((xviolation?.reason)!) 扣\((xviolation?.point)!)"
-            ldLabel.text = xviolation?.address
-            rdLabel.text = "罚款" + (xviolation?.forfeit)!
+            guard xviolation != nil else {return}
+            luLabel.text = "\(xviolation!["date"] as! String)"
+            ruLabel.text = "\(xviolation!["reason"] as! String) 扣\(xviolation!["point"] as! String)"
+            ldLabel.text = "\(xviolation!["address"] as! String)"
+            rdLabel.text = "罚款" + (xviolation!["forfeit"] as! String)
         }
     }
     

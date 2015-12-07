@@ -9,8 +9,8 @@
 import UIKit
 
 @objc protocol ArrayTableViewCellDelegate {
-    optional func arrayTableViewCellLocation(row:Int)
-    optional func arrayTableViewCellSelected(row:Int)
+    optional func arrayTableViewCellLocation(row:Int,superCell:UITableViewCell)
+    optional func arrayTableViewCellSelected(row:Int,superCell:UITableViewCell)
 }
 
 class ArrayTableViewCell: UITableViewCell ,UITableViewDelegate,UITableViewDataSource{
@@ -40,6 +40,7 @@ class ArrayTableViewCell: UITableViewCell ,UITableViewDelegate,UITableViewDataSo
         super.init(style: UITableViewCellStyle.Default, reuseIdentifier: reuseIdentifier)
         tableView = UITableView(frame: CGRectMake(0, 0, XuWidth, 0))
         tableView.separatorColor = XuColorGrayThin
+        tableView.scrollEnabled = false
         self.addSubview(tableView)
         tableView.dataSource = self
         tableView.backgroundColor = UIColor.clearColor()
@@ -63,16 +64,16 @@ class ArrayTableViewCell: UITableViewCell ,UITableViewDelegate,UITableViewDataSo
             cell?.backgroundColor = UIColor.clearColor()
         }
         cell?.separatorInset = UIEdgeInsetsMake(0, 100, 0, 0)
-        cell?.xviolation = dataArray![indexPath.row] as? Violation
+        cell?.xviolation = dataArray![indexPath.row] as? NSDictionary//Violation
         cell?.locationClosure = { () in
-            self.delegate?.arrayTableViewCellLocation?(indexPath.row)
+            self.delegate?.arrayTableViewCellLocation?(indexPath.row,superCell: self)
         }
         return cell!
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
-        self.delegate?.arrayTableViewCellSelected?(indexPath.row)
+        self.delegate?.arrayTableViewCellSelected?(indexPath.row,superCell: self)
     }
 
     required init?(coder aDecoder: NSCoder) {

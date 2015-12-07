@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
+//#import "ShareAndNav-Swift.h"
 
 typedef void(^ActionBlock)(UIButton* button);
 

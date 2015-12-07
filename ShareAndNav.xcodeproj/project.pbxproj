@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F053A871C10316800612D90 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F053A861C10316800612D90 /* Extension.swift */; };
 		8F38EE9D1BF76B3B003484CC /* NewPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F38EE9C1BF76B3B003484CC /* NewPayViewController.swift */; };
 		8F38EE9F1BF770A2003484CC /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F38EE9E1BF770A2003484CC /* RecordTableViewCell.swift */; };
 		8F4327E31BFEFAE8005B4B60 /* ViolationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4327E21BFEFAE8005B4B60 /* ViolationTableViewCell.swift */; };
 		8F4327EA1BFF061D005B4B60 /* ArrayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4327E91BFF061D005B4B60 /* ArrayTableViewCell.swift */; };
 		8F4327EE1BFF12EA005B4B60 /* ViolationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4327ED1BFF12EA005B4B60 /* ViolationDetailViewController.swift */; };
+		8F4D54331C072F0600ABDF21 /* MasterMapDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4D54321C072F0600ABDF21 /* MasterMapDelegate.swift */; };
 		8F561BBD1BFE0A4400768276 /* CarportShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F561BBC1BFE0A4400768276 /* CarportShareViewController.swift */; };
 		8F561BBF1BFE10C200768276 /* CarportState.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F561BBE1BFE10C200768276 /* CarportState.plist */; };
 		8F577DDA1BFC22D6007CF72F /* ParkStateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F577DD91BFC22D6007CF72F /* ParkStateViewController.swift */; };
@@ -105,11 +107,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8F053A861C10316800612D90 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		8F38EE9C1BF76B3B003484CC /* NewPayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewPayViewController.swift; path = Classes/VC/NewPayViewController.swift; sourceTree = "<group>"; };
 		8F38EE9E1BF770A2003484CC /* RecordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecordTableViewCell.swift; path = Classes/VC/Cell/RecordTableViewCell.swift; sourceTree = "<group>"; };
 		8F4327E21BFEFAE8005B4B60 /* ViolationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViolationTableViewCell.swift; path = Classes/VC/Cell/ViolationTableViewCell.swift; sourceTree = "<group>"; };
 		8F4327E91BFF061D005B4B60 /* ArrayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayTableViewCell.swift; path = Classes/VC/Cell/ArrayTableViewCell.swift; sourceTree = "<group>"; };
 		8F4327ED1BFF12EA005B4B60 /* ViolationDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViolationDetailViewController.swift; path = Classes/VC/Violation/ViolationDetailViewController.swift; sourceTree = "<group>"; };
+		8F4D54321C072F0600ABDF21 /* MasterMapDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MasterMapDelegate.swift; path = Classes/Framework/MasterMapDelegate.swift; sourceTree = "<group>"; };
 		8F561BBC1BFE0A4400768276 /* CarportShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarportShareViewController.swift; path = Classes/VC/CarportShareViewController.swift; sourceTree = "<group>"; };
 		8F561BBE1BFE10C200768276 /* CarportState.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CarportState.plist; sourceTree = "<group>"; };
 		8F577DD91BFC22D6007CF72F /* ParkStateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParkStateViewController.swift; path = Classes/VC/ParkStateViewController.swift; sourceTree = "<group>"; };
@@ -267,10 +271,15 @@
 			isa = PBXGroup;
 			children = (
 				C5C8D0F31BEA140C00EAFD0B /* LoginViewController.swift */,
-				C5E5ADA51BE2692F00AEE7AC /* MasterViewController.swift */,
 				C5BA4FAB1BEB355100EF6832 /* MessageViewController.swift */,
 				8FE71C2F1BF4CABD0043208F /* PersonalViewController.swift */,
 				8FE142231BF606FF00C236A8 /* SettingViewController.swift */,
+				8F5F57281C054221009EB507 /* MapBranch */,
+				8F577DD81BFC22A2007CF72F /* PayBranch */,
+				8F577DD71BFC2249007CF72F /* ParkBranch */,
+				8F577DD51BFC2221007CF72F /* ViolationBranch */,
+				8F577DD41BFC2209007CF72F /* CarportBranch */,
+				8F577DD31BFC21FA007CF72F /* CarBranch */,
 			);
 			name = Master;
 			sourceTree = "<group>";
@@ -293,6 +302,15 @@
 				8FE142211BF5EF2E00C236A8 /* ReceiptViewController.swift */,
 			);
 			name = PayBranch;
+			sourceTree = "<group>";
+		};
+		8F5F57281C054221009EB507 /* MapBranch */ = {
+			isa = PBXGroup;
+			children = (
+				C5E5ADA51BE2692F00AEE7AC /* MasterViewController.swift */,
+				8F4D54321C072F0600ABDF21 /* MasterMapDelegate.swift */,
+			);
+			name = MapBranch;
 			sourceTree = "<group>";
 		};
 		C50E7FE51BDB7D28002BA56D = {
@@ -321,11 +339,6 @@
 			children = (
 				C50E7FF11BDB7D28002BA56D /* AppDelegate.swift */,
 				8F577DD61BFC2231007CF72F /* Master */,
-				8F577DD31BFC21FA007CF72F /* CarBranch */,
-				8F577DD41BFC2209007CF72F /* CarportBranch */,
-				8F577DD51BFC2221007CF72F /* ViolationBranch */,
-				8F577DD71BFC2249007CF72F /* ParkBranch */,
-				8F577DD81BFC22A2007CF72F /* PayBranch */,
 				C5843E511BDF6BB00074C785 /* HomeViewController.h */,
 				C5843E521BDF6BB00074C785 /* HomeViewController.m */,
 				C57A475D1BEC543C00D65AA9 /* Cell */,
@@ -404,6 +417,7 @@
 				8FE1421D1BF5C86400C236A8 /* Helper.swift */,
 				C5C4EC391BEA06D00058B286 /* XuRegularExpression.swift */,
 				C5843DED1BDE71D80074C785 /* KeyChain.swift */,
+				8F053A861C10316800612D90 /* Extension.swift */,
 				C5843DEE1BDE71D80074C785 /* SwiftColors.swift */,
 				C5BF9FE31BF314A200E0E697 /* UIButton+Block.h */,
 				C5BF9FE41BF314A200E0E697 /* UIButton+Block.m */,
@@ -636,6 +650,8 @@
 				C5C8D0F41BEA140C00EAFD0B /* LoginViewController.swift in Sources */,
 				C5BF9FE51BF314A200E0E697 /* UIButton+Block.m in Sources */,
 				8FE1421E1BF5C86400C236A8 /* Helper.swift in Sources */,
+				8F4D54331C072F0600ABDF21 /* MasterMapDelegate.swift in Sources */,
+				8F053A871C10316800612D90 /* Extension.swift in Sources */,
 				C5BA4FAC1BEB355100EF6832 /* MessageViewController.swift in Sources */,
 				C5C8D0F71BEA1F8600EAFD0B /* CarViewController.swift in Sources */,
 				C58CC8961BF04A3B006D4F96 /* XuPickerView.swift in Sources */,

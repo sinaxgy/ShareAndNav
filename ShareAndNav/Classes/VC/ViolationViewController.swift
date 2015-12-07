@@ -108,12 +108,17 @@ class ViolationViewController: UIViewController ,UITableViewDelegate,UITableView
     }
     
     //MARK: --ArrayTableViewCellDelegate
-    func arrayTableViewCellLocation(row: Int) {
+    func arrayTableViewCellLocation(row: Int,superCell:UITableViewCell) {
         
     }
     
-    func arrayTableViewCellSelected(row: Int) {
-        
+    func arrayTableViewCellSelected(row: Int,superCell:UITableViewCell) {
+        guard let vio = self.violationArray[tableView.indexPathForCell(superCell)!.section] as? ViolationObject else {return}
+        guard vio.info != nil else {return}
+        let violationDetailVC = ViolationDetailViewController()
+        violationDetailVC.xviolation = vio.info![row] as? NSDictionary
+        violationDetailVC.navigationItem.title = vio.plate
+        self.navigationController?.pushViewController(violationDetailVC, animated: true)
     }
     
     //MARK: --ControllerAction

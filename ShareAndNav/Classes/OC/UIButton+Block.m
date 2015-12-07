@@ -38,4 +38,19 @@ static char overViewKey;
     [self setImage:image forState:UIControlStateNormal];
 }
 
+- (void) buttonWithImage:(UIImage*)image andTitle:(NSString*)title titleColor:(UIColor*)titleColor event:(UIControlEvents)event withBlock:(void (^)(UIButton *))block{
+    self.frame = CGRectMake(0, 0, image.size.width, image.size.height);
+    [self setup:image framesize:image.size];
+    [self handleControlEvent:event withBlock:block];
+    
+    UIFont *font = [UIFont systemFontOfSize:14];
+    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:font,NSFontAttributeName, nil];
+    CGSize size = [title boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width, 50) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil].size;
+    UIButton *titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    titleButton.frame = CGRectMake(0, 0, size.width, size.height);
+    [titleButton setTitle:title forState:UIControlStateNormal];
+    [titleButton setTitleColor:titleColor forState:UIControlStateNormal];
+    
+}
+
 @end

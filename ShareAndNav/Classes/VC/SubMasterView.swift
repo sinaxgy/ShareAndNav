@@ -19,6 +19,7 @@ class SubMasterView: UIView ,UITableViewDataSource,UITableViewDelegate{
     let section1 = ["车辆":"京A B1212 车主未认证","车位":"车位分享 开","违章":"未处理 1"]
     let section2 = ["优惠":"3张","推荐有奖":"停车享优惠"]
     let section3 = ["设置":""]
+    let imageNames = [["pay","record"],["car","carport","violation"],["coupon","recommend"],["setting"]]
     var tableArray : NSMutableArray = []//section0,section1,section2,section3]
     var delegate:SubMasterViewDelegate?
     
@@ -99,7 +100,7 @@ class SubMasterView: UIView ,UITableViewDataSource,UITableViewDelegate{
         if cell == nil {
             cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "subMasterCell")
         }
-        cell?.imageView?.image = UIImage(named: "fute")
+        cell?.imageView?.image = UIImage(named: imageNames[indexPath.section][indexPath.row])
         let dic = self.tableArray[indexPath.section] as! NSDictionary
         let keys:NSArray = dic.allKeys
         cell?.textLabel?.text = keys[indexPath.row] as? String

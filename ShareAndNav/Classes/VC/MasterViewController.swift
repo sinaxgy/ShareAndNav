@@ -13,6 +13,7 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
     var mapView:MAMapView!
     var search:AMapSearchAPI!
     var userLocation:CLLocation!
+    let mapDelegate = MasterMapDelegate()
     
     lazy var movement:CGFloat = 0
     var secview:SubMasterView?
@@ -20,6 +21,11 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
     var trackButton:UIButton!
     var subMasterRecoginzerPan:UIPanGestureRecognizer?
     var subMasterRecoginzerTap:UITapGestureRecognizer?
+    private var annotations:NSArray?{
+        didSet{
+            
+        }
+    }
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +39,7 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "head_protraits"), style: UIBarButtonItemStyle.Plain, target: self, action: "showSubMasterView:")   //head_protraits
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "message_off"), style: UIBarButtonItemStyle.Plain, target: self, action: "showMessageView:")
         self.search = AMapSearchAPI()
-        search.delegate = self
+        search.delegate = mapDelegate
         
         let view = UIView(frame: CGRectMake(0, 0, 50, mapView.frame.height - 100))
         view.backgroundColor = UIColor.clearColor()
@@ -68,12 +74,12 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
         let stepper = UIStepper(frame: CGRectMake(XuWidth - 140,XuHeight - 150,0,0))
         stepper.addTarget(self, action: "stepperChanged:", forControlEvents: UIControlEvents.ValueChanged)
         stepper.value = 5;stepper.maximumValue = 10
-        //stepper.setIncrementImage(UIImage(named: "track_on"), forState: UIControlState.Normal)
-        //stepper.setDecrementImage(UIImage(named: "track_off"), forState: UIControlState.Normal)
+        stepper.setIncrementImage(UIImage(named: "zoomin"), forState: UIControlState.Normal)
+        stepper.setDecrementImage(UIImage(named: "zoomout"), forState: UIControlState.Normal)
         stepper.layer.transform = CATransform3DMakeRotation(CGFloat(M_PI), -1, 1, 0)
         mapView.addSubview(stepper)
         
-        trackButton = UIButton(type: UIButtonType.Custom)
+        trackButton = UIButton(type: UIButtonType.Custom);trackButton.tag = 0
         trackButton.frame = CGRectMake(5, mapView.frame.height - 100, 40, 40)
         trackButton.setImage(UIImage(named: "track_on"), forState: UIControlState.Normal)
         trackButton.addTarget(self, action: "trackingAction:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -277,6 +283,7 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
     //MARK: --AMapSearchDelegate
     func onPOISearchDone(request: AMapPOISearchBaseRequest!, response: AMapPOISearchResponse!) {
         if response.pois.count == 0 { return }
+        self.annotations = response.pois
         print(response.pois.count)
         print(response.suggestion.keywords)
         print(response.suggestion.cities)

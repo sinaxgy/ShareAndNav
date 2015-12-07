@@ -138,7 +138,9 @@ class LoginViewController: UIViewController {
     func loginAction(sender:UIButton) {
         UITextField.appearance().resignFirstResponder()
         
-        print(KeyChain.set(userTextField.text!, forkey: XuCurrentUser))
+        if userTextField.text != "" {
+            print(KeyChain.set(userTextField.text!, forkey: XuCurrentUser))
+        }
         
         if KeyChain.set(pwTextField.text!, forkey: userTextField.text!) {
             currentUser = userTextField.text!

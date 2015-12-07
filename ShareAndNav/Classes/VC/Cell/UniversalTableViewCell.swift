@@ -79,9 +79,19 @@ class UniversalTableViewCell: UITableViewCell ,XuPickerViewDelegate{
         didSet{
             guard rightLabel != nil && rightLabelText != nil else {return}
             let width = XuTextSizeMiddle * CGFloat(NSString(string: rightLabelText!).length)
-            rightLabel?.frame.size = CGSizeMake(width + 10, XuTextSizeMiddle + 5)
+            var size = CGSizeMake(width + 10, XuTextSizeMiddle + 5)
+            var center = CGPointMake(XuWidth - width / 2 - 35,XuCellHeight / 2)
+            if (width > XuWidth - 120) && (!rightLabelText!.containsString("/")) {
+                size = rightLabelText!.sizeWithMaxSize(CGSizeMake(XuWidth - 120, XuWidth - 120), fontSize: XuTextSizeMiddle)
+                center.y = size.height / 2 + 18
+                center.x = XuWidth - size.width / 2 - 30
+                rightLabel?.textAlignment = NSTextAlignment.Left
+                rightLabel?.numberOfLines = 0
+                self.frame.size.height = size.height + 36
+            }
+            rightLabel?.frame.size = size
             rightLabel?.text = rightLabelText
-            rightLabel?.center = CGPointMake(XuWidth - width / 2 - 35, XuCellHeight / 2)
+            rightLabel?.center = center
             if self.accessoryType != UITableViewCellAccessoryType.DisclosureIndicator {
                 rightLabel?.center.x += 10
             }

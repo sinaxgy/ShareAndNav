@@ -36,7 +36,7 @@ class ViolationObject: NSObject {
                     if dic.count == 0 {return}
                     infos.addObject(Violation(dic: dic))
                 }
-                info = infos
+                info = xar//infos
             default:break
             }
         }

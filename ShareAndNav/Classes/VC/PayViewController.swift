@@ -158,7 +158,7 @@ class PayViewController: UIViewController ,UITableViewDelegate,UITableViewDataSo
             cell.contentView.addSubview(rightLabel)
             return cell
         }
-        let icons = ["visa","zhifubao","weixin","baidu"]
+        let icons = ["yinlian","zhifubao","weixin","baidu"]
         for element in icons {
             let button = UIButton(type: UIButtonType.Custom)
             button.frame = CGRectMake(0, 0, 50, 40)

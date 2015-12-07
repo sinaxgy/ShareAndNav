@@ -35,7 +35,7 @@ class PersonalViewController: UIViewController ,UICollectionViewDataSource,UICol
         collectionView.registerClass(PersonCollectionCell.self, forCellWithReuseIdentifier: reuseCell)
         collectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "imageCell")
         collectionView.registerClass(UICollectionReusableView.self, forSupplementaryViewOfKind: XuCollectionAttributesType.Header, withReuseIdentifier: XuCollectionAttributesType.Header)
-        //collectionView.registerClass(PersonCollectionReusableView.self, forCellWithReuseIdentifier: "header")
+        collectionView.registerClass(PersonCollectionReusableView.self, forSupplementaryViewOfKind: XuCollectionAttributesType.Footer, withReuseIdentifier: XuCollectionAttributesType.Footer)
     }
     
     //MARK: --UICollectionViewDelegate
@@ -51,9 +51,6 @@ class PersonalViewController: UIViewController ,UICollectionViewDataSource,UICol
         if indexPath.row == 0 {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("imageCell", forIndexPath: indexPath)
             let imageView = UIImageView(frame: CGRectMake(20, 10, 80, 80))
-            print(cell.center)
-            print(cell.bounds.origin)
-            //imageView.center = CGPointMake(50, 50)
             imageView.image = UIImage(named: "addhead")
             cell.contentView.addSubview(imageView)
             return cell
@@ -62,6 +59,24 @@ class PersonalViewController: UIViewController ,UICollectionViewDataSource,UICol
         cell.leftText = keys[indexPath.row - 1]
         cell.rightText = datas[cell.leftText!] as? String
         return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        if kind == XuCollectionAttributesType.Header {
+            let view = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: kind, forIndexPath: indexPath)
+            return view
+        }else if kind == XuCollectionAttributesType.Footer {
+            let view = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: kind, forIndexPath: indexPath) as? PersonCollectionReusableView
+            view?.buttonClosure = { (_) in
+                print(indexPath.section)
+            }
+            return view!
+        }
+        return UICollectionReusableView()
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        print(indexPath.row)
     }
    
     func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
@@ -132,7 +147,7 @@ class PersonCollectionViewLayout: UICollectionViewLayout {
     
     override func prepareLayout() {
         let cells:NSMutableDictionary = [:]
-        let headers:NSMutableDictionary = [:]
+        let headers:NSMutableDictionary = [:];let footers:NSMutableDictionary = [:]
         for var section = 0;section < self.numberOfSections;section++ {
             for var row = 0;row < self.collectionView?.numberOfItemsInSection(section);row++ {
                 let indexPath = NSIndexPath(forRow: row, inSection: section)
@@ -149,13 +164,17 @@ class PersonCollectionViewLayout: UICollectionViewLayout {
                     attributes.frame = CGRectMake(100, 70, XuWidth - 100, 50)
                 case 3:
                     attributes.frame = CGRectMake(0, 120, XuWidth, 50)
+                    let footerAttributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: XuCollectionAttributesType.Footer, withIndexPath: indexPath)
+                    footerAttributes.frame = CGRectMake(0, 170, XuWidth, 30)
+                    footers[indexPath] = footerAttributes
                 default:break
                 }
                 cells[indexPath] = attributes
             }
         }
-        self.allAttributes[XuCollectionAttributesType.Cell] = cells
         self.allAttributes[XuCollectionAttributesType.Header] = headers
+        self.allAttributes[XuCollectionAttributesType.Cell] = cells
+        self.allAttributes[XuCollectionAttributesType.Footer] = footers
     }
     
     override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
@@ -175,15 +194,13 @@ class PersonCollectionViewLayout: UICollectionViewLayout {
     }
     
     override func collectionViewContentSize() -> CGSize {
-        return CGSizeMake(self.collectionView!.frame.width, 150)
+        return CGSizeMake(self.collectionView!.frame.width , 0)
     }
     
     override func layoutAttributesForSupplementaryViewOfKind(elementKind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
         let a = self.allAttributes[elementKind]![indexPath] as? UICollectionViewLayoutAttributes
         return a
     }
-    
-    
 }
 
 class PersonCollectionCell: UICollectionViewCell {
@@ -229,9 +246,28 @@ class PersonCollectionCell: UICollectionViewCell {
 
 class PersonCollectionReusableView: UICollectionReusableView {
     
+    var buttonClosure:((UIButton) -> Void)?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.clearColor()
+        let button = UIButton(type: UIButtonType.System)
+        button.frame = CGRectMake(XuWidth - 85, 5, 70, 20)
+        button.setTitle("添加驾驶员", forState: UIControlState.Normal)
+        button.titleLabel?.font = UIFont.systemFontOfSize(XuTextSizeMiddle)
+        button.setTitleColor(XuColorBlueThin, forState: UIControlState.Normal)
+        button.addTarget(self, action: "addDriver:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.addSubview(button)
+        
+        let addBtn = UIButton(type: UIButtonType.System)
+        addBtn.frame = CGRectMake(CGRectGetMinX(button.frame) - 35, 8, 25, 15)
+        addBtn.setImage(UIImage(named: "add"), forState: UIControlState.Normal)
+        addBtn.addTarget(self, action: "addDriver:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.addSubview(addBtn)
+    }
+    
+    func addDriver(button:UIButton) {
+        self.buttonClosure?(button)
     }
 
     required init?(coder aDecoder: NSCoder) {
