@@ -267,7 +267,7 @@
 			name = ViolationBranch;
 			sourceTree = "<group>";
 		};
-		8F577DD61BFC2231007CF72F /* Master */ = {
+		8F577DD61BFC2231007CF72F /* VC */ = {
 			isa = PBXGroup;
 			children = (
 				C5C8D0F31BEA140C00EAFD0B /* LoginViewController.swift */,
@@ -281,7 +281,7 @@
 				8F577DD41BFC2209007CF72F /* CarportBranch */,
 				8F577DD31BFC21FA007CF72F /* CarBranch */,
 			);
-			name = Master;
+			name = VC;
 			sourceTree = "<group>";
 		};
 		8F577DD71BFC2249007CF72F /* ParkBranch */ = {
@@ -338,7 +338,7 @@
 			isa = PBXGroup;
 			children = (
 				C50E7FF11BDB7D28002BA56D /* AppDelegate.swift */,
-				8F577DD61BFC2231007CF72F /* Master */,
+				8F577DD61BFC2231007CF72F /* VC */,
 				C5843E511BDF6BB00074C785 /* HomeViewController.h */,
 				C5843E521BDF6BB00074C785 /* HomeViewController.m */,
 				C57A475D1BEC543C00D65AA9 /* Cell */,
