@@ -1,6 +1,4 @@
-
-.txt 的文件.
-foo.txt
+*.md
 # 忽略所有生成的 html 文件,
 *.html
 # foo.html是手工维护的，所以例外.
