@@ -10,7 +10,7 @@ import UIKit
 
 class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelegate,SubMasterViewDelegate{
     
-    var mapView:MAMapView!
+    var mapView:XuMapView!//MAMapView!
     var search:AMapSearchAPI!
     var userLocation:CLLocation!
     let mapDelegate = MasterMapDelegate()
@@ -19,6 +19,7 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
     var secview:SubMasterView?
     var blackCoverView:UIView?
     var trackButton:UIButton!
+    var stepper:XuStepper?
     var subMasterRecoginzerPan:UIPanGestureRecognizer?
     var subMasterRecoginzerTap:UITapGestureRecognizer?
     private var annotations:NSArray?{
@@ -26,85 +27,14 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
             
         }
     }
-        
+    
+    //MARK: --func
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         self.initMapView()
         self.initNavigationItemView()
-    }
-    
-    func initNavigationItemView() {
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "head_protraits"), style: UIBarButtonItemStyle.Plain, target: self, action: "showSubMasterView:")   //head_protraits
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "message_off"), style: UIBarButtonItemStyle.Plain, target: self, action: "showMessageView:")
-        self.search = AMapSearchAPI()
-        search.delegate = mapDelegate
-        
-        let view = UIView(frame: CGRectMake(0, 0, 50, mapView.frame.height - 100))
-        view.backgroundColor = UIColor.clearColor()
-        let panRecognizer = UIPanGestureRecognizer(target: self, action: "panRecognizer:")
-        view.addGestureRecognizer(panRecognizer)
-        mapView.addSubview(view)
-    }
-    
-    func initMapView() {
-        self.mapView = MAMapView(frame: CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height - 64))
-        mapView.compassOrigin = CGPointMake(mapView.compassOrigin.x, 22)
-        mapView.scaleOrigin = CGPointMake(mapView.scaleOrigin.x, mapView.frame.height - 60)
-        self.view.addSubview(mapView)
-        mapView.rotateEnabled = false
-        mapView.delegate = self
-        mapView.showsUserLocation = true
-        mapView.userTrackingMode = MAUserTrackingMode.Follow
-        
-        let longPress = UILongPressGestureRecognizer(target: self, action: "longPressRecoginzer:")
-        mapView.addGestureRecognizer(longPress)
-        
-        for var i:CGFloat = 0; i < 2; i++ {
-            let imageName = (i == 0 ? "parking" : "fuelling")
-            let selector:Selector = (i == 0 ? "parkingSearch:" : "fuellingSearch:")
-            let button = UIButton(type: UIButtonType.Custom)
-            button.frame = CGRectMake(mapView.frame.width - 45, mapView.frame.height - 300 + i * 45, 30, 30)
-            button.setImage(UIImage(named: imageName), forState: UIControlState.Normal)
-            button.addTarget(self, action: selector, forControlEvents: UIControlEvents.TouchUpInside)
-            mapView.addSubview(button)
-        }
-        
-        let stepper = UIStepper(frame: CGRectMake(XuWidth - 140,XuHeight - 150,0,0))
-        stepper.addTarget(self, action: "stepperChanged:", forControlEvents: UIControlEvents.ValueChanged)
-        stepper.value = 5;stepper.maximumValue = 10
-        stepper.setIncrementImage(UIImage(named: "zoomin"), forState: UIControlState.Normal)
-        stepper.setDecrementImage(UIImage(named: "zoomout"), forState: UIControlState.Normal)
-        stepper.layer.transform = CATransform3DMakeRotation(CGFloat(M_PI), -1, 1, 0)
-        mapView.addSubview(stepper)
-        
-        trackButton = UIButton(type: UIButtonType.Custom);trackButton.tag = 0
-        trackButton.frame = CGRectMake(5, mapView.frame.height - 100, 40, 40)
-        trackButton.setImage(UIImage(named: "track_on"), forState: UIControlState.Normal)
-        trackButton.addTarget(self, action: "trackingAction:", forControlEvents: UIControlEvents.TouchUpInside)
-        mapView.addSubview(trackButton)
-        
-        let carMaster = CarMaster(logo: UIImage(named: "fute")!, plate: "京AB1212", timesOfViolation: 1, scoresOfViolation: 6, timeParking: "69:20:20", revenue: 25.00)
-        let footView = FootMenuView(carmaster: carMaster)
-        footView.center = CGPointMake(mapView.center.x, mapView.frame.height - 40)
-        self.mapView.addSubview(footView)
-        footView.footerViewClicked = {
-            (type) in
-            switch type {
-            case .brand:
-                let carVC = CarViewController()
-                self.navigationController?.pushViewController(carVC, animated: true)
-            case .violation:
-                let violationVC = ViolationViewController()
-                self.navigationController?.pushViewController(violationVC, animated: true)
-            case .parkTime:
-                self.navigationController?.pushViewController(ParkStateViewController(), animated: true)
-            case .revenue:
-                let carportVC = CarportShareViewController()
-                self.navigationController?.pushViewController(carportVC, animated: true)
-            }
-        }
     }
     
     //MARK: --UIGestureRecognizer
@@ -221,6 +151,8 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
     }
     
     func stepperChanged(sender:UIStepper) {
+        print(sender.value)
+        print(mapView.zoomLevel)
         mapView.setZoomLevel(CGFloat(sender.value) * 2, animated: true)
     }
     
@@ -326,4 +258,77 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
         default:break
         }
     }
+    
+    //MARK: --initview
+    
+    func initNavigationItemView() {
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "head_protraits"), style: UIBarButtonItemStyle.Plain, target: self, action: "showSubMasterView:")   //head_protraits
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "message_off"), style: UIBarButtonItemStyle.Plain, target: self, action: "showMessageView:")
+        self.search = AMapSearchAPI()
+        search.delegate = mapDelegate
+        
+        let view = UIView(frame: CGRectMake(0, 0, 50, mapView.frame.height - 100))
+        view.backgroundColor = UIColor.clearColor()
+        let panRecognizer = UIPanGestureRecognizer(target: self, action: "panRecognizer:")
+        view.addGestureRecognizer(panRecognizer)
+        mapView.addSubview(view)
+        
+//        stepper = XuStepper(style: XuStepperStyle.Vertical, origin: CGPointMake(XuWidth - 42, XuHeight - 200), width: 33)
+//        stepper?.maximumValue = 10;stepper?.minimumValue = 1
+//        stepper?.value = 7
+//        mapView.addSubview(stepper!)
+//        stepper?.stepperValueChanged = { (sender) in
+//            self.mapView.setZoomLevel(CGFloat(sender.value) * 2, animated: true)
+//        }
+    }
+    
+    func initMapView() {
+        self.mapView = XuMapView(frame: CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height - 64))
+        self.view.addSubview(mapView)
+        mapView.delegate = mapDelegate
+        mapDelegate.mapView = mapView
+        mapView.showsUserLocation = true
+        mapView.userTrackingMode = MAUserTrackingMode.Follow
+        
+        let longPress = UILongPressGestureRecognizer(target: self, action: "longPressRecoginzer:")
+        mapView.addGestureRecognizer(longPress)
+        
+        for var i:CGFloat = 0; i < 2; i++ {
+            let imageName = (i == 0 ? "parking" : "fuelling")
+            let selector:Selector = (i == 0 ? "parkingSearch:" : "fuellingSearch:")
+            let button = UIButton(type: UIButtonType.Custom)
+            button.frame = CGRectMake(mapView.frame.width - 45, mapView.frame.height - 300 + i * 45, 40, 40)
+            button.setImage(UIImage(named: imageName), forState: UIControlState.Normal)
+            button.addTarget(self, action: selector, forControlEvents: UIControlEvents.TouchUpInside)
+            mapView.addSubview(button)
+        }
+//        
+//        trackButton = UIButton(type: UIButtonType.Custom);trackButton.tag = 1
+//        trackButton.frame = CGRectMake(5, mapView.frame.height - 100, 40, 40)
+//        trackButton.setImage(UIImage(named: "track_on"), forState: UIControlState.Normal)
+//        trackButton.addTarget(self, action: "trackingAction:", forControlEvents: UIControlEvents.TouchUpInside)
+//        mapView.addSubview(trackButton)
+        
+        let carMaster = CarMaster(logo: UIImage(named: "fute")!, plate: "京AB1212", timesOfViolation: 1, scoresOfViolation: 6, timeParking: "69:20:20", revenue: 25.00)
+        let footView = FootMenuView(carmaster: carMaster)
+        footView.center = CGPointMake(mapView.center.x, mapView.frame.height - 40)
+        self.mapView.addSubview(footView)
+        footView.footerViewClicked = {
+            (type) in
+            switch type {
+            case .brand:
+                let carVC = CarViewController()
+                self.navigationController?.pushViewController(carVC, animated: true)
+            case .violation:
+                let violationVC = ViolationViewController()
+                self.navigationController?.pushViewController(violationVC, animated: true)
+            case .parkTime:
+                self.navigationController?.pushViewController(ParkStateViewController(), animated: true)
+            case .revenue:
+                let carportVC = CarportShareViewController()
+                self.navigationController?.pushViewController(carportVC, animated: true)
+            }
+        }
+    }
+
 }

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8F053A871C10316800612D90 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F053A861C10316800612D90 /* Extension.swift */; };
+		8F2AC6B31C1859EC0010636F /* XuAssistantSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AC6B21C1859EC0010636F /* XuAssistantSwift.swift */; };
+		8F2AC6B91C1EFD690010636F /* XuPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AC6B81C1EFD690010636F /* XuPointAnnotation.swift */; };
+		8F2AC6CA1C22A25E0010636F /* XuStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AC6C91C22A25E0010636F /* XuStepper.swift */; };
 		8F38EE9D1BF76B3B003484CC /* NewPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F38EE9C1BF76B3B003484CC /* NewPayViewController.swift */; };
 		8F38EE9F1BF770A2003484CC /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F38EE9E1BF770A2003484CC /* RecordTableViewCell.swift */; };
 		8F4327E31BFEFAE8005B4B60 /* ViolationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4327E21BFEFAE8005B4B60 /* ViolationTableViewCell.swift */; };
@@ -19,6 +22,8 @@
 		8F577DDA1BFC22D6007CF72F /* ParkStateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F577DD91BFC22D6007CF72F /* ParkStateViewController.swift */; };
 		8F577DDC1BFC246E007CF72F /* ParkState.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F577DDB1BFC246E007CF72F /* ParkState.plist */; };
 		8F577DE11BFC956B007CF72F /* XuCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F577DE01BFC956B007CF72F /* XuCamera.swift */; };
+		8FAF132F1C27A41500561F60 /* XuCustomPointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FAF132E1C27A41500561F60 /* XuCustomPointView.swift */; };
+		8FAF13311C292BF800561F60 /* XuMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FAF13301C292BF800561F60 /* XuMapView.swift */; };
 		8FDE28531BFA1A0700830E37 /* OwnerIdentifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDE28521BFA1A0700830E37 /* OwnerIdentifyViewController.swift */; };
 		8FE1421E1BF5C86400C236A8 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE1421D1BF5C86400C236A8 /* Helper.swift */; };
 		8FE142201BF5D55600C236A8 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE1421F1BF5D55600C236A8 /* HeaderView.swift */; };
@@ -108,6 +113,9 @@
 
 /* Begin PBXFileReference section */
 		8F053A861C10316800612D90 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		8F2AC6B21C1859EC0010636F /* XuAssistantSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XuAssistantSwift.swift; path = Classes/VC/Helper/XuAssistantSwift.swift; sourceTree = "<group>"; };
+		8F2AC6B81C1EFD690010636F /* XuPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XuPointAnnotation.swift; path = Classes/Model/XuPointAnnotation.swift; sourceTree = "<group>"; };
+		8F2AC6C91C22A25E0010636F /* XuStepper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XuStepper.swift; path = Classes/VC/Helper/XuStepper.swift; sourceTree = "<group>"; };
 		8F38EE9C1BF76B3B003484CC /* NewPayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewPayViewController.swift; path = Classes/VC/NewPayViewController.swift; sourceTree = "<group>"; };
 		8F38EE9E1BF770A2003484CC /* RecordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecordTableViewCell.swift; path = Classes/VC/Cell/RecordTableViewCell.swift; sourceTree = "<group>"; };
 		8F4327E21BFEFAE8005B4B60 /* ViolationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViolationTableViewCell.swift; path = Classes/VC/Cell/ViolationTableViewCell.swift; sourceTree = "<group>"; };
@@ -119,6 +127,8 @@
 		8F577DD91BFC22D6007CF72F /* ParkStateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParkStateViewController.swift; path = Classes/VC/ParkStateViewController.swift; sourceTree = "<group>"; };
 		8F577DDB1BFC246E007CF72F /* ParkState.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ParkState.plist; sourceTree = "<group>"; };
 		8F577DE01BFC956B007CF72F /* XuCamera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XuCamera.swift; path = Classes/VC/Helper/XuCamera.swift; sourceTree = "<group>"; };
+		8FAF132E1C27A41500561F60 /* XuCustomPointView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XuCustomPointView.swift; path = Classes/VC/View/XuCustomPointView.swift; sourceTree = "<group>"; };
+		8FAF13301C292BF800561F60 /* XuMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XuMapView.swift; path = Classes/VC/View/XuMapView.swift; sourceTree = "<group>"; };
 		8FDE28521BFA1A0700830E37 /* OwnerIdentifyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OwnerIdentifyViewController.swift; path = Classes/VC/OwnerIdentifyViewController.swift; sourceTree = "<group>"; };
 		8FE1421D1BF5C86400C236A8 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		8FE1421F1BF5D55600C236A8 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeaderView.swift; path = Classes/VC/View/HeaderView.swift; sourceTree = "<group>"; };
@@ -235,6 +245,7 @@
 			children = (
 				8FE2E2581BFAC40E009A4F5C /* HoshiTextField.swift */,
 				8FE2E2591BFAC40E009A4F5C /* TextFieldsEffects.swift */,
+				8F2AC6C91C22A25E0010636F /* XuStepper.swift */,
 			);
 			name = Others;
 			sourceTree = "<group>";
@@ -308,7 +319,10 @@
 			isa = PBXGroup;
 			children = (
 				C5E5ADA51BE2692F00AEE7AC /* MasterViewController.swift */,
+				8FAF13301C292BF800561F60 /* XuMapView.swift */,
 				8F4D54321C072F0600ABDF21 /* MasterMapDelegate.swift */,
+				8F2AC6B81C1EFD690010636F /* XuPointAnnotation.swift */,
+				8FAF132E1C27A41500561F60 /* XuCustomPointView.swift */,
 			);
 			name = MapBranch;
 			sourceTree = "<group>";
@@ -414,6 +428,7 @@
 				C5C4EC3A1BEA06D00058B286 /* XuUserDefault.swift */,
 				8F577DE01BFC956B007CF72F /* XuCamera.swift */,
 				C5843DBA1BDDB89C0074C785 /* TypeDefine.swift */,
+				8F2AC6B21C1859EC0010636F /* XuAssistantSwift.swift */,
 				8FE1421D1BF5C86400C236A8 /* Helper.swift */,
 				C5C4EC391BEA06D00058B286 /* XuRegularExpression.swift */,
 				C5843DED1BDE71D80074C785 /* KeyChain.swift */,
@@ -621,6 +636,7 @@
 				8FE71C321BF4D22B0043208F /* PayViewController.swift in Sources */,
 				8FE142221BF5EF2E00C236A8 /* ReceiptViewController.swift in Sources */,
 				C5843E461BDF5E380074C785 /* FootMenuView.swift in Sources */,
+				8FAF13311C292BF800561F60 /* XuMapView.swift in Sources */,
 				8FE142241BF606FF00C236A8 /* SettingViewController.swift in Sources */,
 				8F577DE11BFC956B007CF72F /* XuCamera.swift in Sources */,
 				C5022EC41BE0A9B400DBC2FF /* UniversalTableViewCell.swift in Sources */,
@@ -631,7 +647,9 @@
 				C50E7FF21BDB7D28002BA56D /* AppDelegate.swift in Sources */,
 				8F561BBD1BFE0A4400768276 /* CarportShareViewController.swift in Sources */,
 				8FE2E25B1BFAC40E009A4F5C /* TextFieldsEffects.swift in Sources */,
+				8FAF132F1C27A41500561F60 /* XuCustomPointView.swift in Sources */,
 				C5FF79CF1BF1FAEC00CAA14A /* CarportTableViewCell.swift in Sources */,
+				8F2AC6CA1C22A25E0010636F /* XuStepper.swift in Sources */,
 				C5BA4FAA1BEB327100EF6832 /* CarportViewController.swift in Sources */,
 				C5843E531BDF6BB00074C785 /* HomeViewController.m in Sources */,
 				C57A475C1BEC542F00D65AA9 /* CarTableViewCell.swift in Sources */,
@@ -650,6 +668,7 @@
 				C5C8D0F41BEA140C00EAFD0B /* LoginViewController.swift in Sources */,
 				C5BF9FE51BF314A200E0E697 /* UIButton+Block.m in Sources */,
 				8FE1421E1BF5C86400C236A8 /* Helper.swift in Sources */,
+				8F2AC6B91C1EFD690010636F /* XuPointAnnotation.swift in Sources */,
 				8F4D54331C072F0600ABDF21 /* MasterMapDelegate.swift in Sources */,
 				8F053A871C10316800612D90 /* Extension.swift in Sources */,
 				C5BA4FAC1BEB355100EF6832 /* MessageViewController.swift in Sources */,
@@ -659,6 +678,7 @@
 				8FE142261BF60F4100C236A8 /* AcProtocolViewController.swift in Sources */,
 				C5843DF21BDE71D80074C785 /* SwiftColors.swift in Sources */,
 				C5C4EC3C1BEA06D00058B286 /* XuUserDefault.swift in Sources */,
+				8F2AC6B31C1859EC0010636F /* XuAssistantSwift.swift in Sources */,
 				C58CC8931BF035A3006D4F96 /* CarportShare.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

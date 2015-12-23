@@ -1,16 +1,18 @@
 {
-  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "7DF1A3E71AE34EA5D97CD33A4FD1B7A10704A426",
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "B8002803A3A6887ED2C7BE01A05393C2F08B0C3C+++E776C43",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "7DF1A3E71AE34EA5D97CD33A4FD1B7A10704A426" : 0,
-    "B8002803A3A6887ED2C7BE01A05393C2F08B0C3C" : 0
+    "B8002803A3A6887ED2C7BE01A05393C2F08B0C3C+++A15C7BD" : 0,
+    "B8002803A3A6887ED2C7BE01A05393C2F08B0C3C+++E776C43" : 0,
+    "B8002803A3A6887ED2C7BE01A05393C2F08B0C3C+++A464150" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "6BF51BB7-BD61-4396-83B1-72BD3E161735",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "7DF1A3E71AE34EA5D97CD33A4FD1B7A10704A426" : "ShareAndNav\/",
-    "B8002803A3A6887ED2C7BE01A05393C2F08B0C3C" : ""
+    "B8002803A3A6887ED2C7BE01A05393C2F08B0C3C+++A15C7BD" : "",
+    "B8002803A3A6887ED2C7BE01A05393C2F08B0C3C+++E776C43" : "ShareAndNav\/",
+    "B8002803A3A6887ED2C7BE01A05393C2F08B0C3C+++A464150" : ""
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "ShareAndNav",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -19,12 +21,17 @@
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/sinaxgy\/ShareAndNav.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7DF1A3E71AE34EA5D97CD33A4FD1B7A10704A426"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B8002803A3A6887ED2C7BE01A05393C2F08B0C3C+++A15C7BD"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:sinaxgy\/ShareAndNav.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B8002803A3A6887ED2C7BE01A05393C2F08B0C3C"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B8002803A3A6887ED2C7BE01A05393C2F08B0C3C+++A464150"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:sinaxgy\/ShareAndNav.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B8002803A3A6887ED2C7BE01A05393C2F08B0C3C+++E776C43"
     }
   ]
 }
