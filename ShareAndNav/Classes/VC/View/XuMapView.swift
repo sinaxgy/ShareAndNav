@@ -23,7 +23,6 @@ class XuMapView: MAMapView {
         trackButton = UIButton(type: UIButtonType.Custom);trackButton.tag = 1
         trackButton.frame = CGRectMake(5, frame.height - 100, 40, 40)
         trackButton.setImage(UIImage(named: "track_on"), forState: UIControlState.Normal)
-        trackButton.addTarget(self, action: "trackingAction:", forControlEvents: UIControlEvents.TouchUpInside)
         trackButton.handleControlEvent(.TouchUpInside) { (_) -> Void in
             if self.userTrackingMode != MAUserTrackingMode.Follow {
                 self.userTrackingMode = MAUserTrackingMode.Follow

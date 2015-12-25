@@ -29,8 +29,8 @@ class MasterMapDelegate: NSObject ,AMapSearchDelegate,MAMapViewDelegate{
     }
     
     func mapView(mapView: MAMapView!, regionDidChangeAnimated animated: Bool) {
-        self.mapView?.stepper.value = mapView.zoomLevel
         print(mapView.zoomLevel)
+        self.mapView?.stepper.value = mapView.zoomLevel
     }
     
     func mapView(mapView: MAMapView!, didUpdateUserLocation userLocation: MAUserLocation!, updatingLocation: Bool) {
@@ -48,7 +48,7 @@ class MasterMapDelegate: NSObject ,AMapSearchDelegate,MAMapViewDelegate{
             if annotationView == nil {
                 annotationView = MAAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
             }
-            annotationView.image = UIImage(named: "location")
+            annotationView.image = UIImage(named: "location_blue")
             return annotationView
         default:break
         }
