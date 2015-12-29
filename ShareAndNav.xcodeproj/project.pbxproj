@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F0004D81C31101E00D2BB26 /* XuAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0004D71C31101E00D2BB26 /* XuAnnotationView.swift */; };
 		8F053A871C10316800612D90 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F053A861C10316800612D90 /* Extension.swift */; };
 		8F2AC6B31C1859EC0010636F /* XuAssistantSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AC6B21C1859EC0010636F /* XuAssistantSwift.swift */; };
 		8F2AC6B91C1EFD690010636F /* XuPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AC6B81C1EFD690010636F /* XuPointAnnotation.swift */; };
@@ -112,6 +113,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8F0004D71C31101E00D2BB26 /* XuAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XuAnnotationView.swift; path = Classes/VC/View/XuAnnotationView.swift; sourceTree = "<group>"; };
 		8F053A861C10316800612D90 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		8F2AC6B21C1859EC0010636F /* XuAssistantSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XuAssistantSwift.swift; path = Classes/VC/Helper/XuAssistantSwift.swift; sourceTree = "<group>"; };
 		8F2AC6B81C1EFD690010636F /* XuPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XuPointAnnotation.swift; path = Classes/Model/XuPointAnnotation.swift; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 				8FAF13301C292BF800561F60 /* XuMapView.swift */,
 				8F4D54321C072F0600ABDF21 /* MasterMapDelegate.swift */,
 				8F2AC6B81C1EFD690010636F /* XuPointAnnotation.swift */,
+				8F0004D71C31101E00D2BB26 /* XuAnnotationView.swift */,
 				8FAF132E1C27A41500561F60 /* XuCustomPointView.swift */,
 			);
 			name = MapBranch;
@@ -675,6 +678,7 @@
 				C5C8D0F71BEA1F8600EAFD0B /* CarViewController.swift in Sources */,
 				C58CC8961BF04A3B006D4F96 /* XuPickerView.swift in Sources */,
 				C5843DBB1BDDB89C0074C785 /* TypeDefine.swift in Sources */,
+				8F0004D81C31101E00D2BB26 /* XuAnnotationView.swift in Sources */,
 				8FE142261BF60F4100C236A8 /* AcProtocolViewController.swift in Sources */,
 				C5843DF21BDE71D80074C785 /* SwiftColors.swift in Sources */,
 				C5C4EC3C1BEA06D00058B286 /* XuUserDefault.swift in Sources */,

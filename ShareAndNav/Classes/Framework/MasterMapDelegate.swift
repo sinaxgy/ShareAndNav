@@ -10,49 +10,70 @@ import UIKit
 
 class MasterMapDelegate: NSObject ,AMapSearchDelegate,MAMapViewDelegate{
     
+    private var userAnnotationView:MAAnnotationView?
+    var userLocation = CLLocation(latitude: 39.990459, longitude: 116.481476)
     private var poi:NSArray?
     var mapView:XuMapView?
-    private var xAnnotations:NSArray?{
-        didSet{
-            mapView?.addAnnotations(xAnnotations as! [AnyObject])
-        }
-    }
+    private var xAnnotations:NSArray?
     
     //MARK: --MAMapViewDelegate
     func mapView(mapView: MAMapView!, didChangeUserTrackingMode mode: MAUserTrackingMode, animated: Bool) {
         guard let mv = mapView as? XuMapView else {return}
         if mode == MAUserTrackingMode.Follow {
-            mv.trackButton.setImage(UIImage(named: "track_on"), forState: UIControlState.Normal)
+            mv.trackButton?.setImage(UIImage(named: "track_on"), forState: UIControlState.Normal)
         }else if mode == MAUserTrackingMode.None {
-            mv.trackButton.setImage(UIImage(named: "track_off"), forState: UIControlState.Normal)
+            mv.trackButton?.setImage(UIImage(named: "track_off"), forState: UIControlState.Normal)
         }
     }
     
     func mapView(mapView: MAMapView!, regionDidChangeAnimated animated: Bool) {
-        print(mapView.zoomLevel)
-        self.mapView?.stepper.value = mapView.zoomLevel
+        self.mapView?.stepper?.value = mapView.zoomLevel
     }
     
     func mapView(mapView: MAMapView!, didUpdateUserLocation userLocation: MAUserLocation!, updatingLocation: Bool) {
+        if userLocation.heading != nil {
+            self.userAnnotationView?.transform = CGAffineTransformMakeRotation(CGFloat(userLocation.heading.trueHeading * M_PI / 180))
+        }
         if updatingLocation {
-            //self.userLocation = userLocation.location
+            self.userLocation = userLocation.location
         }
     }
     
     func mapView(mapView: MAMapView!, viewForAnnotation annotation: MAAnnotation!) -> MAAnnotationView! {
         switch annotation {
-        case is MAUserLocation:break
+        case is MAUserLocation:
+            print("update user")
+            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier("user")
+            if annotationView == nil {
+                annotationView = MAAnnotationView(annotation: annotation, reuseIdentifier: "user")
+            }
+            annotationView?.image = UIImage(named: "user_location")
+            self.userAnnotationView = annotationView
+            return annotationView
         case is XuPointAnnotation:
             let reuseIdentifier = "point"
-            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseIdentifier)
+            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseIdentifier) as? XuAnnotationView
             if annotationView == nil {
-                annotationView = MAAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
+                annotationView = XuAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
             }
-            annotationView.image = UIImage(named: "location_blue")
+            annotationView?.image = UIImage(named: "location_red")
+            let k = self.xAnnotations?.indexOfObject(annotation as! XuPointAnnotation)
+            annotationView?.setAnnotationIndex("\(k! + 1)")
             return annotationView
         default:break
         }
         return MAAnnotationView()
+    }
+    
+    func mapView(mapView: MAMapView!, didSelectAnnotationView view: MAAnnotationView!) {
+        print(self.xAnnotations?.indexOfObject(view.annotation as! XuPointAnnotation))
+        guard let annoation = view.annotation as? XuPointAnnotation else {return}
+        mapView.setCenterCoordinate(CLLocationCoordinate2D(latitude:
+            CLLocationDegrees((annoation.poi?.location.latitude)!), longitude: CLLocationDegrees((annoation.poi?.location.longitude)!)), animated: true)
+        switch view {
+        //case is MAAnnotationView:break
+        default:break
+        }
     }
     
     //MARK: --AMapSearchDelegate
@@ -60,20 +81,32 @@ class MasterMapDelegate: NSObject ,AMapSearchDelegate,MAMapViewDelegate{
         if response.pois.count == 0 { return }
         self.poi = response.pois
         print(response.pois.count)
-        print(response.suggestion.keywords) //nil
-        print(response.suggestion.cities)       //nil
         let annotations:NSMutableArray = []
         for ele in response.pois {
             if let poi = ele as? AMapPOI {
-                print("name:\(poi.name)>>>>>>location:\(poi.location.latitude)")
-                annotations.addObject(XuPointAnnotation(poi: poi))
+                //print("name:\(poi.name)>>>>>>location:\(poi.location.latitude)")
+               // if poi.hasIndoorMap {
+                    
+                    annotations.addObject(XuPointAnnotation(poi: poi))
+               // }
             }
+            //if annotations.count == 10 {break}
         }
-        self.xAnnotations = annotations
+        self.setAnnotations(annotations)
     }
     
     func onRouteSearchDone(request: AMapRouteSearchBaseRequest!, response: AMapRouteSearchResponse!) {
         print(response.route)
+    }
+    
+    //MARK: --func
+    func setAnnotations(xarray:NSArray) {
+        if self.xAnnotations?.count > 0 {
+            self.mapView?.removeAnnotations(self.xAnnotations as! [AnyObject])
+            self.xAnnotations = NSArray()
+        }
+        self.xAnnotations = xarray
+        self.mapView?.addAnnotations(self.xAnnotations as! [AnyObject])
     }
     
     //MARK: --init

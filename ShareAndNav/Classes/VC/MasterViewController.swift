@@ -13,7 +13,7 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
     var mapView:XuMapView!//MAMapView!
     var search:AMapSearchAPI!
     var userLocation:CLLocation!
-    let mapDelegate = MasterMapDelegate()
+    var mapDelegate = MasterMapDelegate()
     
     lazy var movement:CGFloat = 0
     var secview:SubMasterView?
@@ -150,23 +150,9 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
             }, completion: nil)
     }
     
-    func stepperChanged(sender:UIStepper) {
-        print(sender.value)
-        print(mapView.zoomLevel)
-        mapView.setZoomLevel(CGFloat(sender.value) * 2, animated: true)
-    }
-    
     func showMessageView(sender:UIBarButtonItem) {
         let messageVC = MessageViewController()
         self.navigationController?.pushViewController(messageVC, animated: true)
-    }
-    
-    func trackingAction(sender:UIButton) {
-        if mapView.userTrackingMode != MAUserTrackingMode.Follow {
-            mapView.userTrackingMode = MAUserTrackingMode.Follow
-            sender.setImage(UIImage(named: "track_on"), forState: UIControlState.Normal)
-        }
-        mapView.setZoomLevel(16 * 3, animated: true)
     }
     
     func hideSubMasterView(sender:NSObject) {
@@ -178,16 +164,14 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
         //let search = AMapSearchAPI()
         //search.delegate = self
         let request = AMapPOIAroundSearchRequest()
-        //        let latitude = CGFloat(userLocation.coordinate.latitude)
-        //        let longtitude = CGFloat(userLocation.coordinate.longitude)
-        //        request.location = AMapGeoPoint.locationWithLatitude(latitude, longitude: longtitude)
-        request.location = AMapGeoPoint.locationWithLatitude(39.990459, longitude: 116.481476)
+        request.location = AMapGeoPoint.locationWithLatitude(
+            CGFloat(mapDelegate.userLocation.coordinate.latitude),
+            longitude: CGFloat(mapDelegate.userLocation.coordinate.longitude))
         request.keywords = "停车场"
         request.types = "汽车服务"
         request.sortrule = 0
         request.requireExtension = true
         search.AMapPOIAroundSearch(request)
-        //self.search.AMapPOIAroundSearch(request)
     }
     
     //加油站搜索
@@ -272,14 +256,6 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
         let panRecognizer = UIPanGestureRecognizer(target: self, action: "panRecognizer:")
         view.addGestureRecognizer(panRecognizer)
         mapView.addSubview(view)
-        
-//        stepper = XuStepper(style: XuStepperStyle.Vertical, origin: CGPointMake(XuWidth - 42, XuHeight - 200), width: 33)
-//        stepper?.maximumValue = 10;stepper?.minimumValue = 1
-//        stepper?.value = 7
-//        mapView.addSubview(stepper!)
-//        stepper?.stepperValueChanged = { (sender) in
-//            self.mapView.setZoomLevel(CGFloat(sender.value) * 2, animated: true)
-//        }
     }
     
     func initMapView() {
@@ -289,6 +265,16 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
         mapDelegate.mapView = mapView
         mapView.showsUserLocation = true
         mapView.userTrackingMode = MAUserTrackingMode.Follow
+        mapView.headingFilter = 5
+        mapView.desiredAccuracy = kCLLocationAccuracyKilometer
+        
+        let searchBar = UISearchBar(frame: CGRectMake(0,0,XuWidth,40))
+        searchBar.searchBarStyle = UISearchBarStyle.Minimal
+        //searchBar.translucent = true
+        searchBar.placeholder = "搜索停车场"
+        mapView.addSubview(searchBar)
+        
+        mapView.compassOrigin = CGPointMake(10, 35)
         
         let longPress = UILongPressGestureRecognizer(target: self, action: "longPressRecoginzer:")
         mapView.addGestureRecognizer(longPress)
@@ -302,12 +288,6 @@ class MasterViewController: UIViewController ,MAMapViewDelegate,AMapSearchDelega
             button.addTarget(self, action: selector, forControlEvents: UIControlEvents.TouchUpInside)
             mapView.addSubview(button)
         }
-//        
-//        trackButton = UIButton(type: UIButtonType.Custom);trackButton.tag = 1
-//        trackButton.frame = CGRectMake(5, mapView.frame.height - 100, 40, 40)
-//        trackButton.setImage(UIImage(named: "track_on"), forState: UIControlState.Normal)
-//        trackButton.addTarget(self, action: "trackingAction:", forControlEvents: UIControlEvents.TouchUpInside)
-//        mapView.addSubview(trackButton)
         
         let carMaster = CarMaster(logo: UIImage(named: "fute")!, plate: "京AB1212", timesOfViolation: 1, scoresOfViolation: 6, timeParking: "69:20:20", revenue: 25.00)
         let footView = FootMenuView(carmaster: carMaster)

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ReceiptViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource,XuPickerViewDelegate{
+class ReceiptViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource,XuPickerViewDelegate,UITextFieldDelegate{
     
     private var tableView:UITableView!
     

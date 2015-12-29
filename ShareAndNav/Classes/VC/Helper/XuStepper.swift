@@ -16,8 +16,6 @@ class XuStepper: UIControl {
     
     var value:CGFloat = 0{
         didSet{
-            print(value)
-            print(maximumValue)
             if maximumValue - value < 1 {
                 self.incrementButton.enabled = false
             }else if value - minimumValue < 1 {
