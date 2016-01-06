@@ -12,6 +12,7 @@ import UIKit
 var currentUser:String = ""
 
 let NotificationOfHideSubMaster = "NotificationOfHideSubMaster"
+let imageOfLocation = UIImage(named: "location")!
 
 //MARK:-- const value
 let XuAPIKey = "723f58282834ef26a8e354d60aaa8eb7"

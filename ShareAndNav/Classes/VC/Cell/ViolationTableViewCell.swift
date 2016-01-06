@@ -69,10 +69,9 @@ class ViolationTableViewCell: UITableViewCell {
         rdLabel.textAlignment = NSTextAlignment.Right
         self.contentView.addSubview(rdLabel)
         
-        let image = UIImage(named: "location")!
         locateBtn = UIButton(type: UIButtonType.System)
-        locateBtn.frame = CGRectMake(15, 25, 10, 10 * image.size.height / image.size.width)
-        locateBtn.setImage(UIImage(named: "location"), forState: UIControlState.Normal)
+        locateBtn.frame = CGRectMake(10, 20, 20, 20 * imageOfLocation.size.height / imageOfLocation.size.width)
+        locateBtn.setImage(imageOfLocation, forState: UIControlState.Normal)
         locateBtn.addTarget(self, action: "locationAction:", forControlEvents: UIControlEvents.TouchUpInside)
         self.contentView.addSubview(locateBtn)
     }
